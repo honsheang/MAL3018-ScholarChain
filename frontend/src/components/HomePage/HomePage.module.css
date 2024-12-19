@@ -1,0 +1,490 @@
+/* Default styles for large screens */
+.homePage {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+/* Responsive design for tablets and smaller devices */
+@media (max-width: 768px) {
+    .homePage {
+        padding: 16px;
+    }
+  
+    .registerButton{
+      width: 100%; /* Full width buttons */
+      margin-bottom: 10px;
+    }
+    .loginButton {
+        width: auto;
+        margin-bottom: 10px;
+        float: right;
+    }
+    
+  
+    .navigationBar {
+      flex-wrap: wrap; /* Stack navigation buttons */
+    }
+  }
+
+/* Scale container */
+.container {
+    position: relative;
+    width: 100vw; /* Full viewport width */
+    height: 100vh; /* Full viewport height */
+    display: flex;
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically */
+    overflow: hidden; /* Prevent content overflow */
+  }
+  
+  /* Inner design wrapper */
+  .inner {
+    position: relative;
+    width: 1920px; /* Original design width */
+    height: 1080px; /* Original design height */
+    transform-origin: top left; /* Scaling pivot point */
+    transform: scale(var(--scale-factor)); /* Apply scaling dynamically */
+  }
+  
+  /* Scale factor */
+  :root {
+    --scale-factor: 1; /* Default scale */
+  }
+  
+  @media (max-width: 1920px), (max-height: 1080px) {
+    :root {
+      --scale-factor: calc(min(100vw / 1920, 100vh / 1080));
+    }
+  }
+  
+  
+  
+.buttonContainer {
+    display: flex; /* Align children in a row */
+    justify-content: flex-end; /* Align buttons to the right */
+    gap: 0px; /* Space between Login and Register buttons */
+    position: absolute;
+    top: 0px;
+    right: 10px; /* Distance from the right edge of the container */
+}
+
+.loginButton, .registerButton {
+    width: 125px;
+    height: 49px;
+    cursor: pointer;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.login {
+    text-decoration: underline;
+}
+
+.register {
+    text-decoration: underline;
+}
+
+
+.bar {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    border-radius: var(--br-21xl);
+    background-color: var(--color-black);
+    width: 1225px;
+    height: 83px;
+}
+.features {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    text-decoration: underline;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 203px;
+    height: 49px;
+}
+.featuresButton {
+    position: absolute;
+    top: 17px;
+    left: 703px;
+    width: 203px;
+    height: 49px;
+}
+.guide {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    text-decoration: underline;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 162px;
+    height: 49px;
+}
+.guideButton {
+    position: absolute;
+    top: 17px;
+    left: 284px;
+    width: 162px;
+    height: 49px;
+}
+.contactButton {
+    position: absolute;
+    top: 17px;
+    left: 971px;
+    width: 162px;
+    height: 49px;
+}
+.about {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    text-decoration: underline;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 127px;
+    height: 49px;
+}
+.aboutButton {
+    position: absolute;
+    top: 17px;
+    left: 511px;
+    width: 127px;
+    height: 49px;
+}
+.homeButton {
+    position: absolute;
+    top: 17px;
+    left: 92px;
+    width: 127px;
+    height: 49px;
+}
+.navigationBar {
+    position: absolute;
+    top: 431px;
+    left: 145px;
+    width: 1225px;
+    height: 83px;
+    font-size: var(--font-size-21xl);
+    color: var(--color-white);
+}
+.bottomNavigationBarChild {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    border-radius: var(--br-21xl) var(--br-21xl) 0px 0px;
+    background-color: var(--color-black);
+    width: 1515px;
+    height: 285px;
+}
+.scholarchain1Icon {
+    position: absolute;
+    top: 29px;
+    left: 572px;
+    width: 372px;
+    height: 228px;
+    object-fit: cover;
+}
+.bottomNavigationBar {
+    position: absolute;
+    top: 2745px;
+    left: 0px;
+    width: 1515px;
+    height: 285px;
+}
+.blackBehind {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    border-radius: var(--br-21xl);
+    background-color: var(--color-black);
+    width: 1398px;
+    height: 696px;
+}
+.circle3Child {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    border-radius: 50%;
+    background-color: var(--color-white);
+    width: 200px;
+    height: 200px;
+}
+.div {
+    position: absolute;
+    top: 55px;
+    left: 48px;
+    font-weight: 900;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 103px;
+    height: 89px;
+}
+.circle3 {
+    position: absolute;
+    top: 0px;
+    left: 87px;
+    width: 200px;
+    height: 200px;
+}
+.receiveHoldAnd {
+    position: absolute;
+    top: 248px;
+    left: 0px;
+    font-size: var(--font-size-5xl);
+    font-weight: 900;
+    color: var(--color-white);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 373px;
+    height: 200px;
+}
+.three {
+    position: absolute;
+    top: 124px;
+    left: 925px;
+    width: 373px;
+    height: 448px;
+}
+.two {
+    position: absolute;
+    top: 124px;
+    left: 500px;
+    width: 373px;
+    height: 448px;
+}
+.one {
+    position: absolute;
+    top: 124px;
+    left: 75px;
+    width: 373px;
+    height: 448px;
+}
+.section3 {
+    position: absolute;
+    top: 1872px;
+    left: 59px;
+    width: 1398px;
+    height: 696px;
+    font-size: var(--font-size-77xl);
+    color: var(--color-blue);
+    font-family: var(--font-inter);
+}
+.scholarchain61 {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 1999.4px;
+    height: 1780.5px;
+    object-fit: contain;
+    opacity: 0.3;
+}
+.blueChild {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    border-radius: var(--br-21xl);
+    background-color: var(--color-blue);
+    width: 761px;
+    height: 162px;
+}
+.useTheScholarchain {
+    position: absolute;
+    top: 23px;
+    left: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 649px;
+    height: 116px;
+}
+.blue {
+    position: absolute;
+    top: 686px;
+    left: 857px;
+    width: 761px;
+    height: 162px;
+}
+.greyChild {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    border-radius: var(--br-21xl);
+    background-color: #d9d9d9;
+    width: 761px;
+    height: 95px;
+}
+.verifyAnyonesAchievements {
+    position: absolute;
+    top: 19px;
+    left: 46px;
+    display: flex;
+    font-weight: 700;
+    align-items: center;
+    justify-content: center;
+    width: 670px;
+    height: 56px;
+}
+.grey {
+    position: absolute;
+    top: 563px;
+    left: 857px;
+    width: 761px;
+    height: 95px;
+    font-size: var(--font-size-21xl);
+    color: var(--color-black);
+}
+.blackChild {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    border-radius: var(--br-21xl);
+    background-color: var(--color-black);
+    width: 598px;
+    height: 285px;
+}
+.credentialIssuers {
+    position: absolute;
+    top: 32px;
+    left: 80px;
+    display: flex;
+    align-items: center;
+    width: 488px;
+    height: 241px;
+}
+.black {
+    position: absolute;
+    top: 563px;
+    left: 220px;
+    width: 598px;
+    height: 285px;
+    text-align: left;
+    font-size: var(--font-size-77xl);
+    font-family: var(--font-league-spartan);
+}
+.section2 {
+    position: absolute;
+    top: 830px;
+    left: -161px;
+    width: 1999.4px;
+    height: 1780.5px;
+    color: var(--color-white);
+    font-family: var(--font-inter);
+}
+.blue1 {
+    position: absolute;
+    top: 0px;
+    left: 9px;
+    border-radius: var(--br-21xl);
+    background-color: var(--color-blue);
+    width: 1398px;
+    height: 661px;
+}
+.white {
+    position: absolute;
+    top: 427px;
+    left: 0px;
+    border-radius: 0px var(--br-21xl) var(--br-21xl) 0px;
+    background-color: var(--color-whitesmoke);
+    width: 958px;
+    height: 162px;
+}
+.ownAndShare {
+    position: absolute;
+    top: 40px;
+    left: 558px;
+    display: flex;
+    align-items: center;
+    width: 776px;
+    height: 368px;
+}
+.withTheBlockchain {
+    margin: 0;
+}
+.withTheBlockchainContainer1 {
+    width: 100%;
+}
+.withTheBlockchainContainer {
+    position: absolute;
+    top: 464px;
+    left: 65px;
+    font-size: 32px;
+    color: var(--color-black);
+    text-align: left;
+    display: flex;
+    align-items: center;
+    width: 872px;
+    height: 88px;
+}
+.webIcon {
+    position: absolute;
+    top:100px;
+    left: -90px;
+    width: 665px;
+    height: 400px;
+    object-fit: contain;
+    transform: scale(1.9);
+    clip-path: inset(50px 50px 133px 210px);
+}
+.section1 {
+    position: absolute;
+    top: 629px;
+    left: 50px;
+    width: 1407px;
+    height: 661px;
+    text-align: right;
+    font-size: 128px;
+    color: var(--color-white);
+}
+.secureAcademicTranscript {
+    position: absolute;
+    top: 361px;
+    left: 0px;
+    font-weight: 300;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 659px;
+    height: 37px;
+}
+.scholarchainIcon {
+    position: absolute;
+    top: 0px;
+    left: 17px;
+    width: 626px;
+    height: 478px;
+    object-fit: cover;
+}
+.logo {
+    position: absolute;
+    top: -30px;
+    left: 428px;
+    width: 659px;
+    height: 478px;
+}
+.homePage {
+    width: 100%;
+    position: relative;
+    background-color: var(--color-whitesmoke);
+    height: 3030px;
+    overflow: hidden;
+    text-align: center;
+    font-size: var(--font-size-5xl);
+    color: var(--color-black);
+    font-family: var(--font-league-spartan);
+}
+.scholarchain61 {
+    transform: rotate(-20deg);
+    top: -150px;
+    clip-path: inset(50px 300px 50px 200px);
+    
+  }
+  

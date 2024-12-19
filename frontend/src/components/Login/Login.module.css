@@ -1,0 +1,335 @@
+.loginChild {
+    position: absolute;
+    top: 1468px;
+    left: 0px;
+    border-radius: var(--br-21xl) var(--br-21xl) 0px 0px;
+    background-color: var(--color-black);
+    width: 1515px;
+    height: 285px;
+}
+.loginItem {
+    position: absolute;
+    top: 431px;
+    left: 145px;
+    border-radius: var(--br-21xl);
+    background-color: var(--color-black);
+    width: 1225px;
+    height: 83px;
+}
+.features {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    text-decoration: underline;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 203px;
+    height: 49px;
+}
+.featuresButton {
+    position: absolute;
+    top: 448px;
+    left: 848px;
+    width: 203px;
+    height: 49px;
+    font-size: var(--font-size-21xl);
+    color: var(--color-white);
+}
+.guide {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    text-decoration: underline;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 162px;
+    height: 49px;
+}
+.guideButton {
+    position: absolute;
+    top: 448px;
+    left: 429px;
+    width: 162px;
+    height: 49px;
+    font-size: var(--font-size-21xl);
+    color: var(--color-white);
+}
+.contactButton {
+    position: absolute;
+    top: 448px;
+    left: 1116px;
+    width: 162px;
+    height: 49px;
+    font-size: var(--font-size-21xl);
+    color: var(--color-white);
+}
+.about {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    text-decoration: underline;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 127px;
+    height: 49px;
+}
+.aboutButton {
+    position: absolute;
+    top: 448px;
+    left: 656px;
+    width: 127px;
+    height: 49px;
+    font-size: var(--font-size-21xl);
+    color: var(--color-white);
+}
+.homeButton {
+    position: absolute;
+    top: 448px;
+    left: 237px;
+    width: 127px;
+    height: 49px;
+    cursor: pointer;
+    font-size: var(--font-size-21xl);
+    color: var(--color-white);
+}
+.secureAcademicTranscript {
+    position: absolute;
+    top: 331px;
+    left: 428px;
+    font-size: var(--font-size-5xl);
+    font-weight: 300;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 659px;
+    height: 37px;
+}
+.loginInner {
+    position: absolute;
+    top: 677px;
+    left: 59px;
+    border-radius: 0px 0px var(--br-21xl) var(--br-21xl);
+    background-color: #081ff7;
+    width: 1398px;
+    height: 558px;
+}
+.submitButtonChild {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    border-radius: var(--br-21xl);
+    background-color: var(--color-white);
+    width: 267px;
+    height: 73px;
+}
+.submit {
+    position: absolute;
+    top: 16px;
+    left: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 196px;
+    height: 42px;
+}
+.submitButton {
+    position: absolute;
+    top: 1135px;
+    left: 1144px;
+    width: 267px;
+    height: 73px;
+    cursor: pointer;
+}
+.rectangleDiv {
+    position: absolute;
+    top: 749px;
+    left: 118px;
+    border-radius: var(--br-21xl);
+    background-color: var(--color-white);
+    width: 1293px;
+    height: 358px;
+}
+.scholarchain1Icon {
+    position: absolute;
+    top: 1497px;
+    left: 572px;
+    width: 372px;
+    height: 228px;
+    object-fit: cover;
+}
+.scholarchain2Icon {
+    position: absolute;
+    top: -30px;
+    left: 445px;
+    width: 626px;
+    height: 478px;
+    object-fit: cover;
+}
+.loginChild1 {
+    position: absolute;
+    top: 594px;
+    left: 1051px;
+    border-radius: var(--br-21xl) var(--br-21xl) 0px 0px;
+    background-color: var(--color-gainsboro);
+    width: 406px;
+    height: 83px;
+}
+.login1 {
+    position: absolute;
+    top: 612px;
+    left: 1051px;
+    font-size: var(--font-size-21xl);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 406px;
+    height: 55px;
+}
+.loginAs {
+    position: absolute;
+    top: 815px;
+    left: 175px;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 303px;
+    height: 52px;
+}
+.email {
+    position: absolute;
+    top: 900px;
+    left: 175px;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 303px;
+    height: 52px;
+}
+.password {
+    position: absolute;
+    top: 985px;
+    left: 175px;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 303px;
+    height: 52px;
+}
+.loginChild2 {
+    position: absolute;
+    top: 892px;
+    left: 478px;
+    border-radius: var(--br-21xl);
+    background-color: var(--color-gainsboro);
+    width: 863px;
+    height: 68px;
+}
+.loginChild3 {
+    position: absolute;
+    top: 977px;
+    left: 478px;
+    border-radius: var(--br-21xl);
+    background-color: var(--color-gainsboro);
+    width: 863px;
+    height: 68px;
+}
+.register {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    text-decoration: underline;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 125px;
+    height: 49px;
+}
+.loginregisterButton {
+    position: absolute;
+    top: 55px;
+    left: 1332px;
+    width: 125px;
+    height: 49px;
+    cursor: pointer;
+    font-size: var(--font-size-5xl);
+}
+.login2 {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    text-decoration: underline;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 107px;
+    height: 49px;
+}
+.loginregisterButton1 {
+    position: absolute;
+    top: 55px;
+    left: 1225px;
+    width: 107px;
+    height: 49px;
+    font-size: var(--font-size-5xl);
+}
+.studentOptionChild {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    top: 0%;
+    right: 0%;
+    bottom: 0%;
+    left: 0%;
+    border-radius: var(--br-21xl);
+    background-color: var(--color-gainsboro);
+}
+.student {
+    position: absolute;
+    height: 72.06%;
+    width: 71%;
+    top: 13.24%;
+    left: 14.5%;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.studentOption {
+    position: absolute;
+    top: 807px;
+    left: 478px;
+    width: 200px;
+    height: 68px;
+}
+.universityOption {
+    position: absolute;
+    top: 807px;
+    left: 710px;
+    width: 200px;
+    height: 68px;
+}
+.employerOption {
+    position: absolute;
+    top: 807px;
+    left: 942px;
+    width: 200px;
+    height: 68px;
+}
+.login {
+    width: 100%;
+    position: relative;
+    background-color: #f6f6f6;
+    height: 1753px;
+    overflow: hidden;
+    text-align: center;
+    font-size: var(--font-size-13xl);
+    color: var(--color-black);
+    font-family: var(--font-league-spartan);
+}
+
