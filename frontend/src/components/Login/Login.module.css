@@ -1,16 +1,7 @@
-.loginChild {
+.navigationBarChild {
     position: absolute;
-    top: 1468px;
+    top: 0px;
     left: 0px;
-    border-radius: var(--br-21xl) var(--br-21xl) 0px 0px;
-    background-color: var(--color-black);
-    width: 1515px;
-    height: 285px;
-}
-.loginItem {
-    position: absolute;
-    top: 431px;
-    left: 145px;
     border-radius: var(--br-21xl);
     background-color: var(--color-black);
     width: 1225px;
@@ -29,12 +20,10 @@
 }
 .featuresButton {
     position: absolute;
-    top: 448px;
-    left: 848px;
+    top: 17px;
+    left: 703px;
     width: 203px;
     height: 49px;
-    font-size: var(--font-size-21xl);
-    color: var(--color-white);
 }
 .guide {
     position: absolute;
@@ -49,21 +38,17 @@
 }
 .guideButton {
     position: absolute;
-    top: 448px;
-    left: 429px;
+    top: 17px;
+    left: 284px;
     width: 162px;
     height: 49px;
-    font-size: var(--font-size-21xl);
-    color: var(--color-white);
 }
 .contactButton {
     position: absolute;
-    top: 448px;
-    left: 1116px;
+    top: 17px;
+    left: 971px;
     width: 162px;
     height: 49px;
-    font-size: var(--font-size-21xl);
-    color: var(--color-white);
 }
 .about {
     position: absolute;
@@ -78,28 +63,56 @@
 }
 .aboutButton {
     position: absolute;
-    top: 448px;
-    left: 656px;
+    top: 17px;
+    left: 511px;
     width: 127px;
     height: 49px;
-    font-size: var(--font-size-21xl);
-    color: var(--color-white);
 }
 .homeButton {
     position: absolute;
-    top: 448px;
-    left: 237px;
+    top: 17px;
+    left: 92px;
     width: 127px;
     height: 49px;
     cursor: pointer;
+}
+.navigationBar {
+    position: absolute;
+    top: 431px;
+    left: 145px;
+    width: 1225px;
+    height: 83px;
     font-size: var(--font-size-21xl);
     color: var(--color-white);
 }
+.btmLogoChild {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    border-radius: var(--br-21xl) var(--br-21xl) 0px 0px;
+    background-color: var(--color-black);
+    width: 1515px;
+    height: 285px;
+}
+.scholarchain1Icon {
+    position: absolute;
+    top: 29px;
+    left: 572px;
+    width: 372px;
+    height: 228px;
+    object-fit: cover;
+}
+.btmLogo {
+    position: absolute;
+    top: 1468px;
+    left: 0px;
+    width: 1515px;
+    height: 285px;
+}
 .secureAcademicTranscript {
     position: absolute;
-    top: 331px;
-    left: 428px;
-    font-size: var(--font-size-5xl);
+    top: 286px;
+    left: 0px;
     font-weight: 300;
     display: flex;
     align-items: center;
@@ -107,11 +120,63 @@
     width: 659px;
     height: 37px;
 }
-.loginInner {
+.scholarchain2Icon {
     position: absolute;
-    top: 677px;
-    left: 59px;
-    border-radius: 0px 0px var(--br-21xl) var(--br-21xl);
+    top: 0px;
+    left: 17px;
+    width: 626px;
+    height: 286px;
+    object-fit: cover;
+}
+.logo {
+    position: absolute;
+    top: 45px;
+    left: 428px;
+    width: 659px;
+    height: 323px;
+}
+.register {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    text-decoration: underline;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 125px;
+    height: 49px;
+}
+.registerButton {
+    position: absolute;
+    top: 55px;
+    left: 1332px;
+    width: 125px;
+    height: 49px;
+    cursor: pointer;
+}
+.login1 {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    text-decoration: underline;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 107px;
+    height: 49px;
+}
+.loginButton {
+    position: absolute;
+    top: 55px;
+    left: 1225px;
+    width: 107px;
+    height: 49px;
+}
+.blue {
+    position: absolute;
+    top: 83px;
+    left: 0px;
+    border-radius: var(--br-21xl) 0px var(--br-21xl) var(--br-21xl);
     background-color: #081ff7;
     width: 1398px;
     height: 558px;
@@ -137,146 +202,95 @@
 }
 .submitButton {
     position: absolute;
-    top: 1135px;
-    left: 1144px;
+    top: 541px;
+    left: 1085px;
     width: 267px;
     height: 73px;
     cursor: pointer;
 }
-.rectangleDiv {
+.white {
     position: absolute;
-    top: 749px;
-    left: 118px;
+    top: 155px;
+    left: 59px;
     border-radius: var(--br-21xl);
     background-color: var(--color-white);
     width: 1293px;
     height: 358px;
 }
-.scholarchain1Icon {
+.loginLabelChild {
     position: absolute;
-    top: 1497px;
-    left: 572px;
-    width: 372px;
-    height: 228px;
-    object-fit: cover;
-}
-.scholarchain2Icon {
-    position: absolute;
-    top: -30px;
-    left: 445px;
-    width: 626px;
-    height: 478px;
-    object-fit: cover;
-}
-.loginChild1 {
-    position: absolute;
-    top: 594px;
-    left: 1051px;
+    top: 0px;
+    left: 0px;
     border-radius: var(--br-21xl) var(--br-21xl) 0px 0px;
     background-color: var(--color-gainsboro);
     width: 406px;
     height: 83px;
 }
-.login1 {
+.login2 {
     position: absolute;
-    top: 612px;
-    left: 1051px;
-    font-size: var(--font-size-21xl);
+    top: 18px;
+    left: 0px;
     display: flex;
     align-items: center;
     justify-content: center;
     width: 406px;
     height: 55px;
 }
-.loginAs {
+.loginLabel {
     position: absolute;
-    top: 815px;
-    left: 175px;
-    font-weight: 500;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 303px;
-    height: 52px;
+    top: 0px;
+    left: 992px;
+    width: 406px;
+    height: 83px;
+    font-size: var(--font-size-21xl);
+}
+.textInput {
+    position: absolute;
+    top: 0;
+    left: 303px; /* Align it next to the label */
+    width: calc(100% - 303px); /* Use remaining space */
+    height: 68px;
+    border-radius: var(--br-21xl);
+    background-color: var(--color-gainsboro);
+    border: 1px solid #ccc; /* Add a border */
+    padding: 10px 40px; /* Space inside the text field */
+    font-size: 20px; /* Adjust font size */
+    color: #333; /* Text color */
+    outline: none; /* Remove default focus outline */
+    box-sizing: border-box; /* Ensure padding/borders fit */
+    z-index: 0; /* Keep it behind the label */
+}
+
+.textInput:focus {
+    border-color: #007bff; /* Highlight on focus */
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5); /* Add a glow */
 }
 .email {
     position: absolute;
-    top: 900px;
-    left: 175px;
-    font-weight: 500;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 303px;
-    height: 52px;
+    top: 298px;
+    left: 116px;
+    width: 1166px; /* Keeps it consistent */
+    height: auto; /* Adjusted for content */
 }
 .password {
     position: absolute;
-    top: 985px;
-    left: 175px;
+    top: 383px;
+    left: 116px;
+    width: 1166px;
+    height: 68px;
+}
+.loginAs {
+    position: absolute;
+    top: 8px;
+    left: 0px;
     font-weight: 500;
     display: flex;
     align-items: center;
     justify-content: center;
     width: 303px;
     height: 52px;
-}
-.loginChild2 {
-    position: absolute;
-    top: 892px;
-    left: 478px;
-    border-radius: var(--br-21xl);
-    background-color: var(--color-gainsboro);
-    width: 863px;
-    height: 68px;
-}
-.loginChild3 {
-    position: absolute;
-    top: 977px;
-    left: 478px;
-    border-radius: var(--br-21xl);
-    background-color: var(--color-gainsboro);
-    width: 863px;
-    height: 68px;
-}
-.register {
-    position: absolute;
-    top: 0px;
-    left: 0px;
-    text-decoration: underline;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 125px;
-    height: 49px;
-}
-.loginregisterButton {
-    position: absolute;
-    top: 55px;
-    left: 1332px;
-    width: 125px;
-    height: 49px;
-    cursor: pointer;
-    font-size: var(--font-size-5xl);
-}
-.login2 {
-    position: absolute;
-    top: 0px;
-    left: 0px;
-    text-decoration: underline;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 107px;
-    height: 49px;
-}
-.loginregisterButton1 {
-    position: absolute;
-    top: 55px;
-    left: 1225px;
-    width: 107px;
-    height: 49px;
-    font-size: var(--font-size-5xl);
+    background-color: transparent; /* No background */
+    z-index: 1; /* Ensure it appears above the input */
 }
 .studentOptionChild {
     position: absolute;
@@ -302,24 +316,39 @@
 }
 .studentOption {
     position: absolute;
-    top: 807px;
-    left: 478px;
+    top: 0px;
+    left: 303px;
     width: 200px;
     height: 68px;
 }
 .universityOption {
     position: absolute;
-    top: 807px;
-    left: 710px;
+    top: 0px;
+    left: 535px;
     width: 200px;
     height: 68px;
 }
 .employerOption {
     position: absolute;
-    top: 807px;
-    left: 942px;
+    top: 0px;
+    left: 767px;
     width: 200px;
     height: 68px;
+}
+.loginOption {
+    position: absolute;
+    top: 213px;
+    left: 116px;
+    width: 967px;
+    height: 68px;
+}
+.loginDetail {
+    position: absolute;
+    top: 594px;
+    left: 59px;
+    width: 1398px;
+    height: 641px;
+    font-size: var(--font-size-13xl);
 }
 .login {
     width: 100%;
@@ -328,7 +357,7 @@
     height: 1753px;
     overflow: hidden;
     text-align: center;
-    font-size: var(--font-size-13xl);
+    font-size: var(--font-size-5xl);
     color: var(--color-black);
     font-family: var(--font-league-spartan);
 }

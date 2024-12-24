@@ -1,10 +1,10 @@
 import { useCallback } from 'react';
 import { useNavigate } from 'react-router-dom';
 import styles from './HomePage.module.css';
-import scholarChainImage from './ScholarChain.png';
-import blockChainImage from './blockchainnet.png';
-import webImage from './web.png';
-import btmImage from './blackscholarchain.png';
+import logoImage from '/ScholarChain/frontend/src/components/Image/ScholarChain.png';
+import blockChainImage from '/ScholarChain/frontend/src/components/Image/blockchainnet.png';
+import webImage from '/ScholarChain/frontend/src/components/Image/web.png';
+import btmImage from '/ScholarChain/frontend/src/components/Image/blackscholarchain.png';
 
 const HomePage = () => {
   const navigate = useNavigate();
@@ -13,23 +13,23 @@ const HomePage = () => {
       navigate('/login'); // Redirects to Login.jsx
   }, [navigate]);
 
-
+  const onRegisterClick = useCallback(() => {
+    navigate('/register'); // Redirects to SignUp.jsx
+}, [navigate]);
 
   return (
     <div className={styles.homePage}>
 
       {/* Login Buttons */}
-      <div className={styles.buttonContainer}>
-        <div className={styles.loginButton} onClick={onLoginClick}>
-          <b className={styles.login}>Login</b>
-        </div>
-        <div className={styles.registerButton}>
-          <b className={styles.register}>Register</b>
-        </div>
+      <div className={styles.loginButton} onClick={onLoginClick}>
+        <b className={styles.login}>Login</b>
       </div>
 
-
-
+      {/* Register Buttons */}
+      <div className={styles.registerButton} onClick={onRegisterClick}>
+        <b className={styles.register}>Register</b>
+      </div>
+      
       {/* Navigation Bar */}
       <div className={styles.navigationBar}>
         <div className={styles.bar} />
@@ -126,7 +126,7 @@ const HomePage = () => {
         <div className={styles.secureAcademicTranscript}>
           "Secure Academic Transcript Validation with Blockchain"
         </div>
-        <img className={styles.scholarchainIcon} alt="ScholarChain Logo" src={scholarChainImage} />
+        <img className={styles.scholarchainIcon} alt="ScholarChain Logo" src={logoImage} />
       </div>
     </div>
   );

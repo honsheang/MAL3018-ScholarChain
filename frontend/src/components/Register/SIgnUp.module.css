@@ -1,0 +1,503 @@
+.btmChild {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    border-radius: var(--br-21xl) var(--br-21xl) 0px 0px;
+    background-color: var(--color-black);
+    width: 1515px;
+    height: 285px;
+}
+.scholarchain1Icon {
+    position: absolute;
+    top: 29px;
+    left: 572px;
+    width: 372px;
+    height: 228px;
+    object-fit: cover;
+}
+.btm {
+    position: absolute;
+    top: 1589px;
+    left: 0px;
+    width: 1515px;
+    height: 285px;
+}
+.register {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    text-decoration: underline;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 125px;
+    height: 49px;
+}
+.registerButton {
+    position: absolute;
+    top: 55px;
+    left: 1332px;
+    width: 125px;
+    height: 49px;
+    cursor: pointer;
+}
+.login {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    text-decoration: underline;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 107px;
+    height: 49px;
+}
+.loginButton {
+    position: absolute;
+    top: 55px;
+    left: 1225px;
+    width: 107px;
+    height: 49px;
+}
+.navigationBarChild {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    border-radius: var(--br-21xl);
+    background-color: var(--color-black);
+    width: 1225px;
+    height: 83px;
+}
+.features {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    text-decoration: underline;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 203px;
+    height: 49px;
+}
+.featuresButton {
+    position: absolute;
+    top: 17px;
+    left: 703px;
+    width: 203px;
+    height: 49px;
+}
+.guide {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    text-decoration: underline;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 162px;
+    height: 49px;
+}
+.guideButton {
+    position: absolute;
+    top: 17px;
+    left: 284px;
+    width: 162px;
+    height: 49px;
+}
+.contactButton {
+    position: absolute;
+    top: 17px;
+    left: 971px;
+    width: 162px;
+    height: 49px;
+}
+.about {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    text-decoration: underline;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 127px;
+    height: 49px;
+}
+.aboutButton {
+    position: absolute;
+    top: 17px;
+    left: 511px;
+    width: 127px;
+    height: 49px;
+}
+.homeButton {
+    position: absolute;
+    top: 17px;
+    left: 92px;
+    width: 127px;
+    height: 49px;
+    cursor: pointer;
+}
+.navigationBar {
+    position: absolute;
+    top: 431px;
+    left: 145px;
+    width: 1225px;
+    height: 83px;
+    font-size: var(--font-size-21xl);
+    color: var(--color-white);
+}
+.secureAcademicTranscript {
+    position: absolute;
+    top: 286px;
+    left: 0px;
+    font-weight: 300;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 659px;
+    height: 37px;
+}
+.scholarchain2Icon {
+    position: absolute;
+    top: 0px;
+    left: 17px;
+    width: 626px;
+    height: 286px;
+    object-fit: cover;
+}
+.logo {
+    position: absolute;
+    top: 45px;
+    left: 428px;
+    width: 659px;
+    height: 323px;
+}
+.blue {
+    position: absolute;
+    height: 102.7%;
+    width: 100%;
+    top: 10.18%;
+    right: 0%;
+    bottom: -12.88%;
+    left: 0%;
+    border-radius: 0px var(--br-21xl) var(--br-21xl);
+    background-color: var(--color-blue);
+}
+.white {
+    position: absolute;
+    height: 75.09%;
+    width: 92.49%;
+    top: 19.02%;
+    right: 3.29%;
+    bottom: 5.89%;
+    left: 4.22%;
+    border-radius: var(--br-21xl);
+    background-color: var(--color-white);
+}
+.universityButtonChild {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    top: 0%;
+    right: 0%;
+    bottom: 0%;
+    left: 0%;
+    border-radius: var(--br-21xl) var(--br-21xl) 0px 0px;
+    
+}
+.university {
+    position: absolute;
+    height: 56.63%;
+    width: 67.96%;
+    top: 21.69%;
+    left: 15.85%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.universityButton {
+    position: absolute;
+    height: 10.18%;
+    width: 20.31%;
+    top: 0%;
+    right: 79.69%;
+    bottom: 89.82%;
+    left: 0%;
+    font-size: var(--font-size-21xl);
+    color: var(--color-white);
+    border-radius: var(--br-21xl) var(--br-21xl) 0px 0px;
+}
+.employerButtonChild {
+    position: relative;
+    height: 100%;
+    width: 100%;
+    top: 0%;
+    right: 0%;
+    bottom: 0%;
+    left: 0%;
+    border-radius: var(--br-21xl) var(--br-21xl) 0px 0px;
+    
+}
+.employerButton {
+    position: absolute;
+    height: 10.18%;
+    width: 20.31%;
+    top: 0%;
+    right: 59.37%;
+    bottom: 89.82%;
+    left: 20.31%;
+    font-size: var(--font-size-21xl);
+    color: var(--color-darkgray);
+    border-radius: var(--br-21xl) var(--br-21xl) 0px 0px;
+}
+.studentButton {
+    position: absolute;
+    height: 10.18%;
+    width: 20.31%;
+    top: 0%;
+    right: 39.06%;
+    bottom: 89.82%;
+    left: 40.63%;
+    font-size: var(--font-size-21xl);
+    color: var(--color-darkgray);
+    border-radius: var(--br-21xl) var(--br-21xl) 0px 0px;
+}
+.textInput {
+    position: absolute;
+    top: 0;
+    left: 303px; /* Align it next to the label */
+    width: calc(100% - 303px); /* Use remaining space */
+    height: 68px;
+    border-radius: var(--br-21xl);
+    background-color: var(--color-gainsboro);
+    border: 1px solid #ccc; /* Add a border */
+    padding: 10px 40px; /* Space inside the text field */
+    font-size: 20px; /* Adjust font size */
+    color: #333; /* Text color */
+    outline: none; /* Remove default focus outline */
+    box-sizing: border-box; /* Ensure padding/borders fit */
+    z-index: 0; /* Keep it behind the label */
+}
+
+.textInput:focus {
+    border-color: #007bff; /* Highlight on focus */
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5); /* Add a glow */
+}
+.issuerName {
+    position: absolute;
+    height: 8.34%;
+    width: 83.4%;
+    top: 26.13%;
+    right: 8.3%;
+    bottom: 65.52%;
+    left: 8.3%;
+}
+.universitySsoId {
+    position: absolute;
+    height: 76.47%;
+    width: 25.99%;
+    top: 11.76%;
+    left: 0%;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.uniSso {
+    position: absolute;
+    height: 8.34%;
+    width: 83.4%;
+    top: 36.56%;
+    right: 8.3%;
+    bottom: 55.09%;
+    left: 8.3%;
+}
+.email {
+    position: absolute;
+    height: 8.34%;
+    width: 83.4%;
+    top: 46.99%;
+    right: 8.3%;
+    bottom: 44.66%;
+    left: 8.3%;
+}
+.domain {
+    position: absolute;
+    height: 8.34%;
+    width: 83.4%;
+    top: 57.42%;
+    right: 8.3%;
+    bottom: 34.23%;
+    left: 8.3%;
+}
+.password {
+    position: absolute;
+    height: 8.34%;
+    width: 83.4%;
+    top: 67.85%;
+    right: 8.3%;
+    bottom: 23.8%;
+    left: 8.3%;
+}
+.confirmPass {
+    position: absolute;
+    height: 8.34%;
+    width: 83.4%;
+    top: 78.28%;
+    right: 8.3%;
+    bottom: 13.37%;
+    left: 8.3%;
+}
+.signupLabelChild {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    top: 0%;
+    right: 0%;
+    bottom: 0%;
+    left: 0%;
+    border-radius: var(--br-21xl) var(--br-21xl) 0px 0px;
+    background-color: var(--color-gainsboro);
+}
+.signUp1 {
+    position: absolute;
+    height: 66.27%;
+    width: 100%;
+    top: 21.69%;
+    left: 0%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.signupLabel {
+    position: absolute;
+    height: 10.18%;
+    width: 29.04%;
+    top: 0%;
+    right: 0%;
+    bottom: 89.82%;
+    left: 70.96%;
+    font-size: var(--font-size-21xl);
+}
+.submitButtonChild {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    top: 0%;
+    right: 0%;
+    bottom: 0%;
+    left: 0%;
+    border-radius: var(--br-21xl);
+    background-color: var(--color-white);
+}
+.submit {
+    position: absolute;
+    height: 57.53%;
+    width: 73.41%;
+    top: 21.92%;
+    left: 13.48%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.submitButton {
+    position: absolute;
+    height: 8.96%;
+    width: 19.1%;
+    top: 99.14%;
+    right: 3.29%;
+    bottom: -8.1%;
+    left: 77.61%;
+    cursor: pointer;
+}
+.signUpDetail {
+    position: absolute;
+    top: 599px;
+    left: 59px;
+    width: 1398px;
+    height: 815px;
+    font-size: var(--font-size-13xl);
+}
+.signUp {
+    width: 100%;
+    position: relative;
+    background-color: #f6f6f6;
+    height: 1874px;
+    overflow: hidden;
+    text-align: center;
+    font-size: var(--font-size-5xl);
+    color: var(--color-black);
+    font-family: var(--font-league-spartan);
+}
+.activeButton {
+    background-color: var(--color-blue) !important;
+    color: var(--color-white) !important;
+}
+
+.inactiveButton {
+    background-color: var(--color-white) !important;
+    color: var(--color-darkgray) !important;
+}
+.accessButton {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    top: 350px;
+    right: -28%;
+    border: none;
+    background: none;
+    padding: 0;
+    margin: 0;
+    width: 613px;
+    height: 68px;
+    cursor: pointer;
+    font-family: "League Spartan", sans-serif;
+  }
+  
+  .accessChild {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 40px;
+    background-color: #d9d9d9;
+    border: 1px solid #000;
+    box-sizing: border-box;
+  }
+  
+  .accessThroughYour {
+    position: relative;
+    font-weight: 500;
+    font-size: 32px;
+    color: #000;
+    z-index: 1;
+  }
+  .campus1Icon {
+    width: 100%;
+    position: absolute;
+    top: 175px;
+    right: 610px;
+    padding: 10px;
+    max-width: 100%;
+    overflow: hidden;
+    height: 170px;
+    width: 161px;
+    object-fit: cover;
+    transform: scale(1.2);
+}
+.blueStudent {
+    width: 1398px;
+    height: 486px;
+}
+
+.whiteStudent {
+    width: 1293px;
+    height: 348px;
+}
+
+
+
+
+

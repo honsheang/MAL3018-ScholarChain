@@ -69,22 +69,42 @@
     right: 10px; /* Distance from the right edge of the container */
 }
 
-.loginButton, .registerButton {
-    width: 125px;
-    height: 49px;
-    cursor: pointer;
-    text-align: center;
+.register {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    text-decoration: underline;
     display: flex;
     align-items: center;
     justify-content: center;
+    width: 125px;
+    height: 49px;
 }
-
+.registerButton {
+    position: absolute;
+    top: 55px;
+    left: 1332px;
+    width: 125px;
+    height: 49px;
+    cursor: pointer;
+}
 .login {
+    position: absolute;
+    top: 0px;
+    left: 0px;
     text-decoration: underline;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 107px;
+    height: 49px;
 }
-
-.register {
-    text-decoration: underline;
+.loginButton {
+    position: absolute;
+    top: 55px;
+    left: 1225px;
+    width: 107px;
+    height: 49px;
 }
 
 
@@ -446,7 +466,7 @@
 }
 .secureAcademicTranscript {
     position: absolute;
-    top: 361px;
+    top: 286px;
     left: 0px;
     font-weight: 300;
     display: flex;
@@ -460,15 +480,15 @@
     top: 0px;
     left: 17px;
     width: 626px;
-    height: 478px;
+    height: 286px;
     object-fit: cover;
 }
 .logo {
     position: absolute;
-    top: -30px;
+    top: 45px;
     left: 428px;
     width: 659px;
-    height: 478px;
+    height: 323px;
 }
 .homePage {
     width: 100%;

@@ -19,8 +19,10 @@ body {
   	--color-black: #000;
   	--color-white: #fff;
   	--color-blue: #081ff7;
+	--color-gainsboro: #d9d9d9;
   	
-  	/* Border radiuses */
-  	--br-21xl: 40px;
+	/* Border radiuses */
+	--br-21xl: 40px;
+
   	
 }
