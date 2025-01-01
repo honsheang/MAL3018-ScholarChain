@@ -238,8 +238,8 @@
 }
 .loginLabel {
     position: absolute;
-    top: 0px;
-    left: 992px;
+    top: 596px;
+    left: 1052px;
     width: 406px;
     height: 83px;
     font-size: var(--font-size-21xl);
@@ -342,6 +342,32 @@
     width: 967px;
     height: 68px;
 }
+.activeOption {
+    background-color: var(--color-blue); 
+    border-radius: var(--br-21xl) var(--br-21xl) var(--br-21xl) var(--br-21xl);
+}
+
+.activeChild {
+    background-color: var(--color-blue);
+}
+
+.activeText {
+    color: var(--color-white); /* White text for the active option */
+}
+
+.studentOptionChild,
+.universityOptionChild,
+.employerOptionChild {
+    transition: background-color 0.3s ease; /* Smooth transition for background color */
+}
+
+.student,
+.universityOption .student,
+.employerOption .student {
+    transition: color 0.3s ease; /* Smooth transition for text color */
+}
+
+
 .loginDetail {
     position: absolute;
     top: 594px;
@@ -361,4 +387,39 @@
     color: var(--color-black);
     font-family: var(--font-league-spartan);
 }
+.accessChild {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    border-radius: 40px;
+    background-color: var(--color-black);
+    border: 1px solid var(--color-black);
+    box-sizing: border-box;
+    width: 664px;
+    height: 73px;
+}
+.accessThroughYour {
+    position: absolute;
+    top: 16px;
+    left: 89.53px;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 487.4px;
+    height: 42px;
+}
+.access {
+    
+    position: relative;
+    top:330px;
+    left: 420px;
+    height: 73px;
+    cursor: pointer;
+    text-align: center;
+    font-size: 32px;
+    color: #fff;
+    font-family: var(--font-league-spartan);
+}
+
 

@@ -26,6 +26,10 @@ const SignUp = () => {
         navigate('/login');
     }, [navigate]);
 
+    const onpendingContainerClick = useCallback(() => {
+        navigate('/pending');
+    }, [navigate]);
+
     const handleRoleSelection = (role) => {
         setActiveRole(role); // Change active role
     };
@@ -157,6 +161,11 @@ const SignUp = () => {
                                 placeholder="Enter again"
                             />
                         </div>
+
+                        <div className={styles.submitButton} onClick={onpendingContainerClick}>
+                    <div className={styles.submitButtonChild} />
+                    <b className={styles.submit}>Submit</b>
+                </div>
                     </>
                 )}
 
@@ -216,6 +225,11 @@ const SignUp = () => {
                                 placeholder="Enter again your Password"
                             />
                         </div>
+
+                        <div className={styles.submitButton} onClick={onHomeButtonContainerClick}>
+                    <div className={styles.submitButtonChild} />
+                    <b className={styles.submit}>Submit</b>
+                </div>
                     </>
                 )}
 
@@ -234,10 +248,7 @@ const SignUp = () => {
                 
 
 
-                <div className={styles.submitButton} onClick={onHomeButtonContainerClick}>
-                    <div className={styles.submitButtonChild} />
-                    <b className={styles.submit}>Submit</b>
-                </div>
+                
             </div>
         </div>
     );

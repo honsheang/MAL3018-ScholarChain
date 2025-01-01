@@ -1,0 +1,391 @@
+.addSemesterChild {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    background-color: var(--color-black);
+    width: 1368px;
+    height: 83px;
+}
+.cancel {
+    position: absolute;
+    top: 11px;
+    left: 1175px;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 163px;
+    height: 62px;
+}
+.addSemester1 {
+    position: absolute;
+    top: 11px;
+    left: 86px;
+    font-size: var(--font-size-29xl);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 318px;
+    height: 62px;
+}
+.addSemesterItem {
+    position: absolute;
+    top: 782px;
+    left: 0px;
+    background-color: var(--color-blue);
+    width: 1368px;
+    height: 70px;
+}
+.semester {
+    font-weight: 500;
+    color: var(--color-black);
+    width: auto;
+    height: auto;
+    line-height: 44px; /* Aligns label vertically */
+}
+.addSemesterInner {
+    position: absolute;
+    top: 136px;
+    left: 282px;
+    border-radius: var(--br-21xl);
+    background-color: var(--color-gainsboro);
+    width: 124px;
+    height: 44px;
+}
+.semesterDropdown {
+    position: absolute;
+    top: 136px;
+    left: 84px;
+    display: flex;
+    align-items: center;
+    gap: 16px; /* Adds space between label and dropdown */
+    width: auto;
+}
+
+.dropdown {
+    border-radius: var(--br-21xl);
+    background-color: var(--color-gainsboro);
+    border: 1px solid var(--color-gray);
+    width: 200px;
+    height: 44px;
+    font-size: 16px;
+    color: var(--color-black);
+    padding: 0 0px 0 30px;
+    appearance: none; /* Removes default browser dropdown styling */
+    outline: none; /* Removes focus border */
+    cursor: pointer;
+}
+.dropdownIcon {
+    position: absolute;
+    top: 153px;
+    left: 383px;
+    width: 11px;
+    height: 10px;
+}
+.tableChild {
+    position: absolute;
+    top: 0px;
+    left: 0.01px;
+    border-radius: var(--br-xl);
+    background-color: var(--color-gainsboro);
+    border: 1px solid var(--color-black);
+    box-sizing: border-box;
+    width: 1265px;
+    height: 389px;
+}
+.tableItem {
+    position: absolute;
+    top: -0.5px;
+    left: 143.51px;
+    border-right: 1px solid var(--color-black);
+    box-sizing: border-box;
+    width: 1px;
+    height: 390px;
+}
+.tableInner {
+    position: absolute;
+    top: -0.5px;
+    left: 670.51px;
+    border-right: 1px solid var(--color-black);
+    box-sizing: border-box;
+    width: 1px;
+    height: 390px;
+}
+.lineDiv {
+    position: absolute;
+    top: -0.5px;
+    left: 842.51px;
+    border-right: 1px solid var(--color-black);
+    box-sizing: border-box;
+    width: 1px;
+    height: 390px;
+}
+.tableChild1 {
+    position: absolute;
+    top: -0.5px;
+    left: 993.51px;
+    border-right: 1px solid var(--color-black);
+    box-sizing: border-box;
+    width: 1px;
+    height: 390px;
+}
+.tableChild2 {
+    position: absolute;
+    top: 40.5px;
+    left: -0.49px;
+    border-top: 1px solid var(--color-black);
+    box-sizing: border-box;
+    width: 1266px;
+    height: 1px;
+}
+.dcs1133 {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 144px;
+    height: 58px;
+}
+.discreteMathematics {
+    position: absolute;
+    top: 0px;
+    left: 144px;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 527px;
+    height: 58px;
+}
+.div {
+    position: absolute;
+    top: 0px;
+    left: 672px;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 171px;
+    height: 58px;
+}
+.a {
+    position: absolute;
+    top: 0px;
+    left: 844px;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 151px;
+    height: 58px;
+}
+.distinction {
+    position: absolute;
+    top: 0px;
+    left: 994px;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 271px;
+    height: 58px;
+}
+.second {
+    position: absolute;
+    top: 99px;
+    left: 0.01px;
+    width: 1265px;
+    height: 58px;
+}
+.div1 {
+    position: absolute;
+    top: 0px;
+    left: 671px;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 171px;
+    height: 58px;
+}
+.b {
+    position: absolute;
+    top: 0px;
+    left: 843px;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 151px;
+    height: 58px;
+}
+.first {
+    position: absolute;
+    top: 41px;
+    left: 0.01px;
+    width: 1265px;
+    height: 58px;
+}
+.code {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 144px;
+    height: 41px;
+}
+.creditHours {
+    position: absolute;
+    top: 0px;
+    left: 671px;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 172px;
+    height: 41px;
+}
+.grade {
+    position: absolute;
+    top: 0px;
+    left: 843px;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 151px;
+    height: 41px;
+}
+.description {
+    position: absolute;
+    top: 0px;
+    left: 994px;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 271px;
+    height: 41px;
+}
+.course {
+    position: absolute;
+    top: 0px;
+    left: 144px;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 527px;
+    height: 41px;
+}
+.label {
+    position: absolute;
+    top: 0px;
+    left: 0.01px;
+    width: 1265px;
+    height: 41px;
+}
+.tableChild3 {
+    position: absolute;
+    top: 98.97px;
+    left: -0.5px;
+    border-top: 1px solid var(--color-black);
+    box-sizing: border-box;
+    width: 1266px;
+    height: 1px;
+}
+.tableChild4 {
+    position: absolute;
+    top: 156.5px;
+    left: -0.49px;
+    border-top: 1px solid var(--color-black);
+    box-sizing: border-box;
+    width: 1266px;
+    height: 1px;
+}
+.tableChild5 {
+    position: absolute;
+    top: 214.5px;
+    left: -0.49px;
+    border-top: 1px solid var(--color-black);
+    box-sizing: border-box;
+    width: 1266px;
+    height: 1px;
+}
+.tableChild6 {
+    position: absolute;
+    top: 272.5px;
+    left: -0.49px;
+    border-top: 1px solid var(--color-black);
+    box-sizing: border-box;
+    width: 1266px;
+    height: 1px;
+}
+.tableChild7 {
+    position: absolute;
+    top: 330.5px;
+    left: -0.49px;
+    border-top: 1px solid var(--color-black);
+    box-sizing: border-box;
+    width: 1266px;
+    height: 1px;
+}
+.table {
+    position: absolute;
+    top: 220px;
+    left: 50.99px;
+    width: 1265px;
+    height: 389px;
+    font-size: var(--font-size-xl);
+    color: var(--color-black);
+}
+.updateButtonChild {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    border-radius: var(--br-21xl);
+    background-color: var(--color-white);
+    width: 210px;
+    height: 45px;
+}
+.update {
+    position: absolute;
+    top: 5px;
+    left: 23px;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 166px;
+    height: 36px;
+}
+.updateButton {
+    position: absolute;
+    top: 794px;
+    left: 1120px;
+    width: 210px;
+    height: 45px;
+    font-size: var(--font-size-5xl);
+    color: var(--color-blue);
+}
+.addSemester {
+    width: 1368px;
+    position: relative;
+    border-radius: var(--br-21xl);
+    background-color: var(--color-white);
+    height: 852px;
+    overflow: hidden;
+    max-width: 100%;
+    max-height: 100%;
+    text-align: center;
+    font-size: var(--font-size-13xl);
+    color: var(--color-white);
+    font-family: var(--font-league-spartan);
+}
+

@@ -1,0 +1,148 @@
+.addBadgesChild {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    background-color: var(--color-black);
+    width: 1368px;
+    height: 83px;
+}
+.cancel {
+    position: absolute;
+    top: 11px;
+    left: 1175px;
+    font-size: var(--font-size-13xl);
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 163px;
+    height: 62px;
+}
+.addGamificationBadges {
+    position: absolute;
+    top: 11px;
+    left: 86px;
+    font-size: var(--font-size-29xl);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 575px;
+    height: 62px;
+}
+.addBadgesItem {
+    position: absolute;
+    top: 782px;
+    left: 0px;
+    background-color: var(--color-blue);
+    width: 1368px;
+    height: 70px;
+}
+.category {
+    position: absolute;
+    top: 136px;
+    left: 84px;
+    font-size: var(--font-size-13xl);
+    font-weight: 500;
+    color: var(--color-black);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 198px;
+    height: 44px;
+}
+.addBadgesInner {
+    position: absolute;
+    top: 136px;
+    left: 282px;
+    border-radius: var(--br-21xl);
+    background-color: var(--color-gainsboro);
+    width: 294px;
+    height: 44px;
+}
+.dropdownIcon {
+    position: absolute;
+    top: 153px;
+    left: 545px;
+    width: 11px;
+    height: 10px;
+}
+.updateButtonChild {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    border-radius: var(--br-21xl);
+    background-color: var(--color-white);
+    width: 210px;
+    height: 45px;
+}
+.issue {
+    position: absolute;
+    top: 5px;
+    left: 23px;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 166px;
+    height: 36px;
+}
+.updateButton {
+    position: absolute;
+    top: 794px;
+    left: 1120px;
+    width: 210px;
+    height: 45px;
+    color: var(--color-blue);
+}
+.updateButtonItem {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    border-radius: var(--br-21xl);
+    background-color: var(--color-blue);
+    width: 210px;
+    height: 45px;
+}
+.updateButton1 {
+    position: absolute;
+    top: 143px;
+    left: 1099px;
+    width: 210px;
+    height: 45px;
+    cursor: pointer;
+}
+.academic {
+    position: absolute;
+    top: 143px;
+    left: 300px;
+    color: var(--color-black);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 214px;
+    height: 33px;
+}
+.rectangleDiv {
+    position: absolute;
+    top: 226px;
+    left: 65px;
+    border-radius: var(--br-21xl);
+    background-color: var(--color-gainsboro);
+    width: 1244px;
+    height: 486px;
+}
+.addBadges {
+    width: 1368px;
+    position: relative;
+    border-radius: var(--br-21xl);
+    background-color: var(--color-white);
+    height: 852px;
+    overflow: hidden;
+    max-width: 100%;
+    max-height: 100%;
+    text-align: center;
+    font-size: var(--font-size-5xl);
+    color: var(--color-white);
+    font-family: var(--font-league-spartan);
+}
+

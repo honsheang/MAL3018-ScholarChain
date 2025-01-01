@@ -1,0 +1,172 @@
+.transcriptSpecificChild {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    border-radius: var(--br-21xl);
+    background-color: var(--color-black);
+    width: 1393px;
+    height: 477px;
+}
+.transcriptSpecificReceipt {
+    position: absolute;
+    top: 29.51px;
+    left: 415.9px;
+    font-size: var(--font-size-17xl);
+    display: flex;
+    color: var(--color-white);
+    align-items: center;
+    justify-content: center;
+    width: 561.2px;
+    height: 59px;
+}
+.transactionId {
+    position: absolute;
+    top: 168.43px;
+    left: 89.84px;
+    color: var(--color-white);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 286.1px;
+    height: 59px;
+}
+.issueDate {
+    position: absolute;
+    top: 237.27px;
+    left: 89.84px;
+    color: var(--color-white);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 286.1px;
+    height: 59px;
+}
+.transcriptSpecificItem {
+    position: absolute;
+    top: 239.73px;
+    left: 399.27px;
+    border-radius: var(--br-21xl);
+    background-color: var(--color-gainsboro);
+    width: 136.4px;
+    height: 52.9px;
+}
+.transcriptSpecificInner {
+    position: absolute;
+    top: 239.73px;
+    left: 545.67px;
+    border-radius: var(--br-21xl);
+    background-color: var(--color-gainsboro);
+    width: 136.4px;
+    height: 52.9px;
+}
+.rectangleDiv {
+    position: absolute;
+    top: 237.27px;
+    left: 692.06px;
+    border-radius: var(--br-21xl);
+    background-color: var(--color-gainsboro);
+    width: 136.4px;
+    height: 52.9px;
+}
+.transcriptSpecificChild1 {
+    position: absolute;
+    top: 170.88px;
+    left: 399.27px;
+    border-radius: var(--br-21xl);
+    background-color: var(--color-gainsboro);
+    width: 925px;
+    height: 52.9px;
+}
+.div {
+    position: absolute;
+    top: 249.56px;
+    left: 420.34px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 95.4px;
+    height: 34.4px;
+}
+.makjsfna68sfha7sv6ahev8a7sdhvb {
+    position: absolute;
+    top: 180.72px;
+    left: 413.69px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 764.2px;
+    height: 34.4px;
+}
+.dec {
+    position: absolute;
+    top: 249.56px;
+    left: 566.74px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 95.4px;
+    height: 34.4px;
+}
+.div1 {
+    position: absolute;
+    top: 249.56px;
+    left: 713.14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 95.4px;
+    height: 34.4px;
+}
+.transcriptSpecific {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 1393px;
+    height: 477px;
+}
+.doneButtonChild {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    border-radius: var(--br-21xl);
+    background-color: var(--color-white);
+    width: 224px;
+    height: 66.4px;
+}
+.done {
+    position: absolute;
+    top: 9.83px;
+    left: 49.91px;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 124.2px;
+    height: 50.4px;
+}
+.doneButton {
+    position: absolute;
+    top: 382.34px;
+    left: 584.48px;
+    width: 224px;
+    height: 66.4px;
+    cursor: pointer;
+    font-size: var(--font-size-13xl);
+}
+.receipt {
+    width: 1393px;
+    position: relative;
+    border-radius: var(--br-21xl);
+    background-color: var(--color-white);
+    border: 1px solid var(--color-white);
+    box-sizing: border-box;
+    height: 477px;
+    overflow: hidden;
+    max-width: 100%;
+    max-height: 100%;
+    text-align: center;
+    font-size: var(--font-size-5xl);
+    color: var(--color-black);
+    font-family: var(--font-league-spartan);
+}
+

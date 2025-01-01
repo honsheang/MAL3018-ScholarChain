@@ -1,0 +1,265 @@
+.navigationBarChild {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    border-radius: var(--br-21xl);
+    background-color: var(--color-black);
+    width: 1225px;
+    height: 83px;
+}
+.features {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    text-decoration: underline;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 203px;
+    height: 49px;
+}
+.featuresButton {
+    position: absolute;
+    top: 17px;
+    left: 703px;
+    width: 203px;
+    height: 49px;
+}
+.guide {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    text-decoration: underline;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 162px;
+    height: 49px;
+}
+.guideButton {
+    position: absolute;
+    top: 17px;
+    left: 284px;
+    width: 162px;
+    height: 49px;
+}
+.contactButton {
+    position: absolute;
+    top: 17px;
+    left: 971px;
+    width: 162px;
+    height: 49px;
+}
+.about {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    text-decoration: underline;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 127px;
+    height: 49px;
+}
+.aboutButton {
+    position: absolute;
+    top: 17px;
+    left: 511px;
+    width: 127px;
+    height: 49px;
+}
+.homeButton {
+    position: absolute;
+    top: 17px;
+    left: 92px;
+    width: 127px;
+    height: 49px;
+    cursor: pointer;
+}
+.navigationBar {
+    position: absolute;
+    top: 431px;
+    left: 145px;
+    width: 1225px;
+    height: 83px;
+    font-size: var(--font-size-21xl);
+    color: var(--color-white);
+}
+.btmChild {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    border-radius: var(--br-21xl) var(--br-21xl) 0px 0px;
+    background-color: var(--color-black);
+    width: 1515px;
+    height: 285px;
+}
+.scholarchain1Icon {
+    position: absolute;
+    top: 29px;
+    left: 572px;
+    width: 372px;
+    height: 228px;
+    object-fit: cover;
+}
+.btm {
+    position: absolute;
+    top: 1468px;
+    left: 0px;
+    width: 1515px;
+    height: 285px;
+}
+.secureAcademicTranscript {
+    position: absolute;
+    top: 361px;
+    left: 0px;
+    font-weight: 300;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 659px;
+    height: 37px;
+}
+.scholarchain2Icon {
+    position: absolute;
+    top: 0px;
+    left: 17px;
+    width: 626px;
+    height: 478px;
+    object-fit: cover;
+}
+.logo {
+    position: absolute;
+    top: -30px;
+    left: 428px;
+    width: 659px;
+    height: 478px;
+}
+.register {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    text-decoration: underline;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 125px;
+    height: 49px;
+}
+.registerButton {
+    position: absolute;
+    top: 55px;
+    left: 1332px;
+    width: 125px;
+    height: 49px;
+    cursor: pointer;
+}
+.login {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    text-decoration: underline;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 107px;
+    height: 49px;
+}
+.loginButton {
+    position: absolute;
+    top: 55px;
+    left: 1225px;
+    width: 107px;
+    height: 49px;
+    cursor: pointer;
+}
+.white {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    border-radius: var(--br-21xl);
+    background-color: var(--color-white);
+    border: 1px solid var(--color-black);
+    box-sizing: border-box;
+    width: 1398px;
+    height: 477px;
+}
+.penidngApproval {
+    position: absolute;
+    top: 211px;
+    left: 405px;
+    font-size: 32px;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 587px;
+    height: 52px;
+}
+.checkEmail {
+    position: absolute;
+    top: 246px;
+    left: 321px;
+    font-weight: 300;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 755px;
+    height: 52px;
+}
+.pendingLogoIcon {
+    position: absolute;
+    top: 111px;
+    left: 653px;
+    width: 106px;
+    height: 100px;
+    object-fit: cover;
+}
+.backToHomeButtonChild {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    border-radius: var(--br-21xl);
+    background-color: #081ff7;
+    width: 863px;
+    height: 68px;
+}
+.backToHome {
+    position: absolute;
+    top: 17px;
+    left: 228px;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 446px;
+    height: 34px;
+}
+.backToHomeButton {
+    position: absolute;
+    top: 298px;
+    left: 267px;
+    width: 863px;
+    height: 68px;
+    color: var(--color-white);
+}
+.pendingDisplay {
+    position: absolute;
+    top: 677px;
+    left: 59px;
+    width: 1398px;
+    height: 477px;
+    font-size: var(--font-size-xl);
+}
+.pending {
+    width: 100%;
+    position: relative;
+    background-color: #f6f6f6;
+    height: 1753px;
+    overflow: hidden;
+    text-align: center;
+    font-size: var(--font-size-5xl);
+    color: var(--color-black);
+    font-family: var(--font-league-spartan);
+}
+

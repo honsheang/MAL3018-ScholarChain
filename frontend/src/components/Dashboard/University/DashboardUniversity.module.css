@@ -1,0 +1,1564 @@
+.dashboardUniversityChild {
+    position: absolute;
+    top: 431px;
+    left: 145px;
+    border-radius: var(--br-21xl);
+    background-color: var(--color-black);
+    width: 1225px;
+    height: 83px;
+}
+.features {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    text-decoration: underline;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 203px;
+    height: 49px;
+}
+.featuresButton {
+    position: absolute;
+    top: 448px;
+    left: 848px;
+    width: 203px;
+    height: 49px;
+}
+.guide {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    text-decoration: underline;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 162px;
+    height: 49px;
+}
+.guideButton {
+    position: absolute;
+    top: 448px;
+    left: 429px;
+    width: 162px;
+    height: 49px;
+}
+.contactButton {
+    position: absolute;
+    top: 448px;
+    left: 1116px;
+    width: 162px;
+    height: 49px;
+}
+.about {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    text-decoration: underline;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 127px;
+    height: 49px;
+}
+.aboutButton {
+    position: absolute;
+    top: 448px;
+    left: 656px;
+    width: 127px;
+    height: 49px;
+}
+.homeButton {
+    position: absolute;
+    top: 448px;
+    left: 237px;
+    width: 127px;
+    height: 49px;
+    cursor: pointer;
+}
+.secureAcademicTranscript {
+    position: absolute;
+    top: 331px;
+    left: 428px;
+    font-size: var(--font-size-5xl);
+    font-weight: 300;
+    color: var(--color-black);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 659px;
+    height: 37px;
+}
+.bottomChild {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    border-radius: var(--br-21xl) var(--br-21xl) 0px 0px;
+    background-color: var(--color-black);
+    width: 1515px;
+    height: 285px;
+}
+.scholarchain1Icon {
+    position: absolute;
+    top: 29px;
+    left: 572px;
+    width: 372px;
+    height: 228px;
+    object-fit: cover;
+}
+.bottom {
+    position: absolute;
+    top: 3927px;
+    left: 0px;
+    width: 1515px;
+    height: 285px;
+}
+.scholarchain2Icon {
+    position: absolute;
+    top: -30px;
+    left: 445px;
+    width: 626px;
+    height: 478px;
+    object-fit: cover;
+}
+.featureChild {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    border-radius: var(--br-21xl);
+    background-color: var(--color-gainsboro);
+    width: 369px;
+    height: 249px;
+}
+.featureItem {
+    position: absolute;
+    top: 26px;
+    left: 28px;
+    border-radius: var(--br-21xl) var(--br-21xl) 0px 0px;
+    background-color: var(--color-blue);
+    width: 313px;
+    height: 91px;
+}
+.featureInner {
+    position: absolute;
+    top: 123px;
+    left: 28px;
+    border-radius: 0px 0px var(--br-21xl) var(--br-21xl);
+    background-color: #979797;
+    width: 313px;
+    height: 91px;
+    cursor: pointer;
+}
+.issue {
+    position: absolute;
+    top: 43px;
+    left: 51px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 267px;
+    height: 58px;
+}
+.report {
+    position: absolute;
+    top: 140px;
+    left: 51px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 267px;
+    height: 58px;
+    cursor: pointer;
+}
+.feature {
+    position: absolute;
+    top: 870px;
+    left: 61px;
+    width: 369px;
+    height: 249px;
+    font-size: var(--font-size-11xl);
+}
+.welcome1 {
+    position: absolute;
+    top: 0px;
+    left: 213px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 968px;
+    height: 96px;
+}
+.peninsulaCollegeGeorgetown {
+    position: absolute;
+    top: 96px;
+    left: 0px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 1393px;
+    height: 96px;
+}
+.welcome {
+    position: absolute;
+    top: 616px;
+    left: 61px;
+    width: 1393px;
+    height: 192px;
+    font-size: var(--font-size-45xl);
+    color: var(--color-black);
+}
+.register {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    text-decoration: underline;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 125px;
+    height: 49px;
+}
+.loginregisterButton {
+    position: absolute;
+    top: 55px;
+    left: 1332px;
+    width: 125px;
+    height: 49px;
+    cursor: pointer;
+    font-size: var(--font-size-5xl);
+    color: var(--color-black);
+}
+.login {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    text-decoration: underline;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 107px;
+    height: 49px;
+}
+.loginregisterButton1 {
+    position: absolute;
+    top: 55px;
+    left: 1225px;
+    width: 107px;
+    height: 49px;
+    cursor: pointer;
+    font-size: var(--font-size-5xl);
+    color: var(--color-black);
+}
+.uniGrey {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    border-radius: var(--br-21xl);
+    background-color: var(--color-gainsboro);
+    width: 991px;
+    height: 735px;
+}
+.uniBlack {
+    position: absolute;
+    top: 36px;
+    left: 49px;
+    border-radius: var(--br-21xl);
+    background-color: var(--color-black);
+    width: 893px;
+    height: 656px;
+}
+.universityDetails1 {
+    position: absolute;
+    top: 72px;
+    left: 293px;
+    font-size: var(--font-size-17xl);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 406px;
+    height: 48px;
+}
+.universityNameChild {
+    position: absolute;
+    top: 2px;
+    left: 218px;
+    border-radius: var(--br-21xl);
+    background-color: var(--color-gainsboro);
+    width: 574px;
+    height: 43px;
+}
+.universityName {
+    position: absolute;
+    top: 143px;
+    left: 100px;
+    width: 792px;
+    height: 48px;
+}
+.address {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 184px;
+    height: 48px;
+}
+.universityAddressChild {
+    position: absolute;
+    top: 2px;
+    left: 216px;
+    border-radius: var(--br-21xl);
+    background-color: var(--color-gainsboro);
+    width: 574px;
+    height: 110px;
+}
+.universityAddress {
+    position: absolute;
+    top: 251px;
+    left: 102px;
+    width: 790px;
+    height: 112px;
+}
+.submitButtonChild {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    border-radius: var(--br-21xl);
+    background-color: var(--color-blue);
+    width: 149px;
+    height: 45px;
+}
+.edit {
+    position: absolute;
+    top: 5px;
+    left: 16px;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 118px;
+    height: 36px;
+}
+.submitButton {
+    position: absolute;
+    top: 69px;
+    left: 743px;
+    width: 149px;
+    height: 45px;
+}
+.submitButtonItem {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    border-radius: var(--br-21xl);
+    background-color: var(--color-blue);
+    width: 78.5px;
+    height: 31.7px;
+}
+.upload {
+    position: absolute;
+    top: 3.52px;
+    left: 8.43px;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 62.1px;
+    height: 25.4px;
+}
+.submitButton1 {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 78.5px;
+    height: 31.7px;
+}
+.uploadLabel {
+    position: absolute;
+    top: 8px;
+    left: 704.24px;
+    width: 78.5px;
+    height: 31.7px;
+    font-size: var(--font-size-base);
+}
+.collegeLogoChild {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    border-radius: var(--br-21xl);
+    background-color: var(--color-white);
+    width: 174.2px;
+    height: 29px;
+}
+.xButtonIcon {
+    position: absolute;
+    top: 6px;
+    left: 152.94px;
+    width: 17.8px;
+    height: 18.4px;
+    object-fit: contain;
+}
+.collegeLogopng {
+    position: absolute;
+    top: 7px;
+    left: 11.62px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 128.7px;
+    height: 16px;
+}
+.collegeLogo {
+    position: absolute;
+    top: 9px;
+    left: 234.46px;
+    width: 174.2px;
+    height: 29px;
+    font-size: var(--font-size-mini);
+    color: var(--color-black);
+}
+.universityLogo {
+    position: absolute;
+    top: 197px;
+    left: 100px;
+    width: 792px;
+    height: 48px;
+}
+.contactInformation {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    font-size: var(--font-size-5xl);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 214px;
+    height: 48px;
+}
+.uniContactChild {
+    position: absolute;
+    top: 2px;
+    left: 233px;
+    border-radius: var(--br-21xl);
+    background-color: var(--color-gainsboro);
+    width: 574px;
+    height: 43px;
+}
+.uniContactItem {
+    position: absolute;
+    top: 56px;
+    left: 233px;
+    border-radius: var(--br-21xl);
+    background-color: var(--color-gainsboro);
+    width: 574px;
+    height: 43px;
+}
+.mobileLabelChild {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    border-radius: var(--br-21xl);
+    background-color: var(--color-blue);
+    width: 135px;
+    height: 34px;
+}
+.mobileNo {
+    position: absolute;
+    top: 6px;
+    left: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 109px;
+    height: 24px;
+}
+.mobileLabel {
+    position: absolute;
+    top: 7px;
+    left: 243px;
+    width: 135px;
+    height: 34px;
+}
+.email {
+    position: absolute;
+    top: 5px;
+    left: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 109px;
+    height: 24px;
+}
+.emailLabel {
+    position: absolute;
+    top: 61px;
+    left: 243px;
+    width: 135px;
+    height: 34px;
+}
+.uniContact {
+    position: absolute;
+    top: 374px;
+    left: 85px;
+    width: 807px;
+    height: 99px;
+    font-size: var(--font-size-base);
+}
+.authorizedSignatory {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    font-size: var(--font-size-5xl);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 224px;
+    height: 48px;
+}
+.uniSignChild {
+    position: absolute;
+    top: 2px;
+    left: 236px;
+    border-radius: var(--br-21xl);
+    background-color: var(--color-gainsboro);
+    width: 574px;
+    height: 43px;
+}
+.uniSignItem {
+    position: absolute;
+    top: 56px;
+    left: 236px;
+    border-radius: var(--br-21xl);
+    background-color: var(--color-gainsboro);
+    width: 574px;
+    height: 43px;
+}
+.nameLabel {
+    position: absolute;
+    top: 7px;
+    left: 246px;
+    width: 135px;
+    height: 34px;
+}
+.departmentLabel {
+    position: absolute;
+    top: 61px;
+    left: 246px;
+    width: 135px;
+    height: 34px;
+}
+.uniSign {
+    position: absolute;
+    top: 533px;
+    left: 82px;
+    width: 810px;
+    height: 99px;
+    font-size: var(--font-size-base);
+}
+.universityDetails {
+    position: absolute;
+    top: 870px;
+    left: 463px;
+    width: 991px;
+    height: 735px;
+    font-size: var(--font-size-5xl);
+}
+.gamificationChild {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    border-radius: var(--br-21xl);
+    background-color: var(--color-gainsboro);
+    width: 1393px;
+    height: 477px;
+}
+.gamificationItem {
+    position: absolute;
+    top: 45px;
+    left: 69px;
+    border-radius: var(--br-21xl);
+    background-color: var(--color-black);
+    width: 1256px;
+    height: 388px;
+}
+.gamificationBadges {
+    position: absolute;
+    top: 69px;
+    left: 444px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 506px;
+    height: 48px;
+}
+.addSmesterChild {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    border-radius: var(--br-21xl);
+    background-color: var(--color-blue);
+    width: 1187px;
+    height: 82px;
+}
+.addSmesterItem {
+    position: absolute;
+    top: 11px;
+    left: 19px;
+    border-radius: var(--br-21xl);
+    background-color: var(--color-blue);
+    border: 5px dashed var(--color-white);
+    box-sizing: border-box;
+    width: 1159px;
+    height: 70px;
+}
+.addBadges {
+    position: absolute;
+    top: 17px;
+    left: 451px;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 285px;
+    height: 48px;
+}
+.addSmester {
+    position: absolute;
+    top: 134px;
+    left: 103px;
+    width: 1187px;
+    height: 82px;
+    cursor: pointer;
+    font-size: var(--font-size-13xl);
+}
+.gamification {
+    position: absolute;
+    top: 3143px;
+    left: 61px;
+    width: 1393px;
+    height: 477px;
+    font-size: var(--font-size-17xl);
+}
+.studentGrey {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    border-radius: var(--br-21xl);
+    background-color: var(--color-gainsboro);
+    width: 1393px;
+    height: 519px;
+}
+.studentBlack {
+    position: absolute;
+    top: 43px;
+    left: 60px;
+    border-radius: var(--br-21xl);
+    background-color: var(--color-black);
+    width: 1256px;
+    height: 429px;
+}
+.studentDetails1 {
+    position: absolute;
+    top: 67px;
+    left: 485px;
+    font-size: var(--font-size-17xl);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 406px;
+    height: 48px;
+}
+.fullName {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 258px;
+    height: 48px;
+}
+.studentFullNameChild {
+    position: absolute;
+    top: 2px;
+    left: 279px;
+    border-radius: var(--br-21xl);
+    background-color: var(--color-gainsboro);
+    width: 834px;
+    height: 43px;
+}
+.studentFullName {
+    position: absolute;
+    top: 126px;
+    left: 141px;
+    width: 1113px;
+    height: 48px;
+}
+.fullNameLabel {
+    position: absolute;
+    top: 8px;
+    left: 0px;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 258px; /* Adjust width as needed */
+    height: 48px;
+    background-color: transparent; /* No background */
+    z-index: 1; /* Ensure it appears above the input */
+}
+
+.fullNameInput {
+    position: absolute;
+    top: 0px;
+    left: 279px; /* Matches the original positioning */
+    width: 834px;
+    height: 48px; /* Matches the height of the label */
+    border-radius: var(--br-21xl);
+    background-color: var(--color-gainsboro);
+    border: 1px solid var(--color-gray); /* Optional for better UX */
+    padding: 0 16px; /* Add padding for text inside the input */
+    font-size: 16px; /* Adjust font size for readability */
+}
+
+.studentFullName {
+    position: absolute;
+    top: 126px;
+    left: 141px;
+    width: 1113px;
+    height: 48px; /* Height matches the label and input combined */
+}
+
+.studentId {
+    position: absolute;
+    top: 180px;
+    left: 141px;
+    width: 1113px;
+    height: 48px;
+}
+.dateOfBirth {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    color: var(--color-white);
+    display: flex;
+    align-items: center;
+    width: 258px;
+    height: 48px;
+    justify-content: center;
+}
+
+.dropdownContainer {
+    display: flex;
+    gap: 16px; /* Space between dropdowns */
+    position: absolute;
+    top: 2px;
+    left: 279px;
+}
+
+.dropdown {
+    border-radius: var(--br-21xl);
+    background-color: var(--color-gainsboro);
+    border: 1px solid var(--color-gray);
+    width: 160px;
+    height: 43px;
+    padding: 0 8px;
+    font-size: 16px;
+    color: var(--color-black);
+    appearance: none; /* Removes default styling */
+    outline: none; /* Removes focus border */
+    cursor: pointer;
+}
+
+#dobYear {
+    left: 279px;
+}
+
+#dobMonth {
+    left: 411px;
+}
+
+#dobDay {
+    left: 543px;
+}
+
+.studentDobChild {
+    position: absolute;
+    top: 2px;
+    left: 279px;
+    border-radius: var(--br-21xl);
+    background-color: var(--color-gainsboro);
+    width: 123px;
+    height: 43px;
+}
+.studentDobItem {
+    position: absolute;
+    top: 2px;
+    left: 411px;
+    border-radius: var(--br-21xl);
+    background-color: var(--color-gainsboro);
+    width: 123px;
+    height: 43px;
+}
+.studentDobInner {
+    position: absolute;
+    top: 2px;
+    left: 543px;
+    border-radius: var(--br-21xl);
+    background-color: var(--color-gainsboro);
+    width: 123px;
+    height: 43px;
+}
+.yyyy {
+    position: absolute;
+    top: 8px;
+    left: 298px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 86px;
+    height: 28px;
+}
+.mm {
+    position: absolute;
+    top: 8px;
+    left: 430px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 86px;
+    height: 28px;
+}
+.dd {
+    position: absolute;
+    top: 9px;
+    left: 562px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 86px;
+    height: 28px;
+}
+.studentDob {
+    position: absolute;
+    top: 236px;
+    left: 141px;
+    width: 666px;
+    height: 48px;
+    color: var(--color-black);
+}
+.yearDropdownChild {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    border-radius: var(--br-21xl);
+    background-color: var(--color-gainsboro);
+    width: 123px;
+    height: 43px;
+}
+.yyyy1 {
+    position: absolute;
+    top: 6px;
+    left: 19px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 86px;
+    height: 28px;
+}
+.yearDropdown {
+    position: absolute;
+    top: 2px;
+    left: 455px;
+    width: 123px;
+    height: 43px;
+    color: var(--color-black);
+}
+.monthDropdownChild {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    border-radius: var(--br-21xl);
+    background-color: var(--color-gainsboro);
+    width: 216px;
+    height: 43px;
+}
+
+.selectTheMonth {
+    position: absolute;
+    top: 9px;
+    left: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 172px;
+    height: 27px;
+}
+.monthDropdown {
+    position: absolute;
+    top: 2px;
+    left: 250px;
+    width: 216px;
+    height: 43px;
+    font-size: var(--font-size-base);
+    color: var(--color-dimgray);
+}
+.studentIntake {
+    position: absolute;
+    top: 350px;
+    left: 141px;
+    width: 633px;
+    height: 48px;
+}
+.dropdownIcon1 {
+    position: absolute;
+    top: 20px;
+    left: 1079px;
+    width: 11px;
+    height: 10px;
+}
+.selectTheProgramme {
+    position: absolute;
+    top: 10px;
+    left: 302px;
+    font-size: var(--font-size-base);
+    color: var(--color-dimgray);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 172px;
+    height: 27px;
+}
+.studentProgramme {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 1113px;
+    height: 48px;
+}
+.programmeDropdown {
+    position: absolute;
+    top: 292px;
+    left: 141px;
+    width: 1113px;
+    height: 48px;
+}
+.studentDetails {
+    position: absolute;
+    top: 1697px;
+    left: 61px;
+    width: 1393px;
+    height: 519px;
+    font-size: var(--font-size-5xl);
+}
+.academicDetailsChild {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    border-radius: var(--br-21xl);
+    background-color: var(--color-gainsboro);
+    width: 1393px;
+    height: 759px;
+}
+.academicDetailsItem {
+    position: absolute;
+    top: 42px;
+    left: 75px;
+    border-radius: var(--br-21xl);
+    background-color: var(--color-black);
+    width: 1256px;
+    height: 664px;
+}
+.academicDetails1 {
+    position: absolute;
+    top: 66px;
+    left: 500px;
+    font-size: var(--font-size-17xl);
+    display: flex;
+    color: var(--color-white);
+    align-items: center;
+    justify-content: center;
+    width: 406px;
+    height: 48px;
+}
+.addSmester1 {
+    position: absolute;
+    top: 133px;
+    left: 109px;
+    width: 1187px;
+    height: 82px;
+    cursor: pointer;
+    font-size: var(--font-size-13xl);
+    color: var(--color-white);
+}
+.semester1Child {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    border-radius: var(--br-xl);
+    background-color: var(--color-gainsboro);
+    border: 1px solid var(--color-black);
+    box-sizing: border-box;
+    width: 1187px;
+    height: 364px;
+}
+.semester1Item {
+    position: absolute;
+    top: 1px;
+    left: 1px;
+    border-radius: var(--br-xl) var(--br-xl) 0px 0px;
+    background-color: var(--color-blue);
+    width: 1186px;
+    height: 49px;
+}
+.semester1Inner {
+    position: absolute;
+    top: 290px;
+    left: 1px;
+    border-radius: 0px 0px var(--br-xl) var(--br-xl);
+    background-color: var(--color-white);
+    width: 1185px;
+    height: 74px;
+}
+.lineDiv {
+    position: absolute;
+    top: 50px;
+    left: 144px;
+    border-right: 1px solid var(--color-black);
+    box-sizing: border-box;
+    width: 1px;
+    height: 241px;
+}
+.semester1Child1 {
+    position: absolute;
+    top: 50px;
+    left: 671.01px;
+    border-right: 1px solid var(--color-black);
+    box-sizing: border-box;
+    width: 1px;
+    height: 241px;
+}
+.semester1Child2 {
+    position: absolute;
+    top: 50px;
+    left: 843.01px;
+    border-right: 1px solid var(--color-black);
+    box-sizing: border-box;
+    width: 1px;
+    height: 241px;
+}
+.semester1Child3 {
+    position: absolute;
+    top: 50px;
+    left: 994.01px;
+    border-right: 1px solid var(--color-black);
+    box-sizing: border-box;
+    width: 1px;
+    height: 241px;
+}
+.semester1Child4 {
+    position: absolute;
+    top: 79.72px;
+    left: 0.01px;
+    border-top: 1px solid var(--color-black);
+    box-sizing: border-box;
+    width: 1188px;
+    height: 1px;
+}
+.semester1Child5 {
+    position: absolute;
+    top: 50px;
+    left: 1px;
+    border-top: 1px solid var(--color-black);
+    box-sizing: border-box;
+    width: 1188px;
+    height: 1px;
+}
+.mpu2233 {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 144px;
+    height: 42px;
+}
+.publicSpeaking {
+    position: absolute;
+    top: 0px;
+    left: 143px;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 527px;
+    height: 42px;
+}
+.div {
+    position: absolute;
+    top: 0px;
+    left: 671px;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 172px;
+    height: 42px;
+}
+.a {
+    position: absolute;
+    top: 0px;
+    left: 842px;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 151px;
+    height: 42px;
+}
+.distinction {
+    position: absolute;
+    top: 0px;
+    left: 993px;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 193px;
+    height: 42px;
+}
+.fifth {
+    position: absolute;
+    top: 248px;
+    left: 1px;
+    width: 1186px;
+    height: 42px;
+}
+.problemSolvingIn {
+    position: absolute;
+    top: 0px;
+    left: 144px;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 527px;
+    height: 42px;
+}
+.div1 {
+    position: absolute;
+    top: 0px;
+    left: 670px;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 172px;
+    height: 42px;
+}
+.fourth {
+    position: absolute;
+    top: 206px;
+    left: 1px;
+    width: 1186px;
+    height: 42px;
+}
+.third {
+    position: absolute;
+    top: 164px;
+    left: 1px;
+    width: 1186px;
+    height: 42px;
+}
+.discreteMathematics {
+    position: absolute;
+    top: 0.23px;
+    left: 144px;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 527px;
+    height: 42px;
+}
+.div3 {
+    position: absolute;
+    top: 0.23px;
+    left: 671px;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 172px;
+    height: 42px;
+}
+.a3 {
+    position: absolute;
+    top: 0.23px;
+    left: 843px;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 151px;
+    height: 42px;
+}
+.distinction3 {
+    position: absolute;
+    top: 0.23px;
+    left: 994px;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 193px;
+    height: 42px;
+}
+.second {
+    position: absolute;
+    top: 121.77px;
+    left: 0px;
+    width: 1187px;
+    height: 42.2px;
+}
+.businessCommunication {
+    position: absolute;
+    top: 0.28px;
+    left: 145px;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 526px;
+    height: 42px;
+}
+.div4 {
+    position: absolute;
+    top: 0.28px;
+    left: 671px;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 172px;
+    height: 42px;
+}
+.b {
+    position: absolute;
+    top: 0.28px;
+    left: 843px;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 151px;
+    height: 42px;
+}
+.credit {
+    position: absolute;
+    top: 0.28px;
+    left: 994px;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 193px;
+    height: 42px;
+}
+.first {
+    position: absolute;
+    top: 79.72px;
+    left: 0px;
+    width: 1187px;
+    height: 42.3px;
+}
+.code {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 144px;
+    height: 29.7px;
+}
+.creditHours {
+    position: absolute;
+    top: 0px;
+    left: 671px;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 172px;
+    height: 30px;
+}
+.grade {
+    position: absolute;
+    top: 0px;
+    left: 843px;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 151px;
+    height: 30px;
+}
+.description {
+    position: absolute;
+    top: 0px;
+    left: 994px;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 193px;
+    height: 30px;
+}
+.course {
+    position: absolute;
+    top: 0px;
+    left: 135px;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 536px;
+    height: 30px;
+}
+.label {
+    position: absolute;
+    top: 50px;
+    left: 0px;
+    width: 1187px;
+    height: 30px;
+}
+.semester1Child6 {
+    position: absolute;
+    top: 122.11px;
+    left: 0px;
+    border-top: 1px solid var(--color-black);
+    box-sizing: border-box;
+    width: 1188px;
+    height: 1px;
+}
+.semester1Child7 {
+    position: absolute;
+    top: 163.81px;
+    left: 0.01px;
+    border-top: 1px solid var(--color-black);
+    box-sizing: border-box;
+    width: 1188px;
+    height: 1px;
+}
+.semester1Child8 {
+    position: absolute;
+    top: 205.86px;
+    left: 0.01px;
+    border-top: 1px solid var(--color-black);
+    box-sizing: border-box;
+    width: 1188px;
+    height: 1px;
+}
+.semester1Child9 {
+    position: absolute;
+    top: 247.91px;
+    left: 0.01px;
+    border-top: 1px solid var(--color-black);
+    box-sizing: border-box;
+    width: 1188px;
+    height: 1px;
+}
+.semester1Child10 {
+    position: absolute;
+    top: 290px;
+    left: 0px;
+    border-top: 1px solid var(--color-black);
+    box-sizing: border-box;
+    width: 1188px;
+    height: 1px;
+}
+.semester11 {
+    position: absolute;
+    top: 7px;
+    left: 410px;
+    font-size: var(--font-size-13xl);
+    display: flex;
+    color: var(--color-white);
+    align-items: center;
+    justify-content: center;
+    width: 386px;
+    height: 37px;
+}
+.semester1 {
+    position: absolute;
+    top: 271px;
+    left: 108px;
+    width: 1188px;
+    height: 364px;
+}
+.gpa1 {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 77px;
+    height: 31px;
+}
+.gpaChild {
+    position: absolute;
+    top: 0px;
+    left: 77px;
+    border-radius: var(--br-21xl);
+    background-color: var(--color-black);
+    width: 80px;
+    height: 31px;
+}
+.b1 {
+    position: absolute;
+    top: 4px;
+    left: 88px;
+    display: flex;
+    color: var(--color-white);
+    align-items: center;
+    justify-content: center;
+    width: 58px;
+    height: 23px;
+}
+.gpa {
+    position: absolute;
+    top: 582px;
+    left: 175px;
+    width: 157px;
+    height: 31px;
+}
+.cgpa1 {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 72px;
+    height: 31px;
+}
+.cgpaChild {
+    position: absolute;
+    top: 0px;
+    left: 80px;
+    border-radius: var(--br-21xl);
+    background-color: var(--color-black);
+    width: 80px;
+    height: 31px;
+}
+.b2 {
+    position: absolute;
+    top: 4px;
+    left: 91px;
+    display: flex;
+    color: var(--color-white);
+    align-items: center;
+    justify-content: center;
+    width: 58px;
+    height: 23px;
+}
+.cgpa {
+    position: absolute;
+    top: 582px;
+    left: 400px;
+    width: 160px;
+    height: 31px;
+}
+.remark1 {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 105px;
+    height: 31px;
+}
+.remarkChild {
+    position: absolute;
+    top: 0px;
+    left: 122px;
+    border-radius: var(--br-21xl);
+    background-color: var(--color-black);
+    width: 118px;
+    height: 31px;
+}
+.deansList {
+    position: absolute;
+    top: 4px;
+    left: 133px;
+    font-size: var(--font-size-base);
+    display: flex;
+    color: var(--color-white);
+    align-items: center;
+    justify-content: center;
+    width: 94px;
+    height: 23px;
+}
+.remark {
+    position: absolute;
+    top: 582px;
+    left: 997px;
+    width: 240px;
+    height: 31px;
+}
+.academicDetails {
+    position: absolute;
+    top: 2300px;
+    left: 61px;
+    width: 1393px;
+    height: 759px;
+    font-size: var(--font-size-xl);
+    color: var(--color-black);
+}
+.submitButtonInner {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    border-radius: var(--br-21xl);
+    background-color: var(--color-blue);
+    width: 869px;
+    height: 81px;
+}
+.uploadAndSubmit {
+    position: absolute;
+    top: 12px;
+    left: 221px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 428px;
+    height: 57px;
+}
+.submitButton2 {
+    position: absolute;
+    top: 3733px;
+    left: 323px;
+    width: 869px;
+    height: 81px;
+    cursor: pointer;
+    font-size: var(--font-size-17xl);
+}
+.dashboardUniversity {
+    width: 100%;
+    position: relative;
+    background-color: #f6f6f6;
+    height: 4212px;
+    overflow: hidden;
+    text-align: center;
+    font-size: var(--font-size-21xl);
+    color: var(--color-white);
+    font-family: var(--font-league-spartan);
+}
+
