@@ -8,6 +8,7 @@ const Login = () => {
     const navigate = useNavigate();
     const location = useLocation();
     const [activeOption, setActiveOption] = useState(null);
+    const [loading, setLoading] = useState(false);
 
     const onhomeContainerClick = useCallback(() => {
         navigate('/');
@@ -29,16 +30,24 @@ const Login = () => {
         if (activeOption === 'University') {
             navigate('/uniDashboard');
         } else if (activeOption === 'Employer') {
-            navigate('/DashboardEmployer');
+            navigate('/empDashboard');
         }
     }, [activeOption, navigate]);
 
     const onAccessContainerClick = useCallback(() => {
-        alert('Redirecting to institutional access...');
-    }, []);
+        alert("Redirecting to institutional access...");
+        setLoading(true); // Show spinner
+        setTimeout(() => {
+            setLoading(false); // Hide spinner
+            navigate("/stuDashboard"); // Navigate after delay
+        }, 2000); // 2-second delay
+    }, [navigate]);
+    
 
     return (
         <div className={styles.login}>
+
+            
             <div className={styles.navigationBar}>
                 <div className={styles.navigationBarChild} />
                 <div className={styles.featuresButton}>
@@ -87,11 +96,20 @@ const Login = () => {
                 <div className={styles.blue} />
                 <div className={styles.white} />
                 {activeOption === 'Student' && (
-                    <div className={styles.access} onClick={onAccessContainerClick}>
-                        <div className={styles.accessChild} />
-                        <div className={styles.accessThroughYour}>
-                            Access Through Your Institution
+                    <div>
+                    {loading && (
+                        <div className={styles.loadingOverlay}>
+                            <div className={styles.spinner}></div> {/* Custom or CSS-based spinner */}
                         </div>
+                    )}
+                    {!loading && (
+                        <div className={styles.access} onClick={onAccessContainerClick}>
+                            <div className={styles.accessChild} />
+                            <div className={styles.accessThroughYour}>
+                                Access Through Your Institution
+                            </div>
+                        </div>
+                    )}
                     </div>
                 )}
                 {activeOption !== 'Student' && (

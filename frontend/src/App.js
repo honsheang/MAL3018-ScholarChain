@@ -5,10 +5,9 @@ import HomePage from "./components/HomePage/HomePage";
 import Register from './components/Register/SignUp';
 import Pending from './components/Pending/Pending';
 import UniDashboard from './components/Dashboard/University/DashboardUniversity';
-import UniAddSemester from './components/Dashboard/University/AddSemester';
-import UniAddBadge from './components/Dashboard/University/AddBadges';
-import UniReceipt from './components/Dashboard/University/Receipt';
-import UniPortalPopUp from './components/Dashboard/University/PortalPopup';
+import EmpDashboard from './components/Dashboard/Employer/DashboardEmployer';
+import StuDashboard from './components/Dashboard/Student/DashboardStudent';
+
 
 function App() {
   return (
@@ -18,10 +17,9 @@ function App() {
               <Route path="/login" element={<Login />} />
               <Route path="/register" element={<Register />} />
               <Route path="/uniDashboard" element={<UniDashboard />} />
-              <Route path="/uniSem" element={<UniAddSemester />} />
-              <Route path="/uniBadge" element={<UniAddBadge />} />
-              <Route path="/uniReceipt" element={<UniReceipt />} />
-              <Route path="/uniPopUp" element={<UniPortalPopUp />} />
+              <Route path="/empDashboard" element={<EmpDashboard />} />
+              <Route path="/stuDashboard" element={<StuDashboard />} />
+
               <Route path="/pending" element={<Pending />} />
           </Routes>
       </Router>

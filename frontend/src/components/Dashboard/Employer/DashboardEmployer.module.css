@@ -208,6 +208,26 @@
     width: 873px;
     height: 80px;
 }
+
+.certificationUrlInput {
+    position: absolute;
+    top: 12px;
+    left: 39px;
+    font-weight: 300;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 780px; /* Adjust to fit within the container */
+    height: 59px;
+    border: none;
+    outline: none;
+    font-size: 25px; /* Adjust to match the rest of your design */
+    font-family: var(--font-league-spartan); /* Replace with your font */
+    color: var(--color-black); /* Adjust to match your design */
+    background-color: transparent; /* Ensures it blends with the background */
+    padding-left: 10px; /* Adds some spacing for better readability */
+}
+
 .verifyButtonChild {
     position: absolute;
     top: 0px;

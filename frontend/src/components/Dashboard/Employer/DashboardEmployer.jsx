@@ -1,7 +1,7 @@
 import { useState, useCallback } from 'react';
-import Verify from "../components/Verify";
+import Verify from "../Employer/Verify";
 import { useNavigate } from 'react-router-dom';
-import PortalPopup from "../components/PortalPopup";
+import PortalPopup from "../Employer/PortalPopup";
 import styles from './DashboardEmployer.module.css';
 import logoImage from '/ScholarChain/frontend/src/components/Image/ScholarChain.png';
 import btmImage from '/ScholarChain/frontend/src/components/Image/blackscholarchain.png';
@@ -17,7 +17,6 @@ const DashboardEmployer = () => {
   	const closeVerify = useCallback(() => {
     		setVerifyOpen(false);
   	}, []);
-  	
   	
   	const navigate = useNavigate();
 	
@@ -70,10 +69,15 @@ const DashboardEmployer = () => {
         				<b className={styles.scholarchainTranscriptVerifi}>ScholarChain Transcript Verifier</b>
         				<div className={styles.grey} />
         				<div className={styles.input}>
-          					<div className={styles.certificationurl}>
-            						<div className={styles.certificationurlChild} />
-            						<div className={styles.certificationUrl}>Certification URL</div>
-          					</div>
+						<div className={styles.certificationurl}>
+    <div className={styles.certificationurlChild} />
+    <input
+        type="text"
+        className={styles.certificationUrlInput}
+        placeholder="Enter Certification URL"
+    />
+</div>
+
           					<div className={styles.verifyButton} onClick={openVerify}>
             						<div className={styles.verifyButtonChild} />
             						<b className={styles.verify}>Verify</b>

@@ -1,0 +1,763 @@
+.navigationChild {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    border-radius: var(--br-21xl);
+    background-color: var(--color-black);
+    width: 1225px;
+    height: 83px;
+}
+.features {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    text-decoration: underline;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 203px;
+    height: 49px;
+}
+.featuresButton {
+    position: absolute;
+    top: 17px;
+    left: 703px;
+    width: 203px;
+    height: 49px;
+}
+.guide {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    text-decoration: underline;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 162px;
+    height: 49px;
+}
+.guideButton {
+    position: absolute;
+    top: 17px;
+    left: 284px;
+    width: 162px;
+    height: 49px;
+}
+.contactButton {
+    position: absolute;
+    top: 17px;
+    left: 971px;
+    width: 162px;
+    height: 49px;
+}
+.about {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    text-decoration: underline;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 127px;
+    height: 49px;
+}
+.aboutButton {
+    position: absolute;
+    top: 17px;
+    left: 511px;
+    width: 127px;
+    height: 49px;
+}
+.homeButton {
+    position: absolute;
+    top: 17px;
+    left: 92px;
+    width: 127px;
+    height: 49px;
+    cursor: pointer;
+}
+.navigation {
+    position: absolute;
+    top: 431px;
+    left: 145px;
+    width: 1225px;
+    height: 83px;
+    font-size: var(--font-size-21xl);
+    color: var(--color-white);
+}
+.btmChild {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    border-radius: var(--br-21xl) var(--br-21xl) 0px 0px;
+    background-color: var(--color-black);
+    width: 1515px;
+    height: 285px;
+}
+.scholarchain1Icon {
+    position: absolute;
+    top: 29px;
+    left: 572px;
+    width: 372px;
+    height: 228px;
+    object-fit: cover;
+}
+.btm {
+    position: absolute;
+    top: 1900px;
+    left: 0px;
+    width: 1515px;
+    height: 285px;
+}
+.secureAcademicTranscript {
+    position: absolute;
+    top: 361px;
+    left: 0px;
+    font-weight: 300;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 659px;
+    height: 37px;
+}
+.scholarchain2Icon {
+    position: absolute;
+    top: 0px;
+    left: 17px;
+    width: 626px;
+    height: 478px;
+    object-fit: cover;
+}
+.logo {
+    position: absolute;
+    top: -30px;
+    left: 428px;
+    width: 659px;
+    height: 478px;
+}
+.functionsChild {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    border-radius: var(--br-21xl);
+    background-color: var(--color-gainsboro);
+    width: 369px;
+    height: 338px;
+}
+.transcriptviewerChild {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    border-radius: var(--br-21xl) var(--br-21xl) 0px 0px;
+    background-color: #081ff7;
+    width: 313px;
+    height: 91px;
+}
+.transcriptViewer {
+    position: absolute;
+    top: 17px;
+    left: 23px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 267px;
+    height: 58px;
+}
+.transcriptviewer {
+    position: absolute;
+    top: 26px;
+    left: 28px;
+    width: 313px;
+    height: 91px;
+}
+.shareoptionsChild {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    background-color: var(--color-darkgray);
+    width: 313px;
+    height: 91px;
+    cursor: pointer;
+}
+.shareOptions {
+    position: absolute;
+    top: 17px;
+    left: 23px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 267px;
+    height: 58px;
+    cursor: pointer;
+}
+.shareoptions {
+    position: absolute;
+    top: 123px;
+    left: 28px;
+    width: 313px;
+    height: 91px;
+}
+.achievementbadgesChild {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    border-radius: 0px 0px var(--br-21xl) var(--br-21xl);
+    background-color: var(--color-darkgray);
+    width: 313px;
+    height: 91px;
+    cursor: pointer;
+}
+.achievementbadges {
+    position: absolute;
+    top: 220px;
+    left: 28px;
+    width: 313px;
+    height: 91px;
+}
+.functions {
+    position: absolute;
+    top: 819px;
+    left: 60px;
+    width: 369px;
+    height: 338px;
+    font-size: var(--font-size-11xl);
+    color: var(--color-white);
+}
+.welcome1 {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 370px;
+    height: 96px;
+}
+.lim {
+    position: absolute;
+    top: 96px;
+    left: 0px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 370px;
+    height: 96px;
+}
+.welcome {
+    position: absolute;
+    top: 616px;
+    left: 60px;
+    width: 370px;
+    height: 192px;
+    font-size: var(--font-size-45xl);
+}
+.selectYourTranscript {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+}
+.dropdownChild {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    border-radius: var(--br-21xl);
+    background-color: var(--color-white);
+    border: 1px solid var(--color-black);
+    box-sizing: border-box;
+    width: 809px;
+    height: 67px;
+}
+.clickHere {
+    position: absolute;
+    top: 17px;
+    left: 49px;
+    display: flex;
+    align-items: center;
+    width: 493px;
+    height: 34px;
+}
+.dropdown {
+    position: absolute;
+    top: 69px;
+    left: 0px;
+    width: 809px;
+    height: 67px;
+    font-size: var(--font-size-xl);
+    font-family: var(--font-inter);
+}
+.selecttranscript {
+    position: absolute;
+    top: 627px;
+    left: 545px;
+    width: 809px;
+    height: 136px;
+    text-align: left;
+    font-size: 48px;
+}
+.register {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    text-decoration: underline;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 125px;
+    height: 49px;
+}
+.registerButton {
+    position: absolute;
+    top: 55px;
+    left: 1332px;
+    width: 125px;
+    height: 49px;
+    cursor: pointer;
+}
+.login {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    text-decoration: underline;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 107px;
+    height: 49px;
+}
+.loginButton {
+    position: absolute;
+    top: 55px;
+    left: 1225px;
+    width: 107px;
+    height: 49px;
+}
+.transcriptGrey {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    border-radius: var(--br-21xl);
+    background-color: var(--color-gainsboro);
+    width: 991px;
+    height: 379px;
+}
+.courseChild {
+    position: absolute;
+    top: 0px;
+    left: 116px;
+    border-radius: var(--br-21xl);
+    background-color: var(--color-white);
+    width: 693px;
+    height: 45px;
+}
+.sampleText {
+    position: absolute;
+    top: 0px;
+    left: 146px;
+    font-size: var(--font-size-xl);
+    font-family: var(--font-inter);
+    display: flex;
+    align-items: center;
+    width: 663px;
+    height: 45px;
+}
+.course {
+    position: absolute;
+    top: 36px;
+    left: 91px;
+    width: 809px;
+    height: 45px;
+}
+.grade {
+    position: absolute;
+    top: 97px;
+    left: 91px;
+    width: 809px;
+    height: 45px;
+}
+.issueDate {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    display: flex;
+    align-items: center;
+    width: 126px;
+    height: 45px;
+}
+.issuedate {
+    position: absolute;
+    top: 158px;
+    left: 91px;
+    width: 809px;
+    height: 45px;
+}
+.fileChild {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    border-radius: var(--br-21xl);
+    background-color: var(--color-white);
+    width: 873px;
+    height: 85px;
+}
+.filenamepdf {
+    position: absolute;
+    top: 16px;
+    left: 44px;
+    display: flex;
+    align-items: center;
+    width: 186px;
+    height: 53px;
+}
+.file {
+    position: absolute;
+    top: 237px;
+    left: 59px;
+    width: 873px;
+    height: 85px;
+}
+.display {
+    position: absolute;
+    top: 789px;
+    left: 454px;
+    width: 991px;
+    height: 379px;
+    text-align: left;
+}
+.dashboardStudent {
+    width: 100%;
+    position: relative;
+    background-color: #f6f6f6;
+    height: 2185px;
+    overflow: hidden;
+    text-align: center;
+    font-size: var(--font-size-5xl);
+    color: var(--color-black);
+    font-family: var(--font-league-spartan);
+}
+
+.shareGrey {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    border-radius: var(--br-21xl);
+    background-color: #d9d9d9;
+    width: 991px;
+    height: 697px;
+}
+.shareDisplayChild {
+    position: absolute;
+    top: 79.5px;
+    left: 502.51px;
+    border-right: 1px solid var(--color-black);
+    box-sizing: border-box;
+    width: 1px;
+    height: 539px;
+}
+.qrCode {
+    position: absolute;
+    top: 0px;
+    left: 63px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 244px;
+    height: 67px;
+}
+.squareBackground {
+    position: absolute;
+    top: 67px;
+    left: 0px;
+    border-radius: var(--br-21xl);
+    background-color: var(--color-white);
+    width: 370px;
+    height: 370px;
+}
+.pleaseDoNot {
+    position: absolute;
+    top: 444px;
+    left: 22px;
+    font-size: var(--font-size-base);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 326px;
+    height: 45px;
+}
+.imageIcon {
+    position: absolute;
+    top: 98px;
+    left: 25px;
+    border-radius: var(--br-21xl);
+    width: 320px;
+    height: 320px;
+    object-fit: cover;
+}
+.qrcode {
+    position: absolute;
+    top: 91px;
+    left: 80px;
+    width: 370px;
+    height: 489px;
+}
+.whiteBack {
+    position: absolute;
+    top: 67px;
+    left: 0px;
+    border-radius: var(--br-21xl);
+    background-color: var(--color-white);
+    width: 370px;
+    height: 159px;
+}
+.copyButtonChild {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    border-radius: var(--br-21xl);
+    background-color: #081ff7;
+    width: 125px;
+    height: 39px;
+}
+.copy {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 125px;
+    height: 39px;
+}
+.copyButton {
+    position: absolute;
+    top: 244px;
+    left: 122px;
+    width: 125px;
+    height: 39px;
+    font-size: 24px;
+    color: var(--color-white);
+}
+.link {
+    position: absolute;
+    top: 98px;
+    left: 34px;
+    font-size: var(--font-size-base);
+    text-align: left;
+    display: inline-block;
+    word-wrap: break-word;
+    width: 297px;
+    height: 91px;
+}
+.url {
+    position: absolute;
+    top: 91px;
+    left: 556px;
+    width: 370px;
+    height: 283px;
+}
+.shareDisplay {
+    width: 100%;
+    top: 600px;
+    left: 460px;
+    position: relative;
+    height: 697px;
+    text-align: center;
+    font-size: var(--font-size-21xl);
+    color: var(--color-black);
+    font-family: var(--font-league-spartan);
+}
+
+.achievementGrey {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    border-radius: var(--br-21xl);
+    background-color: #d9d9d9;
+    width: 991px;
+    height: 1155px;
+}
+.sportDarkGrey {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    border-radius: var(--br-21xl);
+    background-color: #939393;
+    width: 857px;
+    height: 480px;
+}
+.sportmanshipAchievementBadge {
+    position: absolute;
+    top: 31px;
+    left: 195px;
+}
+.badgeChild {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    border-radius: var(--br-21xl) var(--br-21xl) 0px 0px;
+    background-color: var(--color-white);
+    width: 200px;
+    height: 200px;
+}
+.badgeItem {
+    position: absolute;
+    top: 201px;
+    left: 0px;
+    border-radius: 0px 0px var(--br-21xl) var(--br-21xl);
+    background-color: var(--color-black);
+    width: 200px;
+    height: 134px;
+}
+.sportbadgeimgIcon {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 200px;
+    height: 201px;
+    object-fit: cover;
+}
+.gold {
+    position: absolute;
+    top: 201px;
+    left: 0px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 200px;
+    height: 44px;
+}
+.pingPongCompetition {
+    margin: 0;
+}
+.titleTxt {
+    width: 100%;
+}
+.title {
+    position: absolute;
+    top: 245px;
+    left: 0px;
+    font-size: 15px;
+    display: flex;
+    align-items: center;
+    width: 200px;
+    height: 90px;
+}
+.badge {
+    position: absolute;
+    top: 85px;
+    left: 54px;
+    width: 200px;
+    height: 335px;
+    font-size: var(--font-size-5xl);
+}
+.sportBadge {
+    position: absolute;
+    top: 598px;
+    left: 67px;
+    width: 857px;
+    height: 480px;
+}
+.academicAchievementBadges {
+    position: absolute;
+    top: 31px;
+    left: 224px;
+    font-size: var(--font-size-11xl);
+}
+.badgeInner {
+    position: absolute;
+    top: 1px;
+    left: 1px;
+    border-radius: var(--br-21xl) var(--br-21xl) 0px 0px;
+    background-color: var(--color-white);
+    width: 200px;
+    height: 200px;
+}
+.rectangleDiv {
+    position: absolute;
+    top: 202px;
+    left: 1px;
+    border-radius: 0px 0px var(--br-21xl) var(--br-21xl);
+    background-color: var(--color-black);
+    width: 200px;
+    height: 134px;
+}
+.badgeimgIcon {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 201px;
+    height: 201px;
+    object-fit: cover;
+}
+.top {
+    position: absolute;
+    top: 202px;
+    left: 1px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 200px;
+    height: 44px;
+}
+.course1 {
+    position: absolute;
+    top: 246px;
+    left: 1px;
+    font-size: var(--font-size-base);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 200px;
+    height: 90px;
+}
+.badge1 {
+    position: absolute;
+    top: 84px;
+    left: 53px;
+    width: 201px;
+    height: 336px;
+}
+.subject {
+    position: absolute;
+    top: 245px;
+    left: 0px;
+    font-size: var(--font-size-base);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 200px;
+    height: 90px;
+}
+.addinBadges {
+    position: absolute;
+    top: 85px;
+    left: 329px;
+    width: 200px;
+    height: 335px;
+}
+.addinBadges1 {
+    position: absolute;
+    top: 84px;
+    left: 604px;
+    width: 200px;
+    height: 335px;
+}
+.academicBadge {
+    position: absolute;
+    top: 56px;
+    left: 67px;
+    width: 857px;
+    height: 480px;
+    font-size: var(--font-size-5xl);
+}
+.achievementBadges {
+    position: relative;
+    height: 1155px;
+    top: 600px;
+    left: 460px;
+    text-align: center;
+    font-size: var(--font-size-11xl);
+    color: var(--color-white);
+    font-family: var(--font-league-spartan);
+}
+

@@ -163,6 +163,58 @@
     width: 258px;
     height: 133px;
 }
+
+.recipientInput {
+    position: absolute;
+    top: 48px;
+    left: 0px;
+    font-size: var(--font-size-xl);
+    width: 232px;
+    height: 30px;
+    border: none;
+    outline: none;
+    padding: 5px;
+    font-family: var(--font-league-spartan); /* Replace with your font */
+    color: var(--color-black); /* Adjust for your design */
+    background-color: transparent; /* Match the design */
+    box-sizing: border-box;
+}
+
+.issueDateInput {
+    position: absolute;
+    top: 48px;
+    left: 0px;
+    font-size: var(--font-size-xl);
+    width: 261px;
+    height: 30px;
+    border: none;
+    outline: none;
+    padding: 5px;
+    font-family: var(--font-league-spartan); /* Replace with your font */
+    color: var(--color-black); /* Adjust for your design */
+    background-color: transparent; /* Match the design */
+    box-sizing: border-box;
+}
+
+.issuerTextArea {
+    position: absolute;
+    top: 48px;
+    left: 0px;
+    font-size: var(--font-size-xl);
+    width: 258px;
+    height: 85px;
+    border: none;
+    outline: none;
+    padding: 5px;
+    font-family: var(--font-league-spartan); /* Replace with your font */
+    color: var(--color-black); /* Adjust for your design */
+    background-color: transparent; /* Match the design */
+    box-sizing: border-box;
+    resize: none; /* Prevent resizing */
+    overflow-y: auto; /* Scroll if content overflows */
+    white-space: pre-wrap; /* Allows wrapping */
+}
+
 .transactionId {
     position: absolute;
     top: 0px;
@@ -173,15 +225,26 @@
     width: 213px;
     height: 30px;
 }
-.makjsfna68sfha7sv6ahev8a7sdhvb {
+.transactionTextArea {
     position: absolute;
-    top: 48px;
+    top: 30px;
     left: 0px;
     font-size: var(--font-size-xl);
-    display: inline-block;
-    width: 233px;
-    height: 101px;
+    width: 233px; /* Matches container width */
+    height: 101px; /* Matches container height */
+    border: none;
+    outline: none;
+    resize: none; /* Prevents resizing */
+    overflow-y: auto; /* Adds a scrollbar if text overflows */
+    background-color: transparent; /* Ensures it blends with the container */
+    font-family: var(--font-league-spartan); /* Replace with your font */
+    color: var(--color-black); /* Adjust to match your design */
+    padding: 10px; /* Adds spacing inside the box */
+    word-wrap: break-word; /* Ensures long words wrap to the next line */
+    white-space: pre-wrap; /* Preserves spacing and allows wrapping */
+    line-height: 1.5; /* Adjust for readability */
 }
+
 .transaction {
     position: absolute;
     top: 363px;
