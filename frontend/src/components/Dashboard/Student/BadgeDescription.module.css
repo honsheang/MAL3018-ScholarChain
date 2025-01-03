@@ -1,0 +1,52 @@
+.badgeimgIcon {
+    position: absolute;
+    top: 20px;
+    left: 35px;
+    width: 201px;
+    height: 201px;
+    object-fit: cover;
+}
+.topGpa {
+    position: absolute;
+    top: 53px;
+    left: 236px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 247px;
+    height: 68px;
+}
+.networkSecurity {
+    position: absolute;
+    top: 121px;
+    left: 236px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 247px;
+    height: 68px;
+}
+.networkSecurityIs {
+    position: absolute;
+    top: 221px;
+    left: 46px;
+    font-size: 13px;
+    text-align: left;
+    display: flex;
+    align-items: center;
+    width: 437px;
+    height: 68px;
+}
+.badgeDescription {
+    width: 100%;
+    position: relative;
+    border-radius: 40px;
+    background-color: #fff;
+    height: 336px;
+    overflow: hidden;
+    text-align: center;
+    font-size: var(--font-size-5xl);
+    color: var(--color-black);
+    font-family: var(--font-league-spartan);
+}
+
