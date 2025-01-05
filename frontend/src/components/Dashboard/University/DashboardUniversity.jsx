@@ -1,4 +1,5 @@
 import { useState, useCallback } from 'react';
+import { useNavigate } from 'react-router-dom';
 import AddBadges from "./AddBadges";
 import PortalPopup from "./PortalPopup";
 import AddSemester from "./AddSemester";
@@ -12,6 +13,7 @@ const DashboardUniversity = () => {
   	const [isAddBadgesOpen, setAddBadgesOpen] = useState(false);
   	const [isAddSemesterOpen, setAddSemesterOpen] = useState(false);
   	const [isReceiptOpen, setReceiptOpen] = useState(false);
+	const navigate = useNavigate();
   	
   	const openAddBadges = useCallback(() => {
     		setAddBadgesOpen(true);
@@ -40,9 +42,13 @@ const DashboardUniversity = () => {
   	}, []);
   	
   	
-  	const onHomeButtonContainerClick = useCallback(() => {
-    		// Add your code here
-  	}, []);
+  	const onLogoutContainerClick = useCallback(() => {
+        navigate('/');
+    }, [navigate]);
+
+	const onhomeContainerClick = useCallback(() => {
+        navigate('/');
+    }, [navigate]);
   	
   	return (<>
     		<div className={styles.dashboardUniversity}>
@@ -59,7 +65,7 @@ const DashboardUniversity = () => {
       			<div className={styles.aboutButton}>
         				<b className={styles.about}>About</b>
       			</div>
-      			<div className={styles.homeButton} onClick={onHomeButtonContainerClick}>
+      			<div className={styles.homeButton} onClick={onhomeContainerClick}>
         				<b className={styles.about}>Home</b>
       			</div>
       			<div className={styles.secureAcademicTranscript}>"Secure Academic Transcript Validation with Blockchain"</div>
@@ -71,20 +77,20 @@ const DashboardUniversity = () => {
       			<div className={styles.feature}>
         				<div className={styles.featureChild} />
         				<div className={styles.featureItem} />
-        				<div className={styles.featureInner} onClick={onHomeButtonContainerClick} />
+        				<div className={styles.featureInner}  />
         				<div className={styles.issue}>Issue</div>
-        				<div className={styles.report} onClick={onHomeButtonContainerClick}>Report</div>
+        				<div className={styles.report}>Report</div>
       			</div>
+				  
       			<div className={styles.welcome}>
         				<b className={styles.welcome1}>Welcome,</b>
         				<b className={styles.peninsulaCollegeGeorgetown}>Peninsula College Georgetown</b>
       			</div>
-      			<div className={styles.loginregisterButton} onClick={onHomeButtonContainerClick}>
-        				<b className={styles.register}>Register</b>
-      			</div>
-      			<div className={styles.loginregisterButton1} onClick={onHomeButtonContainerClick}>
-        				<b className={styles.login}>Login</b>
-      			</div>
+      			
+				<div className={styles.logoutButton} onClick={onLogoutContainerClick}>
+					<b className={styles.logout}>Log Out</b>
+				</div>
+      			
       			<div className={styles.universityDetails}>
         				<div className={styles.uniGrey} />
         				<div className={styles.uniBlack} />

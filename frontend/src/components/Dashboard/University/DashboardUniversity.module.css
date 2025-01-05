@@ -218,17 +218,7 @@
     width: 125px;
     height: 49px;
 }
-.loginregisterButton {
-    position: absolute;
-    top: 55px;
-    left: 1332px;
-    width: 125px;
-    height: 49px;
-    cursor: pointer;
-    font-size: var(--font-size-5xl);
-    color: var(--color-black);
-}
-.login {
+.logout {
     position: absolute;
     top: 0px;
     left: 0px;
@@ -236,19 +226,22 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 107px;
+    width: 125px;
     height: 49px;
+    font-size: 60%;
+    color:black;
 }
-.loginregisterButton1 {
+.logoutButton {
     position: absolute;
     top: 55px;
-    left: 1225px;
-    width: 107px;
+    left: 1332px;
+    width: 125px;
     height: 49px;
     cursor: pointer;
-    font-size: var(--font-size-5xl);
-    color: var(--color-black);
 }
+
+
+
 .uniGrey {
     position: absolute;
     top: 0px;

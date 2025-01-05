@@ -30,7 +30,7 @@
 }
 .addSemesterItem {
     position: absolute;
-    top: 782px;
+    top: 500px;
     left: 0px;
     background-color: var(--color-blue);
     width: 1368px;
@@ -231,8 +231,8 @@
 }
 .code {
     position: absolute;
-    top: 0px;
-    left: 0px;
+    top: 10px;
+    left: -40px;
     font-weight: 500;
     display: flex;
     align-items: center;
@@ -242,8 +242,8 @@
 }
 .creditHours {
     position: absolute;
-    top: 0px;
-    left: 671px;
+    top: 10px;
+    left: 450px;
     font-weight: 500;
     display: flex;
     align-items: center;
@@ -253,8 +253,8 @@
 }
 .grade {
     position: absolute;
-    top: 0px;
-    left: 843px;
+    top: 10px;
+    left: 680px;
     font-weight: 500;
     display: flex;
     align-items: center;
@@ -264,8 +264,8 @@
 }
 .description {
     position: absolute;
-    top: 0px;
-    left: 994px;
+    top: 10px;
+    left: 880px;
     font-weight: 500;
     display: flex;
     align-items: center;
@@ -275,8 +275,8 @@
 }
 .course {
     position: absolute;
-    top: 0px;
-    left: 144px;
+    top: 10px;
+    left: 15px;
     font-weight: 500;
     display: flex;
     align-items: center;
@@ -286,7 +286,7 @@
 }
 .label {
     position: absolute;
-    top: 0px;
+    top: -50px;
     left: 0.01px;
     width: 1265px;
     height: 41px;
@@ -367,7 +367,7 @@
 }
 .updateButton {
     position: absolute;
-    top: 794px;
+    top: 510px;
     left: 1120px;
     width: 210px;
     height: 45px;
@@ -379,7 +379,7 @@
     position: relative;
     border-radius: var(--br-21xl);
     background-color: var(--color-white);
-    height: 852px;
+    height: 570px;
     overflow: hidden;
     max-width: 100%;
     max-height: 100%;
@@ -388,4 +388,47 @@
     color: var(--color-white);
     font-family: var(--font-league-spartan);
 }
-
+.tableContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+  }
+  
+  .label {
+    display: flex;
+    font-weight: bold;
+    gap: 10px;
+  }
+  
+  .row {
+    display: flex;
+    gap: 10px;
+  }
+  
+  .input {
+    flex: 1;
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  
+  .addButton,
+  .removeButton,
+  .update {
+    padding: 5px 10px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .addButton:hover,
+  .removeButton:hover,
+  .update:hover {
+    background-color: #0056b3;
+  }
+  
