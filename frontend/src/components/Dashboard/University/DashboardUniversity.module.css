@@ -129,55 +129,240 @@
     background-color: var(--color-gainsboro);
     width: 369px;
     height: 249px;
-}
-.featureItem {
+  }
+  
+  .featureItem {
     position: absolute;
     top: 26px;
     left: 28px;
     border-radius: var(--br-21xl) var(--br-21xl) 0px 0px;
-    background-color: var(--color-blue);
+    background-color: var(--color-blue); /* Active blue background */
     width: 313px;
     height: 91px;
-}
-.featureInner {
+  }
+  
+  .featureInner {
     position: absolute;
     top: 123px;
     left: 28px;
     border-radius: 0px 0px var(--br-21xl) var(--br-21xl);
-    background-color: #979797;
+    background-color: #979797; /* Default grey */
     width: 313px;
     height: 91px;
     cursor: pointer;
-}
-.issue {
+  }
+  
+  .issue {
     position: absolute;
-    top: 43px;
-    left: 51px;
+    top: 20px;
+    left: 28px;
     display: flex;
     align-items: center;
     justify-content: center;
     width: 267px;
     height: 58px;
-}
-.report {
-    position: absolute;
-    top: 140px;
-    left: 51px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 267px;
-    height: 58px;
+    color: white;
     cursor: pointer;
-}
-.feature {
+  }
+  
+  .report {
+    position: absolute;
+    top: 20px;
+    left: 28px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 267px;
+    height: 58px;
+    color: white;
+    cursor: pointer;
+  }
+  
+  /* Active button styles */
+  .blue {
+    background-color: blue; /* Active button color */
+  }
+  
+  .grey {
+    background-color: grey; /* Inactive button color */
+  }
+  
+  .feature {
     position: absolute;
     top: 870px;
     left: 61px;
     width: 369px;
     height: 249px;
     font-size: var(--font-size-11xl);
+  }
+
+  .reportLogChild {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    border-radius: var(--br-21xl);
+    background-color: #d9d9d9;
+    width: 991px;
+    height: 724px;
 }
+.reportLogItem {
+    position: absolute;
+    top: 46px;
+    left: 49px;
+    border-radius: var(--br-21xl);
+    background-color: var(--color-white);
+    border: 1px solid var(--color-black);
+    box-sizing: border-box;
+    width: 893px;
+    height: 618px;
+}
+.reportLogInner {
+    position: absolute;
+    top: 46px;
+    left: 49px;
+    border-radius: var(--br-21xl) var(--br-21xl) 0px 0px;
+    background-color: var(--color-white);
+    border: 1px solid var(--color-black);
+    box-sizing: border-box;
+    width: 893px;
+    height: 83px;
+}
+.studentIdRep {
+    position: absolute;
+    top: 46px;
+    left: 239px;
+    color: var(--color-gray);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 222px;
+    height: 83px;
+}
+.name {
+    position: absolute;
+    top: 47px;
+    left: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 189px;
+    height: 79px;
+}
+.transcript {
+    position: absolute;
+    top: 47px;
+    left: 461px;
+    color: var(--color-gray);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 184px;
+    height: 82px;
+}
+.transactionId {
+    position: absolute;
+    top: 47px;
+    left: 646px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 296px;
+    height: 82px;
+}
+.lineDivRep {
+    position: absolute;
+    top: 46.5px;
+    left: 238.5px;
+    border-right: 1px solid var(--color-black);
+    box-sizing: border-box;
+    width: 1px;
+    height: 618px;
+}
+.reportLogChild1 {
+    position: absolute;
+    top: 45.5px;
+    left: 460.5px;
+    border-right: 1px solid var(--color-black);
+    box-sizing: border-box;
+    width: 1px;
+    height: 622px;
+}
+.reportLogChild2 {
+    position: absolute;
+    top: 45.5px;
+    left: 644.5px;
+    border-right: 1px solid var(--color-black);
+    box-sizing: border-box;
+    width: 1px;
+    height: 616px;
+}
+.reportLogChild3 {
+    position: absolute;
+    top: 173.5px;
+    left: 48.5px;
+    border-top: 1px solid var(--color-black);
+    box-sizing: border-box;
+    width: 894px;
+    height: 1px;
+}
+.limHonSheang {
+    position: absolute;
+    top: 129px;
+    left: 50px;
+    font-size: var(--font-size-lg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 189px;
+    height: 45px;
+}
+.dics21011144 {
+    position: absolute;
+    top: 129px;
+    left: 239px;
+    font-size: var(--font-size-lg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 222px;
+    height: 45px;
+}
+.transcriptpdf {
+    position: absolute;
+    top: 129px;
+    left: 462px;
+    font-size: var(--font-size-lg);
+    text-decoration: underline;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 183px;
+    height: 45px;
+}
+.makjsfna68sfha7sv6ahev8a7sdhvb {
+    position: absolute;
+    top: 129px;
+    left: 646px;
+    font-size: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 296px;
+    height: 45px;
+}
+.reportLog {
+    
+    position: relative;
+    top: 1000px;
+    left: 459px;
+    height: 724px;
+    text-align: center;
+    font-size: var(--font-size-5xl);
+    color: var(--color-black);
+    font-family: var(--font-league-spartan);
+}
+
+
 .welcome1 {
     position: absolute;
     top: 0px;
@@ -271,7 +456,7 @@
     width: 406px;
     height: 48px;
 }
-.universityNameChild {
+.universityLogoChild {
     position: absolute;
     top: 2px;
     left: 218px;
@@ -279,7 +464,27 @@
     background-color: var(--color-gainsboro);
     width: 574px;
     height: 43px;
-}
+    }
+    .universityNameChild {
+        position: absolute;
+        top: 2px;
+        left: 218px;
+        border-radius: var(--br-21xl);
+        background-color: var(--color-gainsboro);
+        width: 550px;
+        height: 20px;
+        border: 1px solid #ccc; /* Adds a border for the input */
+        padding: 10px; /* Adds padding for text */
+        font-size: 16px; /* Adjusts font size */
+        color: #333; /* Text color */
+        outline: none; /* Removes the default outline */
+      }
+      
+      .universityNameChild:focus {
+        border-color: var(--color-blue); /* Changes border color on focus */
+        background-color: #fff; /* Optional: changes background color */
+      }
+      
 .universityName {
     position: absolute;
     top: 143px;
@@ -303,9 +508,21 @@
     left: 216px;
     border-radius: var(--br-21xl);
     background-color: var(--color-gainsboro);
-    width: 574px;
-    height: 110px;
-}
+    width: 550px;
+    height: 85px;
+    border: 1px solid #ccc; /* Adds a border for the textarea */
+    padding: 10px; /* Adds padding for text */
+    font-size: 16px; /* Adjusts font size */
+    color: #333; /* Text color */
+    resize: none; /* Prevents manual resizing */
+    outline: none; /* Removes the default outline */
+  }
+  
+  .universityAddressChild:focus {
+    border-color: var(--color-blue); /* Changes border color on focus */
+    background-color: #fff; /* Optional: changes background color */
+  }
+  
 .universityAddress {
     position: absolute;
     top: 251px;
@@ -432,30 +649,52 @@
 .uniContactChild {
     position: absolute;
     top: 2px;
-    left: 233px;
+    left: 378px;
     border-radius: var(--br-21xl);
     background-color: var(--color-gainsboro);
-    width: 574px;
-    height: 43px;
-}
-.uniContactItem {
+    width: 405px;
+    height: 40px;
+    border: 1px solid #ccc; /* Adds a border to the input field */
+    padding: 0 10px; /* Adds horizontal padding for text */
+    font-size: 16px; /* Adjusts font size */
+    color: #333; /* Text color */
+    outline: none; /* Removes default outline */
+  }
+  
+  .uniContactChild:focus {
+    border-color: var(--color-blue); /* Changes border color on focus */
+    background-color: #fff; /* Optional: changes background color */
+  }
+  
+  .uniContactItem {
     position: absolute;
     top: 56px;
-    left: 233px;
+    left: 378px;
     border-radius: var(--br-21xl);
     background-color: var(--color-gainsboro);
-    width: 574px;
-    height: 43px;
-}
+    width: 405px;
+    height: 40px;
+    border: 1px solid #ccc; /* Adds a subtle border */
+    padding: 0 10px; /* Adds padding inside the input */
+    font-size: 16px; /* Sets the font size */
+    color: #333; /* Text color */
+    outline: none; /* Removes default focus outline */
+  }
+  
+  .uniContactItem:focus {
+    border-color: var(--color-blue); /* Changes border color when focused */
+    background-color: #fff; /* Optional: highlights the input background */
+  }
+  
 .mobileLabelChild {
     position: absolute;
     top: 0px;
     left: 0px;
     border-radius: var(--br-21xl);
     background-color: var(--color-blue);
-    width: 135px;
-    height: 34px;
-}
+    width: 145px;
+    height: 44px;
+    }
 .mobileNo {
     position: absolute;
     top: 6px;
@@ -468,28 +707,37 @@
 }
 .mobileLabel {
     position: absolute;
-    top: 7px;
-    left: 243px;
-    width: 135px;
-    height: 34px;
-}
-.email {
-    position: absolute;
-    top: 5px;
-    left: 14px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 109px;
-    height: 24px;
-}
-.emailLabel {
-    position: absolute;
-    top: 61px;
-    left: 243px;
-    width: 135px;
-    height: 34px;
-}
+    top: 2px;
+    left: 233px;
+    width: 145px;
+    height: 44px;
+    }
+    .emailLabelChild {
+        position: absolute;
+        top: 0px;
+        left: 0px;
+        border-radius: var(--br-21xl);
+        background-color: var(--color-blue);
+        width: 145px;
+        height: 43px;
+        }
+        .email {
+        position: absolute;
+        top: 6px;
+        left: 14px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 117.1px;
+        height: 30.4px;
+        }
+        .emailLabel {
+        position: absolute;
+        top: 56px;
+        left: 233px;
+        width: 145px;
+        height: 43px;
+        }
 .uniContact {
     position: absolute;
     top: 374px;
@@ -512,35 +760,57 @@
 .uniSignChild {
     position: absolute;
     top: 2px;
-    left: 236px;
+    left: 381px;
     border-radius: var(--br-21xl);
     background-color: var(--color-gainsboro);
-    width: 574px;
-    height: 43px;
-}
-.uniSignItem {
+    width: 405px;
+    height: 40px;
+    border: 1px solid #ccc; /* Adds a visible border */
+    padding: 0 10px; /* Adds internal padding for better text spacing */
+    font-size: 16px; /* Sets the font size */
+    color: #333; /* Text color */
+    outline: none; /* Removes default focus outline */
+  }
+  
+  .uniSignChild:focus {
+    border-color: var(--color-blue); /* Highlight border on focus */
+    background-color: #fff; /* Optional: Lighten the background */
+  }
+  
+  .uniSignItem {
     position: absolute;
     top: 56px;
-    left: 236px;
+    left: 381px;
     border-radius: var(--br-21xl);
     background-color: var(--color-gainsboro);
-    width: 574px;
-    height: 43px;
-}
-.nameLabel {
-    position: absolute;
-    top: 7px;
-    left: 246px;
-    width: 135px;
-    height: 34px;
-}
-.departmentLabel {
-    position: absolute;
-    top: 61px;
-    left: 246px;
-    width: 135px;
-    height: 34px;
-}
+    width: 405px;
+    height: 40px;
+    border: 1px solid #ccc; /* Adds a visible border */
+    padding: 0 10px; /* Adds internal padding for better text spacing */
+    font-size: 16px; /* Sets the font size */
+    color: #333; /* Text color */
+    outline: none; /* Removes default focus outline */
+  }
+  
+  .uniSignItem:focus {
+    border-color: var(--color-blue); /* Highlight border on focus */
+    background-color: #fff; /* Optional: Lighten the background */
+  }
+  
+    .nameLabel {
+        position: absolute;
+        top: 2px;
+        left: 236px;
+        width: 145px;
+        height: 44px;
+        }
+        .departmentLabel {
+            position: absolute;
+            top: 56px;
+            left: 236px;
+            width: 145px;
+            height: 43px;
+            }
 .uniSign {
     position: absolute;
     top: 533px;
@@ -627,8 +897,8 @@
 }
 .gamification {
     position: absolute;
-    top: 3143px;
-    left: 61px;
+    top: 2260px;
+    left: -400px;
     width: 1393px;
     height: 477px;
     font-size: var(--font-size-17xl);
@@ -939,8 +1209,8 @@
 }
 .studentDetails {
     position: absolute;
-    top: 1697px;
-    left: 61px;
+    top: 820px;
+    left: -400px;
     width: 1393px;
     height: 519px;
     font-size: var(--font-size-5xl);
@@ -1508,8 +1778,8 @@
 }
 .academicDetails {
     position: absolute;
-    top: 2300px;
-    left: 61px;
+    top: 1420px;
+    left: -400px;
     width: 1393px;
     height: 759px;
     font-size: var(--font-size-xl);
@@ -1536,8 +1806,8 @@
 }
 .submitButton2 {
     position: absolute;
-    top: 3733px;
-    left: 323px;
+    top: 2850px;
+    left: -120px;
     width: 869px;
     height: 81px;
     cursor: pointer;
@@ -1554,4 +1824,59 @@
     color: var(--color-white);
     font-family: var(--font-league-spartan);
 }
+.background {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    border-radius: var(--br-21xl);
+    background-color: #d9d9d9;
+    width: 991px;
+    height: 100px;
+}
+.inputField {
+    position: absolute;
+    top: 16px;
+    left: 37px;
+    border-radius: var(--br-21xl);
+    background-color: var(--color-white);
+    width: 778px;
+    height: 67px;
+}
+.searchButtonChild {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    border-radius: var(--br-21xl);
+    background-color: #081ff7;
+    width: 134px;
+    height: 47px;
+}
+.search {
+    position: absolute;
+    top: 6px;
+    left: 26px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 86px;
+    height: 35px;
+}
+.searchButton {
+    position: absolute;
+    top: 26px;
+    left: 824px;
+    width: 134px;
+    height: 47px;
+}
+.searchBar {
+    width: 100%;
+    position: relative;
+    
+    top:-130px;
+    text-align: center;
+    font-size: 20px;
+    color: var(--color-white);
+    font-family: var(--font-league-spartan);
+}
+
 

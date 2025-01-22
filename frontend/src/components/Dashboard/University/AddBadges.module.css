@@ -31,7 +31,7 @@
 }
 .addBadgesItem {
     position: absolute;
-    top: 782px;
+    top: 550px;
     left: 0px;
     background-color: var(--color-blue);
     width: 1368px;
@@ -75,6 +75,17 @@
     width: 210px;
     height: 45px;
 }
+.create {
+    position: absolute;
+    top: 5px;
+    left: 23px;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 166px;
+    height: 36px;
+}
 .issue {
     position: absolute;
     top: 5px;
@@ -88,7 +99,7 @@
 }
 .updateButton {
     position: absolute;
-    top: 794px;
+    top: 560px;
     left: 1120px;
     width: 210px;
     height: 45px;
@@ -111,32 +122,48 @@
     height: 45px;
     cursor: pointer;
 }
-.academic {
+.dropdownWrapper {
     position: absolute;
     top: 143px;
     left: 300px;
-    color: var(--color-black);
     display: flex;
-    align-items: center;
-    justify-content: center;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  
+  .dropdownLabel {
+    color: var(--color-black);
+    font-size: 16px;
+    margin-bottom: 8px;
+  }
+  
+  .dropdown {
     width: 214px;
     height: 33px;
-}
-.rectangleDiv {
+    border: 1px solid var(--color-black);
+    border-radius: var(--br-21xl);
+    padding: 5px 10px;
+    font-size: 14px;
+    color: var(--color-black);
+    background-color: var(--color-white);
+  }
+  
+  .rectangleDiv {
     position: absolute;
     top: 226px;
     left: 65px;
     border-radius: var(--br-21xl);
     background-color: var(--color-gainsboro);
     width: 1244px;
-    height: 486px;
-}
+    height: 300px;
+  }
+  
 .addBadges {
     width: 1368px;
     position: relative;
     border-radius: var(--br-21xl);
     background-color: var(--color-white);
-    height: 852px;
+    height: 620px;
     overflow: hidden;
     max-width: 100%;
     max-height: 100%;
@@ -146,3 +173,29 @@
     font-family: var(--font-league-spartan);
 }
 
+.badgesDisplay {
+    width: 30%;
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 40px;
+    background-color: #fff;
+    height: 108px;
+    margin: 20px;
+  }
+  
+  .badgeImage {
+    width: 100px;
+    height: 100px;
+    border-radius: 20px;
+    object-fit: cover;
+    margin-right: 20px;
+  }
+  
+  .badgeTitle {
+    font-size: 18px;
+    font-weight: bold;
+    color: #333;
+  }
+  

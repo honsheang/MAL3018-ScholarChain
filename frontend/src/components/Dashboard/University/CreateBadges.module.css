@@ -50,7 +50,34 @@
     width: 153px;
     height: 33px;
 }
-.createBadgeItem {
+.inputField {
+    width: 100%;
+    height: 100%;
+    border: none;
+    border-radius: var(--br-21xl);
+    background-color: var(--color-gainsboro);
+    padding: 10px;
+    font-size: 16px;
+    color: var(--color-black);
+    box-sizing: border-box;
+    outline: none;
+  }
+  
+  .textAreaField {
+    width: 100%;
+    height: 100%;
+    border: none;
+    border-radius: var(--br-21xl);
+    background-color: var(--color-gainsboro);
+    padding: 10px;
+    font-size: 16px;
+    color: var(--color-black);
+    box-sizing: border-box;
+    resize: none; /* Prevents resizing */
+    outline: none;
+  }
+  
+  .createBadgeItem {
     position: absolute;
     top: 272px;
     left: 256px;
@@ -58,8 +85,11 @@
     background-color: var(--color-gainsboro);
     width: 595px;
     height: 45px;
-}
-.createBadgeInner {
+    display: flex;
+    align-items: center;
+  }
+  
+  .createBadgeInner {
     position: absolute;
     top: 329px;
     left: 256px;
@@ -67,7 +97,10 @@
     background-color: var(--color-gainsboro);
     width: 595px;
     height: 107px;
-}
+    display: flex;
+    align-items: center;
+  }
+  
 .rectangleDiv {
     position: absolute;
     top: 94px;
@@ -76,8 +109,32 @@
     background-color: var(--color-gainsboro);
     width: 150px;
     height: 166px;
-}
-.createBadgeChild1 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    border: 2px dashed var(--color-black);
+    cursor: pointer;
+  }
+  
+  .placeholder {
+    font-size: 12px;
+    text-align: center;
+    color: var(--color-dark-gray);
+  }
+  
+  .fileInput {
+    display: none;
+  }
+  
+  .previewImage {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: var(--br-21xl);
+  }
+  
+  .createBadgeChild1 {
     position: absolute;
     top: 233px;
     left: 359px;
@@ -85,20 +142,18 @@
     background-color: var(--color-blue);
     width: 73px;
     height: 27px;
-}
-.upload {
-    position: absolute;
-    top: 239px;
-    left: 363px;
-    font-size: var(--font-size-mini);
-    font-weight: 500;
-    color: var(--color-white);
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 65px;
-    height: 15px;
-}
+    cursor: pointer;
+  }
+  
+  .upload {
+    font-size: var(--font-size-mini);
+    font-weight: 500;
+    color: var(--color-white);
+  }
+  
 .createButtonChild {
     position: absolute;
     top: 0px;
