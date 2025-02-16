@@ -464,7 +464,20 @@
     background-color: var(--color-gainsboro);
     width: 574px;
     height: 43px;
-    }
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+  }
+  .previewImage {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+  }
+  
+  .fileInput {
+    display: none; /* Hides the default input */
+  }
     .universityNameChild {
         position: absolute;
         top: 2px;
@@ -583,16 +596,17 @@
     left: 0px;
     width: 78.5px;
     height: 31.7px;
-}
-.uploadLabel {
+    cursor: pointer;
+  }
+  .uploadLabel {
     position: absolute;
     top: 8px;
     left: 704.24px;
     width: 78.5px;
     height: 31.7px;
     font-size: var(--font-size-base);
-}
-.collegeLogoChild {
+  }
+  .collegeLogoChild {
     position: absolute;
     top: 0px;
     left: 0px;
@@ -600,7 +614,10 @@
     background-color: var(--color-white);
     width: 174.2px;
     height: 29px;
-}
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
 .xButtonIcon {
     position: absolute;
     top: 6px;
@@ -618,7 +635,25 @@
     justify-content: center;
     width: 128.7px;
     height: 16px;
-}
+    font-size: var(--font-size-mini);
+    color: var(--color-black);
+  }
+  .cancelButton {
+    background: #ff4d4f;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    position: absolute;
+    top: 12px;
+    right: 350px;
+    font-size: 14px;
+  }
 .collegeLogo {
     position: absolute;
     top: 9px;
@@ -1235,8 +1270,8 @@
 }
 .academicDetails1 {
     position: absolute;
-    top: 66px;
-    left: 500px;
+    top: 40px;
+    left: 450px;
     font-size: var(--font-size-17xl);
     display: flex;
     color: var(--color-white);
@@ -1247,8 +1282,8 @@
 }
 .addSmester1 {
     position: absolute;
-    top: 133px;
-    left: 109px;
+    top: 100px;
+    left: 35px;
     width: 1187px;
     height: 82px;
     cursor: pointer;
@@ -1880,3 +1915,56 @@
 }
 
 
+.semesterTableContainer {
+    margin-top: 250px;
+    margin-left: 50px;
+    
+    overflow-x: auto;
+}
+
+.semesterTable {
+    width: 95%;
+    border-collapse: collapse;
+    
+}
+
+.semesterTable th, 
+.semesterTable td {
+    border: 1px solid white;
+    padding: 10px;
+    text-align: center;
+    color: white; /* White text */
+}
+
+.semesterTable th {
+    background-color: rgba(255, 255, 255, 0.2);
+    font-weight: bold;
+}
+
+.semesterTable td {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.checkLink {
+    color: white;
+    text-decoration: underline;
+    cursor: pointer;
+}
+.checkLink:hover {
+    color: lightgray;
+}
+
+.semesterSelector {
+    margin-bottom: 20px;
+  }
+  
+  .semesterSelector label {
+    font-weight: bold;
+    margin-right: 10px;
+  }
+  
+  .semesterSelector select {
+    padding: 5px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+  }

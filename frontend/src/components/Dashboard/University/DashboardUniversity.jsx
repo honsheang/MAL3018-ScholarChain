@@ -13,10 +13,110 @@ const DashboardUniversity = () => {
 	const [isAddSemesterOpen, setAddSemesterOpen] = useState(false);
 	const [isReceiptOpen, setReceiptOpen] = useState(false);
 	const navigate = useNavigate();
-	const [selectedButton, setSelectedButton] = useState("Issue");
+
+	const [logoPreview, setLogoPreview] = useState(null);
+	const [fileName, setFileName] = useState("No file selected");
+	const [activeButton, setActiveButton] = useState("Issue");
+	const [semesters, setSemesters] = useState([]);
+	const [activeSemesterIndex, setActiveSemesterIndex] = useState(0);
+
+	// Function to add semester data
+	const onAddSemester = (newSemester) => {
+		console.log("Adding Semester:", newSemester); // Debugging
+		const gpa = calculateGPA(newSemester.courses); // Calculate GPA when adding semester
+		setSemesters((prevSemesters) => [
+			...prevSemesters,
+			{ ...newSemester, gpa, remark: getRemarks(gpa) },
+		]);
+		setAddSemesterOpen(false); // Close modal after adding
+	};
+
+	// Function to calculate GPA (Simple avg of grades, replace with actual logic)
+	const calculateGPA = (courses) => {
+		let totalPoints = 0;
+		let totalCredits = 0;
+
+		const gradePoints = { A: 4.0, B: 3.0, C: 2.0, D: 1.0, F: 0.0 };
+
+		courses.forEach((course) => {
+			const grade = gradePoints[course.grade.toUpperCase()] || 0;
+			const credit = parseFloat(course.creditHours);
+			totalPoints += grade * credit;
+			totalCredits += credit;
+		});
+
+		return totalCredits > 0 ? (totalPoints / totalCredits).toFixed(2) : "0.00";
+	};
+
+	// Function to determine Remarks
+	const getRemarks = (gpa) => {
+		if (gpa >= 3.7) return "Dean's List";
+		if (gpa >= 3.0) return "Good";
+		if (gpa >= 2.0) return "Satisfactory";
+		return "Needs Improvement";
+	};
+
+	const addCourse = () => {
+		if (semesters.length === 0) {
+		  alert("Please add a semester first.");
+		  return;
+		}
+	  
+		const newSemesters = [...semesters];
+		newSemesters[activeSemesterIndex].courses.push({
+		  code: "",
+		  course: "",
+		  creditHours: "",
+		  grade: "",
+		  description: "",
+		});
+		setSemesters(newSemesters);
+	  };
+
+	  const handleSave = () => {
+		if (semesters.length === 0) {
+		  alert("No semesters to save.");
+		  return;
+		}
+	  
+		// Save logic here (e.g., send data to backend or update state)
+		alert(`Semester ${semesters[activeSemesterIndex].semester} data saved!`);
+	  };
+
+	const updateCourse = (semesterIndex, courseIndex, field, value) => {
+		const newSemesters = [...semesters];
+		newSemesters[semesterIndex].courses[courseIndex][field] = value;
+		setSemesters(newSemesters);
+	};
+
+	const calGPA = (courses) => {
+		if (courses.length === 0) return 0;
+		const gradePoints = { A: 4.0, B: 3.0, C: 2.0, D: 1.0, F: 0.0 };
+		const totalPoints = courses.reduce(
+			(sum, course) =>
+				sum +
+				(gradePoints[course.grade.toUpperCase()] || 0) *
+					parseFloat(course.creditHours),
+			0,
+		);
+		const totalCredits = courses.reduce(
+			(sum, course) => sum + parseFloat(course.creditHours),
+			0,
+		);
+		return totalCredits > 0 ? (totalPoints / totalCredits).toFixed(2) : "0.00";
+	};
+
+	const calCGPA = () => {
+		if (semesters.length === 0) return 0;
+		const totalGPA = semesters.reduce(
+			(sum, sem) => sum + parseFloat(calGPA(sem.courses)),
+			0,
+		);
+		return (totalGPA / semesters.length).toFixed(2);
+	};
 
 	const handleButtonClick = (button) => {
-		setSelectedButton(button); // Set the selected button
+		setActiveButton(button);
 	};
 
 	const openAddBadges = useCallback(() => {
@@ -27,13 +127,10 @@ const DashboardUniversity = () => {
 		setAddBadgesOpen(false);
 	}, []);
 
-	const openAddSemester = useCallback(() => {
-		setAddSemesterOpen(true);
-	}, []);
-
-	const closeAddSemester = useCallback(() => {
+	
+	const closeAddSemester = () => {
 		setAddSemesterOpen(false);
-	}, []);
+	};
 
 	const openReceipt = useCallback(() => {
 		setReceiptOpen(true);
@@ -50,6 +147,21 @@ const DashboardUniversity = () => {
 	const onhomeContainerClick = useCallback(() => {
 		navigate("/");
 	}, [navigate]);
+
+	const handleFileUpload = (event) => {
+		const file = event.target.files[0];
+		if (file) {
+			setFileName(file.name); // Dynamically set the uploaded file name
+			const reader = new FileReader();
+			reader.onload = (e) => setLogoPreview(e.target.result);
+			reader.readAsDataURL(file);
+		}
+	};
+
+	const handleCancelUpload = () => {
+		setLogoPreview(null);
+		setFileName("No file selected");
+	};
 
 	return (
 		<>
@@ -81,22 +193,17 @@ const DashboardUniversity = () => {
 
 				<div className={styles.feature}>
 					<div className={styles.featureChild} />
-					<div className={styles.featureItem} />
-					<div className={styles.featureInner} />
-					{/* Issue Button */}
 					<div
 						className={`${styles.featureItem} ${
-							selectedButton === "Issue" ? styles.blue : styles.grey
+							activeButton === "Issue" ? styles.blue : styles.grey
 						}`}
 						onClick={() => handleButtonClick("Issue")}
 					>
 						<div className={styles.issue}>Issue</div>
 					</div>
-
-					{/* Report Button */}
 					<div
 						className={`${styles.featureInner} ${
-							selectedButton === "Report" ? styles.blue : styles.grey
+							activeButton === "Report" ? styles.blue : styles.grey
 						}`}
 						onClick={() => handleButtonClick("Report")}
 					>
@@ -106,7 +213,7 @@ const DashboardUniversity = () => {
 
 				{/* Content */}
 				<div className={styles.content}>
-					{selectedButton === "Issue" && (
+					{activeButton === "Issue" && (
 						<div className={styles.universityDetails}>
 							<div className={styles.uniGrey} />
 							<div className={styles.uniBlack} />
@@ -132,21 +239,37 @@ const DashboardUniversity = () => {
 							</div>
 							<div className={styles.universityLogo}>
 								<div className={styles.address}>University Logo</div>
-								<div className={styles.universityLogoChild} />
+								<div className={styles.universityLogoChild}>
+									{logoPreview && (
+										<div className={styles.previewContainer}>
+											<img
+												src={logoPreview}
+												alt="Logo Preview"
+												className={styles.logoPreview}
+											/>
+											<button
+												className={styles.cancelButton}
+												onClick={handleCancelUpload}
+											>
+												✕
+											</button>
+										</div>
+									)}
+								</div>
 								<div className={styles.uploadLabel}>
-									<div className={styles.submitButton1}>
-										<div className={styles.submitButtonItem} />
-										<div className={styles.upload}>upload</div>
-									</div>
+									<label className={styles.submitButton1}>
+										<input
+											type="file"
+											accept="image/*"
+											className={styles.fileInput}
+											onChange={handleFileUpload}
+										/>
+										<div className={styles.upload}>Upload</div>
+									</label>
 								</div>
 								<div className={styles.collegeLogo}>
-									<div className={styles.collegeLogoChild} />
-									<img
-										className={styles.xButtonIcon}
-										alt=""
-										src="x button.png"
-									/>
-									<div className={styles.collegeLogopng}>college logo.png</div>
+									<div className={styles.collegeLogoChild}></div>
+									<div className={styles.collegeLogopng}>{fileName}</div>
 								</div>
 							</div>
 							<div className={styles.uniContact}>
@@ -332,62 +455,130 @@ const DashboardUniversity = () => {
 
 							<div className={styles.academicDetails}>
 								<div className={styles.academicDetailsChild} />
-								<div className={styles.academicDetailsItem} />
-								<b className={styles.academicDetails1}>Academic Details</b>
-								<div className={styles.addSmester1} onClick={openAddSemester}>
-									<div className={styles.addSmesterChild} />
-									<div className={styles.addSmesterItem} />
-									<div className={styles.addBadges}>+ Add Semester</div>
-								</div>
+								<div className={styles.academicDetailsItem}>
+									<b className={styles.academicDetails1}>Academic Details</b>
 
-								<div className={styles.semester1}>
-									<div className={styles.semester1Child} />
-									<div className={styles.semester1Item} />
-									<div className={styles.semester1Inner} />
-									<div className={styles.lineDiv} />
-									<div className={styles.semester1Child1} />
-									<div className={styles.semester1Child2} />
-									<div className={styles.semester1Child3} />
-									<div className={styles.semester1Child4} />
-									<div className={styles.semester1Child5} />
+									
 
-									<div className={styles.label}>
-										<div className={styles.code}>Code</div>
-										<div className={styles.creditHours}>Credit Hours</div>
-										<div className={styles.grade}>Grade</div>
-										<div className={styles.description}>Description</div>
-										<div className={styles.course}>Course</div>
-									</div>
-									<div className={styles.semester1Child6} />
-									<div className={styles.semester1Child7} />
-									<div className={styles.semester1Child8} />
-									<div className={styles.semester1Child9} />
-									<div className={styles.semester1Child10} />
-									<b className={styles.semester11}>Semester 1</b>
-								</div>
-								<div className={styles.gpa}>
-									<b className={styles.gpa1}>{`GPA: `}</b>
-									<div className={styles.gpaChild} />
-									<b className={styles.b1}></b>
-								</div>
-								<div className={styles.cgpa}>
-									<b className={styles.cgpa1}>{`CGPA: `}</b>
-									<div className={styles.cgpaChild} />
-									<b className={styles.b2}></b>
-								</div>
-								<div className={styles.remark}>
-									<b className={styles.remark1}>Remark:</b>
-									<div className={styles.remarkChild} />
-									<b className={styles.deansList}></b>
+									{/* Semester Table */}
+									<div className={styles.semesterSelector}>
+  <label htmlFor="semesterSelect">Select Semester: </label>
+  <select
+    id="semesterSelect"
+    value={activeSemesterIndex}
+    onChange={(e) => setActiveSemesterIndex(Number(e.target.value))}
+  >
+    {semesters.map((semester, index) => (
+      <option key={index} value={index}>
+        Semester {semester.semester}
+      </option>
+    ))}
+  </select>
+</div>
+
+									<div className={styles.semesterTableContainer}>
+  <table className={styles.semesterTable}>
+    <thead>
+      <tr>
+        <th>Semester</th>
+        <th>Code</th>
+        <th>Course</th>
+        <th>Credit Hours</th>
+        <th>Grade</th>
+        <th>Description</th>
+        <th>GPA</th>
+        <th>CGPA</th>
+      </tr>
+    </thead>
+    <tbody>
+      {semesters.map((semester, semesterIndex) => (
+        <>
+          {semester.courses.map((course, courseIndex) => (
+            <tr key={`${semesterIndex}-${courseIndex}`}>
+              {courseIndex === 0 && (
+                <td rowSpan={semester.courses.length}>{semester.semester}</td>
+              )}
+              <td>
+                <input
+                  type="text"
+                  value={course.code}
+                  onChange={(e) =>
+                    updateCourse(semesterIndex, courseIndex, "code", e.target.value)
+                  }
+                />
+              </td>
+              <td>
+                <input
+                  type="text"
+                  value={course.course}
+                  onChange={(e) =>
+                    updateCourse(semesterIndex, courseIndex, "course", e.target.value)
+                  }
+                />
+              </td>
+              <td>
+                <input
+                  type="number"
+                  value={course.creditHours}
+                  onChange={(e) =>
+                    updateCourse(semesterIndex, courseIndex, "creditHours", e.target.value)
+                  }
+                />
+              </td>
+              <td>
+                <input
+                  type="text"
+                  value={course.grade}
+                  onChange={(e) =>
+                    updateCourse(semesterIndex, courseIndex, "grade", e.target.value)
+                  }
+                />
+              </td>
+              <td>
+                <input
+                  type="text"
+                  value={course.description}
+                  onChange={(e) =>
+                    updateCourse(semesterIndex, courseIndex, "description", e.target.value)
+                  }
+                />
+              </td>
+              {courseIndex === 0 && (
+                <td rowSpan={semester.courses.length}>{calGPA(semester.courses)}</td>
+              )}
+              {courseIndex === 0 && (
+                <td rowSpan={semester.courses.length}>{calCGPA()}</td>
+              )}
+            </tr>
+          ))}
+        </>
+      ))}
+    </tbody>
+  </table>
+</div>
+
+<div className={styles.semesterActions}>
+  <button onClick={addCourse}>Add Course</button>
+  <button onClick={handleSave}>Save</button>
+</div>
+
+									{/* Render AddSemester component only when isAddSemesterOpen is true */}
+									{isAddSemesterOpen && (
+										<AddSemester
+											onAddSemester={onAddSemester}
+											onClose={closeAddSemester}
+										/>
+									)}
 								</div>
 							</div>
+
 							<div className={styles.submitButton2} onClick={openReceipt}>
 								<div className={styles.submitButtonInner} />
 								<b className={styles.uploadAndSubmit}>Upload and Submit</b>
 							</div>
 						</div>
 					)}
-					{selectedButton === "Report" && (
+					{activeButton === "Report" && (
 						<div className={styles.reportLog}>
 							<div className={styles.reportLogChild} />
 							<div className={styles.reportLogItem} />
