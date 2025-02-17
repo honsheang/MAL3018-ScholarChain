@@ -13,12 +13,43 @@ const DashboardUniversity = () => {
 	const [isAddSemesterOpen, setAddSemesterOpen] = useState(false);
 	const [isReceiptOpen, setReceiptOpen] = useState(false);
 	const navigate = useNavigate();
+	const [semesterCGPAs, setSemesterCGPAs] = useState({}); // Track CGPA for each semester
 
 	const [logoPreview, setLogoPreview] = useState(null);
 	const [fileName, setFileName] = useState("No file selected");
 	const [activeButton, setActiveButton] = useState("Issue");
 	const [semesters, setSemesters] = useState([]);
 	const [activeSemesterIndex, setActiveSemesterIndex] = useState(0);
+	const [addedSemesters, setAddedSemesters] = useState([]); // Track which semesters have been added
+
+	const handleAddSemester = () => {
+		if (activeSemesterIndex === null) {
+			alert("Please select a semester first.");
+			return;
+		}
+
+		// Check if the semester has already been added
+		if (addedSemesters.includes(activeSemesterIndex + 1)) {
+			alert("This semester has already been added.");
+			return;
+		}
+
+		// Add the semester to the list of added semesters
+		setAddedSemesters((prev) => [...prev, activeSemesterIndex + 1]);
+
+		// Initialize the semester data if it doesn't exist
+		if (!semesters.some((sem) => sem.semester === activeSemesterIndex + 1)) {
+			setSemesters((prev) => [
+				...prev,
+				{
+					semester: activeSemesterIndex + 1,
+					courses: [],
+					gpa: "0.00",
+					remark: "",
+				},
+			]);
+		}
+	};
 
 	// Function to add semester data
 	const onAddSemester = (newSemester) => {
@@ -58,30 +89,62 @@ const DashboardUniversity = () => {
 
 	const addCourse = () => {
 		if (semesters.length === 0) {
-		  alert("Please add a semester first.");
-		  return;
+			alert("Please add a semester first.");
+			return;
 		}
-	  
+
 		const newSemesters = [...semesters];
 		newSemesters[activeSemesterIndex].courses.push({
-		  code: "",
-		  course: "",
-		  creditHours: "",
-		  grade: "",
-		  description: "",
+			code: "",
+			course: "",
+			creditHours: "",
+			grade: "",
+			description: "",
 		});
 		setSemesters(newSemesters);
-	  };
+	};
 
-	  const handleSave = () => {
-		if (semesters.length === 0) {
-		  alert("No semesters to save.");
-		  return;
+	const handleSave = (semesterIndex) => {
+		const semester = semesters[semesterIndex];
+		if (semester.courses.length === 0) {
+			alert("Please add at least one course before saving.");
+			return;
 		}
-	  
-		// Save logic here (e.g., send data to backend or update state)
-		alert(`Semester ${semesters[activeSemesterIndex].semester} data saved!`);
-	  };
+
+		const gpa = calculateGPA(semester.courses);
+		const remark = getRemarks(gpa);
+
+		// Update the semester with the calculated GPA and remark
+		const newSemesters = [...semesters];
+		newSemesters[semesterIndex] = {
+			...semester,
+			gpa,
+			remark,
+		};
+		setSemesters(newSemesters);
+
+		// Calculate CGPA for the current semester
+		const cgpa = calculateCGPAUpTo(semesterIndex);
+
+		// Update the semesterCGPAs state
+		setSemesterCGPAs((prev) => ({
+			...prev,
+			[semester.semester]: cgpa,
+		}));
+
+		alert(`Semester ${semester.semester} data saved!\nCGPA: ${cgpa}`);
+	};
+
+	const calculateCGPAUpTo = (semesterIndex) => {
+		const semestersUpTo = semesters.slice(0, semesterIndex + 1); // Get semesters up to the specified index
+		if (semestersUpTo.length === 0) return "0.00"; // No semesters added
+
+		const totalGPA = semestersUpTo.reduce((sum, semester) => {
+			return sum + parseFloat(semester.gpa);
+		}, 0);
+
+		return (totalGPA / semestersUpTo.length).toFixed(2); // Average GPA up to the specified semester
+	};
 
 	const updateCourse = (semesterIndex, courseIndex, field, value) => {
 		const newSemesters = [...semesters];
@@ -106,13 +169,14 @@ const DashboardUniversity = () => {
 		return totalCredits > 0 ? (totalPoints / totalCredits).toFixed(2) : "0.00";
 	};
 
-	const calCGPA = () => {
-		if (semesters.length === 0) return 0;
-		const totalGPA = semesters.reduce(
-			(sum, sem) => sum + parseFloat(calGPA(sem.courses)),
-			0,
-		);
-		return (totalGPA / semesters.length).toFixed(2);
+	const calculateCGPA = () => {
+		if (semesters.length === 0) return "0.00"; // No semesters added
+
+		const totalGPA = semesters.reduce((sum, semester) => {
+			return sum + parseFloat(semester.gpa);
+		}, 0);
+
+		return (totalGPA / semesters.length).toFixed(2); // Average GPA
 	};
 
 	const handleButtonClick = (button) => {
@@ -127,7 +191,6 @@ const DashboardUniversity = () => {
 		setAddBadgesOpen(false);
 	}, []);
 
-	
 	const closeAddSemester = () => {
 		setAddSemesterOpen(false);
 	};
@@ -458,116 +521,157 @@ const DashboardUniversity = () => {
 								<div className={styles.academicDetailsItem}>
 									<b className={styles.academicDetails1}>Academic Details</b>
 
-									
-
-									{/* Semester Table */}
+									{/* Semester Selector */}
 									<div className={styles.semesterSelector}>
-  <label htmlFor="semesterSelect">Select Semester: </label>
-  <select
-    id="semesterSelect"
-    value={activeSemesterIndex}
-    onChange={(e) => setActiveSemesterIndex(Number(e.target.value))}
-  >
-    {semesters.map((semester, index) => (
-      <option key={index} value={index}>
-        Semester {semester.semester}
-      </option>
-    ))}
-  </select>
-</div>
+										<label htmlFor="semesterSelect">Select Semester: </label>
+										<select
+											id="semesterSelect"
+											value={
+												activeSemesterIndex === null
+													? ""
+													: activeSemesterIndex + 1
+											}
+											onChange={(e) =>
+												setActiveSemesterIndex(Number(e.target.value) - 1)
+											}
+										>
+											<option value="">Select a semester</option>
+											{Array.from({ length: 9 }, (_, i) => (
+												<option key={i + 1} value={i + 1}>
+													Semester {i + 1}
+												</option>
+											))}
+										</select>
+										<button onClick={handleAddSemester}>Add Semester</button>
+									</div>
 
-									<div className={styles.semesterTableContainer}>
-  <table className={styles.semesterTable}>
-    <thead>
-      <tr>
-        <th>Semester</th>
-        <th>Code</th>
-        <th>Course</th>
-        <th>Credit Hours</th>
-        <th>Grade</th>
-        <th>Description</th>
-        <th>GPA</th>
-        <th>CGPA</th>
-      </tr>
-    </thead>
-    <tbody>
-      {semesters.map((semester, semesterIndex) => (
-        <>
-          {semester.courses.map((course, courseIndex) => (
-            <tr key={`${semesterIndex}-${courseIndex}`}>
-              {courseIndex === 0 && (
-                <td rowSpan={semester.courses.length}>{semester.semester}</td>
-              )}
-              <td>
-                <input
-                  type="text"
-                  value={course.code}
-                  onChange={(e) =>
-                    updateCourse(semesterIndex, courseIndex, "code", e.target.value)
-                  }
-                />
-              </td>
-              <td>
-                <input
-                  type="text"
-                  value={course.course}
-                  onChange={(e) =>
-                    updateCourse(semesterIndex, courseIndex, "course", e.target.value)
-                  }
-                />
-              </td>
-              <td>
-                <input
-                  type="number"
-                  value={course.creditHours}
-                  onChange={(e) =>
-                    updateCourse(semesterIndex, courseIndex, "creditHours", e.target.value)
-                  }
-                />
-              </td>
-              <td>
-                <input
-                  type="text"
-                  value={course.grade}
-                  onChange={(e) =>
-                    updateCourse(semesterIndex, courseIndex, "grade", e.target.value)
-                  }
-                />
-              </td>
-              <td>
-                <input
-                  type="text"
-                  value={course.description}
-                  onChange={(e) =>
-                    updateCourse(semesterIndex, courseIndex, "description", e.target.value)
-                  }
-                />
-              </td>
-              {courseIndex === 0 && (
-                <td rowSpan={semester.courses.length}>{calGPA(semester.courses)}</td>
-              )}
-              {courseIndex === 0 && (
-                <td rowSpan={semester.courses.length}>{calCGPA()}</td>
-              )}
-            </tr>
-          ))}
-        </>
-      ))}
-    </tbody>
-  </table>
-</div>
+									{/* Render tables for added semesters */}
+									{addedSemesters.map((semesterNumber) => {
+										const semester = semesters.find(
+											(sem) => sem.semester === semesterNumber,
+										);
+										return (
+											<div
+												key={semesterNumber}
+												className={styles.semesterTableContainer}
+											>
+												<h3>Semester {semesterNumber}</h3>
+												<table className={styles.semesterTable}>
+													<thead>
+														<tr>
+															<th>Code</th>
+															<th>Course</th>
+															<th>Credit Hours</th>
+															<th>Grade</th>
+															<th>Description</th>
+														</tr>
+													</thead>
+													<tbody>
+														{semester.courses.map((course, courseIndex) => (
+															<tr key={courseIndex}>
+																<td>
+																	<input
+																		type="text"
+																		value={course.code}
+																		onChange={(e) =>
+																			updateCourse(
+																				semesterNumber - 1,
+																				courseIndex,
+																				"code",
+																				e.target.value,
+																			)
+																		}
+																	/>
+																</td>
+																<td>
+																	<input
+																		type="text"
+																		value={course.course}
+																		onChange={(e) =>
+																			updateCourse(
+																				semesterNumber - 1,
+																				courseIndex,
+																				"course",
+																				e.target.value,
+																			)
+																		}
+																	/>
+																</td>
+																<td>
+																	<input
+																		type="number"
+																		value={course.creditHours}
+																		onChange={(e) =>
+																			updateCourse(
+																				semesterNumber - 1,
+																				courseIndex,
+																				"creditHours",
+																				e.target.value,
+																			)
+																		}
+																	/>
+																</td>
+																<td>
+																	<input
+																		type="text"
+																		value={course.grade}
+																		onChange={(e) =>
+																			updateCourse(
+																				semesterNumber - 1,
+																				courseIndex,
+																				"grade",
+																				e.target.value,
+																			)
+																		}
+																	/>
+																</td>
+																<td>
+																	<input
+																		type="text"
+																		value={course.description}
+																		onChange={(e) =>
+																			updateCourse(
+																				semesterNumber - 1,
+																				courseIndex,
+																				"description",
+																				e.target.value,
+																			)
+																		}
+																	/>
+																</td>
+															</tr>
+														))}
+													</tbody>
+												</table>
+												<button onClick={() => addCourse(semesterNumber - 1)}>
+													Add Course
+												</button>
+												<button onClick={() => handleSave(semesterNumber - 1)}>
+													Save
+												</button>
+												{semester.gpa !== "0.00" && (
+													<div className={styles.gpaRemarksContainer}>
+														<div className={styles.gpaCgpa}>
+															<p>GPA: {semester.gpa}</p>
+															<p>
+																CGPA (Up to Semester {semesterNumber}):{" "}
+																{semesterCGPAs[semesterNumber] || "0.00"}
+															</p>
+														</div>
+														<div className={styles.remarks}>
+															<p>Remark: {semester.remark}</p>
+														</div>
+													</div>
+												)}
+											</div>
+										);
+									})}
 
-<div className={styles.semesterActions}>
-  <button onClick={addCourse}>Add Course</button>
-  <button onClick={handleSave}>Save</button>
-</div>
-
-									{/* Render AddSemester component only when isAddSemesterOpen is true */}
-									{isAddSemesterOpen && (
-										<AddSemester
-											onAddSemester={onAddSemester}
-											onClose={closeAddSemester}
-										/>
+									{/* Display Cumulative CGPA */}
+									{semesters.length > 0 && (
+										<div className={styles.cumulativeCgpaContainer}>
+											<h3>Cumulative CGPA: {calculateCGPA()}</h3>
+										</div>
 									)}
 								</div>
 							</div>
