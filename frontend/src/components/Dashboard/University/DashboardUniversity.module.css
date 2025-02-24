@@ -108,7 +108,7 @@
 }
 .bottom {
     position: absolute;
-    top: 3927px;
+    top: 4300px;
     left: 0px;
     width: 1515px;
     height: 285px;
@@ -362,6 +362,30 @@
     font-family: var(--font-league-spartan);
 }
 
+.logEntry {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+  }
+
+  .logStudentId,
+.logName,
+.logTranscript,
+.logTransactionId {
+  flex: 1;
+  text-align: center;
+}
+
+.logTranscript a {
+    color: #007bff;
+    text-decoration: none;
+  }
+  
+  .logTranscript a:hover {
+    text-decoration: underline;
+  }
 
 .welcome1 {
     position: absolute;
@@ -869,7 +893,7 @@
     border-radius: var(--br-21xl);
     background-color: var(--color-gainsboro);
     width: 1393px;
-    height: 477px;
+    height: 1000px;
 }
 .gamificationItem {
     position: absolute;
@@ -877,8 +901,10 @@
     left: 69px;
     border-radius: var(--br-21xl);
     background-color: var(--color-black);
-    width: 1256px;
-    height: 388px;
+    width: 88%;
+    height: 175%;
+    z-index: 0;
+    pointer-events: none;
 }
 .gamificationBadges {
     position: absolute;
@@ -931,12 +957,18 @@
     font-size: var(--font-size-13xl);
 }
 .gamification {
-    position: absolute;
+    position: relative;
+    display: flex;
+    gap: 20px;
+    padding: 20px;
     top: 2200px;
     left: -400px;
     width: 1393px;
     height: 477px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
     font-size: var(--font-size-17xl);
+    flex-direction: column;
 }
 .studentGrey {
     position: absolute;
@@ -1068,6 +1100,26 @@
     outline: none; /* Removes focus border */
     cursor: pointer;
 }
+
+.dropdownProgramme {
+    border-radius: var(--br-21xl);
+    background-color: var(--color-gainsboro);
+    border: 1px solid var(--color-gray);
+    width: 800px;
+    height: 43px;
+    padding: 0 8px;
+    font-size: 16px;
+    color: var(--color-black);
+    appearance: none; /* Removes default styling */
+    outline: none; /* Removes focus border */
+    cursor: pointer;
+}
+
+.dropdown:focus {
+    outline: none;
+    border-color: #007bff;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+  }
 
 #dobYear {
     left: 279px;
@@ -1239,7 +1291,7 @@
     position: absolute;
     top: 292px;
     left: 141px;
-    width: 1113px;
+    width: 1355px;
     height: 48px;
 }
 .studentDetails {
@@ -1844,7 +1896,7 @@
 }
 .submitButton2 {
     position: absolute;
-    top: 2850px;
+    top: 3300px;
     left: -120px;
     width: 869px;
     height: 81px;
@@ -1855,7 +1907,7 @@
     width: 100%;
     position: relative;
     background-color: #f6f6f6;
-    height: 4212px;
+    height: 4585px;
     overflow: hidden;
     text-align: center;
     font-size: var(--font-size-21xl);
@@ -2017,4 +2069,395 @@
   
   .remarks {
     text-align: right; /* Align remarks to the right */
+  }
+
+  .addBadgesPopup {
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    width: 400px;
+  }
+  
+  .addBadgesPopup h3 {
+    margin-top: 0;
+  }
+  
+  .formGroup {
+    margin-bottom: 15px;
+  }
+  
+  .formGroup label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+  }
+  
+  .formGroup input,
+  .formGroup textarea,
+  .formGroup select {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  
+  .badgesCatalog {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    margin-top: 20px;
+  }
+  
+  .badgeCard {
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 15px;
+    width: 200px;
+    text-align: center;
+  }
+  
+  .badgeIcon {
+    width: 50px;
+    height: 50px;
+    margin-bottom: 10px;
+  }
+  
+  .badgeCard h4 {
+    margin: 10px 0;
+  }
+  
+  .badgeCard button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .badgeCard button:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+  }
+
+  .addBadgePopup {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+  }
+  
+  .badgeForm {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  
+  .badgeIconPreview {
+    width: 100px;
+    height: 100px;
+    margin-top: 10px;
+  }
+  
+  .badgeCatalog {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    margin-top: 20px;
+    position: relative;
+  z-index: 1;
+  }
+  
+  .badgeCard {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 10px;
+    width: 200px;
+    text-align: center;
+  }
+  
+  .badgeCard img {
+    width: 100px;
+    height: 100px;
+    margin-bottom: 10px;
+  }
+  
+  .issuedBadges {
+    margin-top: 20px;
+    position: relative;
+  z-index: 1;
+  top:-300px;
+  }
+
+  .addBadgePopup {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+  }
+  
+  .badgeForm {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  
+  .badgeIconPreview {
+    width: 100px;
+    height: 100px;
+    margin-top: 10px;
+  }
+  
+  .badgeCatalog {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    margin-top: 20px;
+  }
+  
+  .badgeCard {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 10px;
+    width: 200px;
+    text-align: center;
+  }
+  
+  .badgeCard img {
+    width: 100px;
+    height: 100px;
+    margin-bottom: 10px;
+  }
+  
+  
+  
+  .addBadgeButton {
+    margin-top: 10px;
+    margin-bottom: 20px; /* Space below the button */
+    padding: 8px 16px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    position: relative;
+    z-index: 1;
+    width: 200px;
+    top: 90px;
+    left: 590px;
+  }
+  
+  .addBadgeButton:hover {
+    background-color: #0056b3;
+  }
+
+  .addBadgePopup {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    z-index: 1000; /* Ensure this is higher than other elements */
+  }
+
+  .portalPopup {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(113, 113, 113, 0.3); /* Semi-transparent overlay */
+    z-index: 999; /* Ensure this is just below the popup */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .badgeCatalogContainer,
+.issuedBadgesContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 0px;
+  margin-top: 60px; /* Moves both sections down */
+  
+}
+
+.badgeCatalog,
+.issuedBadges {
+    margin-top: 20px;
+  display: flex;
+  flex-direction: row;
+  gap: 5px;
+  max-height: 300px; /* Fixed height for scrollable sections */
+  overflow-x: auto; /* Enable vertical scrolling */
+  overflow-y: hidden; /* Prevent vertical scrolling */
+  padding: 10px;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  top: 0px;
+  width:80%;
+  left:110px;
+  color: #f9f9f9;
+}
+
+.badgeCatalogContainer h3,
+.issuedBadgesContainer h3 {
+  font-size: 30px;
+  margin: 0 0 10px 0; /* Space below the section title */
+  color: white; /* Set title color to white */
+  z-index: 1; /* Ensure titles are above other elements */
+  position: relative; /* Ensure z-index works */
+  margin-bottom: 5px;
+}
+
+.badgeCard {
+    border: 1px solid #000000;
+    border-radius: 8px;
+    padding: 10px;
+    text-align: center;
+    color: #000000;
+  }
+  
+  .badgeCard img {
+    width: 100px;
+    height: 100px;
+    margin-bottom: 10px;
+  }
+  
+  .badgeCard h4 {
+    margin: 0;
+    font-size: 16px;
+  }
+  
+  .badgeCard p {
+    margin: 5px 0;
+    font-size: 14px;
+  }
+  
+  .badgeCard button {
+    padding: 5px 10px;
+    background-color: #28a745;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .badgeCard button:hover {
+    background-color: #218838;
+  }
+  .receiptPopup {
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+  }
+  
+  .receiptDetails {
+    margin-bottom: 20px;
+  }
+  
+  .receiptDetails p {
+    margin: 10px 0;
+  }
+  
+  .receiptPopup button {
+    padding: 8px 16px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .receiptPopup button:hover {
+    background-color: #0056b3;
+  }
+
+  .reportLog {
+    margin: 20px;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    
+  }
+  
+  
+  .searchBar {
+    margin-bottom: 20px;
+  }
+  
+  .searchInput {
+    padding: 8px;
+    width: 300px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 14px;
+  }
+  
+  .searchButton {
+    padding: 8px 16px;
+    margin-left: 10px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+  }
+  
+  .searchButton:hover {
+    background-color: #0056b3;
+  }
+  
+  .reportTable {
+    width: 70%;
+    border-collapse: collapse;
+    background-color: white;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  .reportTable th,
+  .reportTable td {
+    padding: 12px;
+    border: 1px solid #ddd;
+    text-align: left;
+  }
+  
+  .reportTable th {
+    background-color: #f4f4f4;
+    font-weight: bold;
+    color: #333;
+  }
+  
+  .reportTable tbody tr:hover {
+    background-color: #f1f1f1;
+  }
+  
+  .reportTable a {
+    color: #007bff;
+    text-decoration: none;
+  }
+  
+  .reportTable a:hover {
+    text-decoration: underline;
   }
