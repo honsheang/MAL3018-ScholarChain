@@ -3,10 +3,14 @@ import { useNavigate } from "react-router-dom";
 import PortalPopup from "./PortalPopup";
 import AddSemester from "./AddSemester";
 import AddBadgePopup from "./AddBadgePopup"; // Import the new component
-
 import styles from "./DashboardUniversity.module.css";
 import logoImage from "/ScholarChain/frontend/src/components/Image/ScholarChain.png";
 import btmImage from "/ScholarChain/frontend/src/components/Image/blackscholarchain.png";
+import jsPDF from "jspdf";
+import autoTable from "jspdf-autotable"; // Correct import for autoTable
+import { Document, Page } from "react-pdf";
+
+import "react-pdf/dist/esm/Page/AnnotationLayer.css";
 
 const DashboardUniversity = () => {
 	const [badges, setBadges] = useState([]); // Store all badges
@@ -21,20 +25,18 @@ const DashboardUniversity = () => {
 	const [fileName, setFileName] = useState("No file selected");
 	const [isEditing, setIsEditing] = useState(false);
 	const [universityName, setUniversityName] = useState(
-		"Peninsula College Georgetown"
-	  );
-	  const [universityAddress, setUniversityAddress] = useState(
-		"No.1, Education Boulevard Batu Kawan Industrial Park, 14110 Batu Kawan, Pulau Pinang"
-	  );
-	  const [mobileNo, setMobileNo] = useState("04-587 0000");
-	  const [email, setEmail] = useState("theshipcampus@peninsulamalaysia.edu.my");
-	  const [signatoryName, setSignatoryName] = useState("Nafisah Misriya");
-	  const [signatoryDepartment, setSignatoryDepartment] = useState(
-		"Bursary Department"
-	  );
-	
-	  const [selectedProgramme, setSelectedProgramme] = useState("");
+		"Peninsula College Georgetown",
+	);
+	const [universityAddress, setUniversityAddress] = useState(
+		"No.1, Education Boulevard Batu Kawan Industrial Park, 14110 Batu Kawan, Pulau Pinang",
+	);
+	const [mobileNo, setMobileNo] = useState("04-587 0000");
+	const [email, setEmail] = useState("theshipcampus@peninsulamalaysia.edu.my");
+	const [signatoryName, setSignatoryName] = useState("Nafisah Misriya");
+	const [signatoryDepartment, setSignatoryDepartment] =
+		useState("Bursary Department");
 
+	const [selectedProgramme, setSelectedProgramme] = useState("");
 
 	const [activeButton, setActiveButton] = useState("Issue");
 	const [semesters, setSemesters] = useState([]);
@@ -45,6 +47,7 @@ const DashboardUniversity = () => {
 	const [studentName, setStudentName] = useState("");
 	const [studentID, setStudentID] = useState("");
 	const [searchQuery, setSearchQuery] = useState("");
+	const [pdfUrl, setPdfUrl] = useState(null);
 
 	const programmes = [
 		"BA (HONS) ACCOUNTING & FINANCE (ACCOUNTING)",
@@ -63,27 +66,157 @@ const DashboardUniversity = () => {
 		"DIPLOMA IN TRAVEL & TOURISM MANAGEMENT",
 		"DIPLOMA OF ACCOUNTANCY",
 		"FOUNDATION IN ARTS",
-	  ];
+	];
 
-	  const handleProgrammeChange = (e) => {
+	const handleProgrammeChange = (e) => {
 		setSelectedProgramme(e.target.value);
-	  };
+	};
+	const handleViewTranscript = (transcriptFile) => {
+		if (transcriptFile instanceof Blob) {
+			// Create a Blob URL for the PDF
+			const pdfBlobUrl = URL.createObjectURL(transcriptFile);
 
+			// Open the Blob URL in a new tab
+			window.open(pdfBlobUrl, "_blank");
+
+			// Revoke the Blob URL after opening the PDF
+			URL.revokeObjectURL(pdfBlobUrl);
+		} else {
+			// If the transcriptFile is already a URL, open it directly
+			window.open(transcriptFile, "_blank");
+		}
+	};
+
+	const generateTranscriptPDF = () => {
+		const doc = new jsPDF();
+
+		// Add university logo
+		const addLogo = () => {
+			if (logoPreview) {
+				doc.addImage(
+					logoPreview,
+					"PNG",
+					150,
+					10,
+					40,
+					40,
+					undefined,
+					"FAST",
+					50,
+				); // 50% opacity
+			}
+		};
+
+		addLogo();
+
+		doc.setFontSize(16);
+		doc.text("University Details", 10, 20);
+		doc.setFontSize(12);
+		doc.text(`University Name: ${universityName}`, 10, 30);
+		doc.text(`Address: ${universityAddress}`, 10, 40);
+		doc.text(`Contact: ${mobileNo}`, 10, 50);
+		doc.text(`Email: ${email}`, 10, 60);
+		doc.text(`Authorized Signatory: ${signatoryName}`, 10, 70);
+		doc.text(`Department: ${signatoryDepartment}`, 10, 80);
+
+		// Add student details
+		doc.setFontSize(16);
+		doc.text("Student Details", 10, 100);
+		doc.setFontSize(12);
+		doc.text(`Student Name: ${studentName}`, 10, 110);
+		doc.text(`Student ID: ${studentID}`, 10, 120);
+		doc.text(`Programme: ${selectedProgramme}`, 10, 130);
+
+		// Add academic details (semesters and courses)
+		doc.setFontSize(16);
+		doc.text("Academic Details", 10, 150);
+		semesters.forEach((semester, index) => {
+			doc.setFontSize(14);
+			doc.text(`Semester ${semester.semester}`, 10, 160 + index * 80);
+
+			// Prepare table data
+			const tableData = semester.courses.map((course) => [
+				course.code,
+				course.course,
+				course.creditHours,
+				course.grade,
+				course.description,
+			]);
+
+			// Add table using jsPDF autoTable
+			autoTable(doc, {
+				startY: 170 + index * 80,
+				head: [["Code", "Course", "Credit Hours", "Grade", "Description"]],
+				body: tableData,
+			});
+
+			// Add GPA and CGPA for the semester
+			doc.setFontSize(12);
+			doc.text(`GPA: ${semester.gpa}`, 10, doc.lastAutoTable.finalY + 10);
+			doc.text(
+				`CGPA (Up to Semester ${semester.semester}): ${
+					semesterCGPAs[semester.semester] || "0.00"
+				}`,
+				10,
+				doc.lastAutoTable.finalY + 20,
+			);
+
+			// Add a new page if necessary
+			if (doc.lastAutoTable.finalY > 250) {
+				doc.addPage();
+				addLogo(); // Add logo to the new page
+			}
+		});
+
+		// Add gamification badges
+		doc.setFontSize(16);
+		doc.text("Gamification Badges", 10, doc.lastAutoTable.finalY + 40);
+		issuedBadges.forEach((badge, index) => {
+			doc.setFontSize(12);
+			doc.text(
+				`${badge.title} - ${badge.description}`,
+				10,
+				doc.lastAutoTable.finalY + 50 + index * 10,
+			);
+
+			// Add badge image
+			if (badge.icon) {
+				doc.addImage(
+					badge.icon,
+					"PNG",
+					50,
+					doc.lastAutoTable.finalY + 50 + index * 10,
+					20,
+					20,
+				);
+			}
+
+			// Add a new page if necessary
+			if (doc.lastAutoTable.finalY > 250) {
+				doc.addPage();
+				addLogo(); // Add logo to the new page
+			}
+		});
+
+		// Save the PDF as a blob
+		const pdfBlob = doc.output("blob"); // Use "blob" if supported
+		return pdfBlob;
+	};
 
 	const handleEditSaveClick = () => {
 		if (isEditing) {
-		  // Save logic (if needed)
-		  console.log("Saved:", {
-			universityName,
-			universityAddress,
-			mobileNo,
-			email,
-			signatoryName,
-			signatoryDepartment,
-		  });
+			// Save logic (if needed)
+			console.log("Saved:", {
+				universityName,
+				universityAddress,
+				mobileNo,
+				email,
+				signatoryName,
+				signatoryDepartment,
+			});
 		}
 		setIsEditing(!isEditing); // Toggle edit mode
-	  };
+	};
 
 	const handleUploadAndSubmit = () => {
 		if (!studentName || !studentID) {
@@ -91,7 +224,8 @@ const DashboardUniversity = () => {
 			return;
 		}
 
-		const transcriptFile = "transcript.pdf"; // Replace with actual file upload logic
+		// Generate the PDF
+		const pdfBlob = generateTranscriptPDF(); // Replace with actual file upload logic
 		const transactionID = `TXN-${Date.now()}`; // Generate a placeholder transcript ID
 		const issueDate = new Date().toLocaleDateString(); // Get the current date
 
@@ -101,7 +235,7 @@ const DashboardUniversity = () => {
 			{
 				studentName,
 				studentID,
-				transcriptFile,
+				transcriptFile: pdfBlob,
 				transactionID,
 				issueDate,
 			},
@@ -336,9 +470,9 @@ const DashboardUniversity = () => {
 									type="text"
 									placeholder="Enter University Name"
 									value={universityName}
-          onChange={(e) => setUniversityName(e.target.value)}
-          readOnly={!isEditing} // Read-only when not in edit mode
-          className={styles.universityNameChild}
+									onChange={(e) => setUniversityName(e.target.value)}
+									readOnly={!isEditing} // Read-only when not in edit mode
+									className={styles.universityNameChild}
 								/>
 							</div>
 							<div className={styles.universityAddress}>
@@ -346,17 +480,21 @@ const DashboardUniversity = () => {
 								<textarea
 									placeholder="Enter University Address"
 									value={universityAddress}
-          onChange={(e) => setUniversityAddress(e.target.value)}
-          readOnly={!isEditing} // Read-only when not in edit mode
-          className={styles.universityAddressChild}
+									onChange={(e) => setUniversityAddress(e.target.value)}
+									readOnly={!isEditing} // Read-only when not in edit mode
+									className={styles.universityAddressChild}
 								/>
 							</div>
-							<div className={styles.submitButton} onClick={handleEditSaveClick}>
-        <div className={styles.submitButtonChild} />
-        <div className={styles.edit}>
-          {isEditing ? "Save" : "Edit"} {/* Toggle between Edit and Save */}
-        </div>
-      </div>
+							<div
+								className={styles.submitButton}
+								onClick={handleEditSaveClick}
+							>
+								<div className={styles.submitButtonChild} />
+								<div className={styles.edit}>
+									{isEditing ? "Save" : "Edit"}{" "}
+									{/* Toggle between Edit and Save */}
+								</div>
+							</div>
 							<div className={styles.universityLogo}>
 								<div className={styles.address}>University Logo</div>
 								<div className={styles.universityLogoChild}>
@@ -400,18 +538,18 @@ const DashboardUniversity = () => {
 									type="text"
 									placeholder="Enter University Contact"
 									value={mobileNo}
-            onChange={(e) => setMobileNo(e.target.value)}
-            readOnly={!isEditing} // Read-only when not in edit mode
-            className={styles.uniContactChild}
+									onChange={(e) => setMobileNo(e.target.value)}
+									readOnly={!isEditing} // Read-only when not in edit mode
+									className={styles.uniContactChild}
 								/>
 
 								<input
 									type="text"
 									placeholder="Enter University Email"
 									value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            readOnly={!isEditing} // Read-only when not in edit mode
-            className={styles.uniContactItem}
+									onChange={(e) => setEmail(e.target.value)}
+									readOnly={!isEditing} // Read-only when not in edit mode
+									className={styles.uniContactItem}
 								/>
 
 								<div className={styles.mobileLabel}>
@@ -431,18 +569,18 @@ const DashboardUniversity = () => {
 									type="text"
 									placeholder="Enter Signature"
 									value={signatoryName}
-            onChange={(e) => setSignatoryName(e.target.value)}
-            readOnly={!isEditing} // Read-only when not in edit mode
-            className={styles.uniSignChild}
+									onChange={(e) => setSignatoryName(e.target.value)}
+									readOnly={!isEditing} // Read-only when not in edit mode
+									className={styles.uniSignChild}
 								/>
 
 								<input
 									type="text"
 									placeholder="Enter Signature Details"
 									value={signatoryDepartment}
-            onChange={(e) => setSignatoryDepartment(e.target.value)}
-            readOnly={!isEditing} // Read-only when not in edit mode
-            className={styles.uniSignItem}
+									onChange={(e) => setSignatoryDepartment(e.target.value)}
+									readOnly={!isEditing} // Read-only when not in edit mode
+									className={styles.uniSignItem}
 								/>
 
 								<div className={styles.nameLabel}>
@@ -631,23 +769,23 @@ const DashboardUniversity = () => {
 									</div>
 								</div>
 								<div className={styles.programmeDropdown}>
-        <label className={styles.fullName} htmlFor="programmeSelect">
-          Programme
-        </label>
-        <select
-          id="programmeSelect"
-          value={selectedProgramme}
-          onChange={handleProgrammeChange}
-          className={styles.dropdownProgramme}
-        >
-          <option value="">Select the programme</option>
-          {programmes.map((programme, index) => (
-            <option key={index} value={programme}>
-              {programme}
-            </option>
-          ))}
-        </select>
-      </div>
+									<label className={styles.fullName} htmlFor="programmeSelect">
+										Programme
+									</label>
+									<select
+										id="programmeSelect"
+										value={selectedProgramme}
+										onChange={handleProgrammeChange}
+										className={styles.dropdownProgramme}
+									>
+										<option value="">Select the programme</option>
+										{programmes.map((programme, index) => (
+											<option key={index} value={programme}>
+												{programme}
+											</option>
+										))}
+									</select>
+								</div>
 							</div>
 
 							<div className={styles.academicDetails}>
@@ -863,13 +1001,13 @@ const DashboardUniversity = () => {
 												<td>{log.studentID}</td>
 												<td>{log.studentName}</td>
 												<td>
-													<a
-														href={log.transcriptFile}
-														target="_blank"
-														rel="noopener noreferrer"
+													<button
+														onClick={() =>
+															handleViewTranscript(log.transcriptFile)
+														}
 													>
 														View Transcript
-													</a>
+													</button>
 												</td>
 												<td>{log.transactionID}</td>
 												<td>{log.issueDate}</td>
@@ -877,6 +1015,22 @@ const DashboardUniversity = () => {
 										))}
 								</tbody>
 							</table>
+
+							{/* PDF Viewer Modal */}
+							{pdfUrl && (
+								<div className={styles.pdfModal}>
+									<button onClick={() => setPdfUrl(null)}>Close</button>
+									<Document
+										file={pdfUrl}
+										onLoadError={(error) =>
+											console.error("Error while loading PDF:", error)
+										}
+										onLoadSuccess={() => console.log("PDF loaded successfully")}
+									>
+										<Page pageNumber={1} />
+									</Document>
+								</div>
+							)}
 						</div>
 					)}
 				</div>
