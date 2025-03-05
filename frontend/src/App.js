@@ -7,6 +7,7 @@ import Pending from './components/Pending/Pending';
 import UniDashboard from './components/Dashboard/University/DashboardUniversity';
 import EmpDashboard from './components/Dashboard/Employer/DashboardEmployer';
 import StuDashboard from './components/Dashboard/Student/DashboardStudent';
+import FakeInstitutionLogin from "./components/Login/FakeInstitutionLogin";
 
 
 function App() {
@@ -19,6 +20,7 @@ function App() {
               <Route path="/uniDashboard" element={<UniDashboard />} />
               <Route path="/empDashboard" element={<EmpDashboard />} />
               <Route path="/stuDashboard" element={<StuDashboard />} />
+              <Route path="/fakeInstitutionLlogin" element={<FakeInstitutionLogin />} />
 
               <Route path="/pending" element={<Pending />} />
           </Routes>

@@ -26,11 +26,46 @@ const Login = () => {
         navigate('/register');
     }, [navigate]);
 
-    const handleSubmit = useCallback(() => {
-        if (activeOption === 'University') {
-            navigate('/uniDashboard');
-        } else if (activeOption === 'Employer') {
-            navigate('/empDashboard');
+    const handleSubmit = useCallback(async () => {
+        const email = document.getElementById("emailInput")?.value.trim();
+        const password = document.getElementById("passwordInput")?.value.trim();
+    
+        // Check if email and password are filled
+        if (!email || !password) {
+            alert("Please fill in both email and password.");
+            return;
+        }
+    
+        setLoading(true); // Show spinner
+    
+        try {
+            // Send login request to the backend
+            const response = await fetch("http://localhost:5000/api/login", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ role: activeOption, email, password }),
+            });
+            console.log("Response Status:", response.status);
+            
+            const data = await response.json(); // Parse the response
+            console.log("Login response:", data); // Log the response for debugging
+    
+            if (response.ok) {
+                alert("Login successful!");
+                // Redirect based on role
+                if (activeOption === "University") {
+                    navigate("/uniDashboard");
+                } else if (activeOption === "Employer") {
+                    navigate("/empDashboard");
+                }
+            } else {
+                alert(`Login failed: ${data.message}`); // Show the error message from the backend
+            }
+        } catch (error) {
+            console.error("Full error details:", error); // Log the full error details
+            alert("An error occurred. Please try again.");
+        } finally {
+            setLoading(false); // Hide spinner
         }
     }, [activeOption, navigate]);
 
