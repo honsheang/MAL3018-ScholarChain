@@ -324,3 +324,24 @@
     font-family: var(--font-league-spartan);
 }
 
+.logout {
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	text-decoration: underline;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 125px;
+	height: 49px;
+	font-size: 100%;
+	color: black;
+}
+.logoutButton {
+	position: absolute;
+	top: 55px;
+	left: 1332px;
+	width: 125px;
+	height: 49px;
+	cursor: pointer;
+}

@@ -1,4 +1,5 @@
 import { useState, useCallback, useRef, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import { QRCodeCanvas } from "qrcode.react";
 import styles from "./DashboardStudent.module.css";
 import logoImage from "/ScholarChain/frontend/src/components/Image/ScholarChain.png";
@@ -9,8 +10,13 @@ import sportBadge from "/ScholarChain/frontend/src/components/Image/sport.png";
 const DashboardStudent = () => {
   const [selectedFeature, setSelectedFeature] = useState("Transcript-Viewer");
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  const navigate = useNavigate();
   const [selectedOption, setSelectedOption] = useState("Click here");
   const dropdownRef = useRef(null);
+
+  const onLogoutContainerClick = useCallback(() => {
+      navigate("/");
+    }, [navigate]);
 
   const options = ["Transcript 1", "Transcript 2", "Transcript 3"];
 
@@ -236,6 +242,10 @@ const DynamicContent = ({ selectedFeature }) => {
       <Navigation onHomeClick={onHomeButtonContainerClick} />
       <Logo />
       <BottomImage />
+
+      <div className={styles.logoutButton} onClick={onLogoutContainerClick}>
+                <b className={styles.logout}>Log Out</b>
+              </div>
 
       {/* Features Selection */}
       <div className={styles.functions}>

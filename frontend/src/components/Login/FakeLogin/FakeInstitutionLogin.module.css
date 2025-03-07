@@ -1,0 +1,193 @@
+/* Container for the animated background */
+.fakeInstitutionContainer {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background: linear-gradient(-45deg, #007bff, #00bfff, #007bff, #00bfff);
+    background-size: 400% 400%;
+    animation: gradientBG 15s ease infinite;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+@keyframes gradientBG {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+/* Form container */
+.fakeInstitution {
+    max-width: 600px;
+    width: 100%;
+    padding: 40px;
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    animation: fadeIn 1s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.fakeInstitution h1 {
+    font-size: 28px;
+    color: #333;
+    margin-bottom: 30px;
+    font-weight: 600;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Institution dropdown */
+.institutionSelect {
+    margin-bottom: 25px;
+}
+
+.institutionSelect label {
+    display: block;
+    font-size: 16px;
+    color: #555;
+    margin-bottom: 10px;
+    font-weight: 500;
+}
+
+.institutionSelect select {
+    width: 100%;
+    padding: 12px;
+    font-size: 16px;
+    border: 2px solid #ccc;
+    border-radius: 10px;
+    background-color: #fff;
+    cursor: pointer;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.institutionSelect select:focus {
+    border-color: #007bff;
+    box-shadow: 0 0 10px rgba(0, 123, 255, 0.3);
+    outline: none;
+}
+
+/* Login form */
+.loginForm {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    align-items: center; /* Center the form fields */
+}
+
+.loginForm div {
+    width: 100%;
+    max-width: 400px; /* Limit the width of input fields */
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.loginForm label {
+    font-size: 16px;
+    color: #555;
+    margin-bottom: 8px;
+    font-weight: 500;
+}
+
+.loginForm input {
+    width: 100%;
+    padding: 12px;
+    font-size: 16px;
+    border: 2px solid #ccc;
+    border-radius: 10px;
+    background-color: #fff;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.loginForm input:focus {
+    border-color: #007bff;
+    box-shadow: 0 0 10px rgba(0, 123, 255, 0.3);
+    outline: none;
+}
+
+.loginForm input:disabled {
+    background-color: #f0f0f0;
+    cursor: not-allowed;
+    opacity: 0.8;
+}
+
+/* Submit button */
+.submitButton {
+    padding: 12px 20px;
+    font-size: 16px;
+    color: #fff;
+    background: linear-gradient(135deg, #007bff, #0056b3);
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.submitButton:hover {
+    background: linear-gradient(135deg, #0056b3, #003366);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+.submitButton:active {
+    transform: translateY(0);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Fancy hover effect for the form container */
+.fakeInstitution:hover {
+    transform: scale(1.02);
+    transition: transform 0.3s ease;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    .fakeInstitution {
+        padding: 20px;
+    }
+
+    .fakeInstitution h1 {
+        font-size: 24px;
+    }
+
+    .institutionSelect select,
+    .loginForm input,
+    .submitButton {
+        padding: 10px;
+        font-size: 14px;
+    }
+}
+
+.campusIcon {
+    width: 100%;
+    position: absolute;
+    top: 175px;
+    right: 610px;
+    padding: 10px;
+    max-width: 100%;
+    overflow: hidden;
+    height: 170px;
+    width: 161px;
+    object-fit: cover;
+    transform: scale(1.2);
+}

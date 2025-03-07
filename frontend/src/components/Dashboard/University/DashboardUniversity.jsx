@@ -1,4 +1,4 @@
-import { useState, useCallback } from "react";
+import { useState, useCallback,useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import PortalPopup from "./PortalPopup";
 import AddSemester from "./AddSemester";
@@ -14,6 +14,7 @@ import "react-pdf/dist/esm/Page/AnnotationLayer.css";
 
 const DashboardUniversity = () => {
 	const [badges, setBadges] = useState([]); // Store all badges
+	
 	const [issuedBadges, setIssuedBadges] = useState([]); // Store issued badges
 	const [isAddBadgeOpen, setIsAddBadgeOpen] = useState(false); // Control the popup
 	const [isAddSemesterOpen, setAddSemesterOpen] = useState(false);
@@ -24,15 +25,56 @@ const DashboardUniversity = () => {
 	const [logoPreview, setLogoPreview] = useState(null);
 	const [fileName, setFileName] = useState("No file selected");
 	const [isEditing, setIsEditing] = useState(false);
-	const [universityName, setUniversityName] = useState(
-		"Peninsula College Georgetown",
-	);
+
+	const [universityName, setUniversityName] = useState("Loading...");
+
+	useEffect(() => {
+		const fetchUniversity = async () => {
+			const token = localStorage.getItem("token");
+
+			if (!token) {
+				console.error("No token found. Redirecting to login...");
+				navigate("/login");
+				return;
+			}
+
+			try {
+				const response = await fetch("http://localhost:5000/api/university", {
+					method: "GET",
+					headers: {
+						"Content-Type": "application/json",
+						"Authorization": `Bearer ${token}`,
+					},
+				});
+
+				const data = await response.json();
+				console.log("API Response Data:", data); // Debugging
+
+				if (!response.ok) {
+					throw new Error("Failed to fetch university data");
+				}
+
+				setUniversityName(data.universityName || "Unknown University");
+				setSignatoryName(data.issuerName || "Unknown Signatory");
+				setEmail(data.email || "Unknown Email");
+
+			} catch (error) {
+				console.error("Error fetching university data:", error);
+				setUniversityName("Unknown University");
+				setSignatoryName("Unknown Signatory");
+				setEmail("Unknown Email");
+			}
+		};
+
+		fetchUniversity();
+	}, [navigate]);
+
 	const [universityAddress, setUniversityAddress] = useState(
 		"No.1, Education Boulevard Batu Kawan Industrial Park, 14110 Batu Kawan, Pulau Pinang",
 	);
 	const [mobileNo, setMobileNo] = useState("04-587 0000");
-	const [email, setEmail] = useState("theshipcampus@peninsulamalaysia.edu.my");
-	const [signatoryName, setSignatoryName] = useState("Nafisah Misriya");
+	const [email, setEmail] = useState("Loading...");
+	const [signatoryName, setSignatoryName] = useState("Loading...");
 	const [signatoryDepartment, setSignatoryDepartment] =
 		useState("Bursary Department");
 
@@ -1038,7 +1080,7 @@ const DashboardUniversity = () => {
 				<div className={styles.welcome}>
 					<b className={styles.welcome1}>Welcome,</b>
 					<b className={styles.peninsulaCollegeGeorgetown}>
-						Peninsula College Georgetown
+					{universityName}
 					</b>
 				</div>
 

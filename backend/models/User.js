@@ -2,8 +2,9 @@ const mongoose = require("mongoose");
 
 const UserSchema = new mongoose.Schema({
     role: { type: String, required: true }, // "University" or "Employer"
-    issuerName: { type: String }, // For University
+    universityName: { type: String }, // University Name
     universitySsoId: { type: String }, // For University
+    issuerName: { type: String }, // For University
     email: { type: String, required: true, unique: true  }, // For University
     domain: { type: String }, // For University
     password: { type: String, required: true, unique: true  }, // For University

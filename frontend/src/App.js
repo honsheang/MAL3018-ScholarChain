@@ -7,7 +7,7 @@ import Pending from './components/Pending/Pending';
 import UniDashboard from './components/Dashboard/University/DashboardUniversity';
 import EmpDashboard from './components/Dashboard/Employer/DashboardEmployer';
 import StuDashboard from './components/Dashboard/Student/DashboardStudent';
-import FakeInstitutionLogin from "./components/Login/FakeInstitutionLogin";
+import FakeInstitutionLogin from './components/Login/FakeLogin/FakeInstitutionLogin';
 
 
 function App() {

@@ -292,6 +292,38 @@
     bottom: 65.52%;
     left: 8.3%;
 }
+.universityName {
+    position: absolute;
+    height: 76.47%;
+    width: 25.99%;
+    top: 102%;
+    left: 0%;
+    font-weight: 500;
+    color: #f6f6f6;
+}
+.uniInput {
+    position: absolute;
+    top: 100%;
+    left: 330px; /* Align it next to the label */
+    width: 40%; /* Use remaining space */
+    height: 68px;
+    border-radius: var(--br-21xl);
+    background-color: var(--color-gainsboro);
+    border: 1px solid #ccc; /* Add a border */
+    padding: 10px 40px; /* Space inside the text field */
+    font-size: 20px; /* Adjust font size */
+    color: #333; /* Text color */
+    outline: none; /* Remove default focus outline */
+    box-sizing: border-box; /* Ensure padding/borders fit */
+    z-index: 0; /* Keep it behind the label */
+}
+
+.uniInput:focus {
+    border-color: #007bff; /* Highlight on focus */
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5); /* Add a glow */
+}
+
+
 .universitySsoId {
     position: absolute;
     height: 76.47%;

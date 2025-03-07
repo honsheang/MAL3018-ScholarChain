@@ -11,6 +11,8 @@ const SignUp = () => {
 	const [loading, setLoading] = useState(false);
 	const [activeRole, setActiveRole] = useState("University");
 
+	const [uniName, setUniName] = useState("");
+
 	const [issuerName, setIssuerName] = useState("");
 	const [universitySsoId, setUniversitySsoId] = useState("");
 	const [email, setEmail] = useState("");
@@ -23,14 +25,12 @@ const SignUp = () => {
 	const [enterpriseSsoId, setEnterpriseSsoId] = useState("");
 	const [adminEmail, setAdminEmail] = useState("");
 
-	
-
 	const onAccessContainerClick = useCallback(() => {
 		alert("Redirecting to institutional access...");
 		setLoading(true); // Show spinner
 		setTimeout(() => {
 			setLoading(false); // Hide spinner
-			navigate("/stuDashboard"); // Navigate after delay
+			navigate("/fakeInstitutionLlogin"); // Navigate after delay
 		}, 2000); // 2-second delay
 	}, [navigate]);
 
@@ -43,8 +43,9 @@ const SignUp = () => {
 		if (activeRole === "University") {
 			formData = {
 				role: activeRole,
-				issuerName: document.getElementById("issuerName")?.value,
+				universityName: document.getElementById("uniName")?.value,
 				universitySsoId: document.getElementById("uniSso")?.value,
+				issuerName: document.getElementById("issuerName")?.value,
 				email: document.getElementById("uniEmail")?.value,
 				domain: document.getElementById("uniDomain")?.value,
 				password: document.getElementById("uniPassword")?.value,
@@ -77,6 +78,9 @@ const SignUp = () => {
 
 		// Remove confirmPassword from the data before sending to the backend
 		delete formData.confirmPassword;
+
+		// Debugging: Check the final data before sending
+		console.log("📤 Form Data to Send:", formData);	
 
 		try {
 			const response = await fetch(
@@ -207,6 +211,37 @@ const SignUp = () => {
 				{/* Dynamic Input Fields Based on Selected Role */}
 				{activeRole === "University" && (
 					<>
+						{/* University Name */}
+						<div className={styles.uniName}>
+							<label className={styles.universityName} htmlFor="uniName">
+								University Name
+							</label>
+							<input
+								id="uniName"
+								type="text"
+								className={styles.uniInput}
+								placeholder="Enter the University Name"
+								value={uniName}
+								onChange={(e) => setUniName(e.target.value)}
+							/>
+						</div>
+
+						{/* University SSO ID */}
+						<div className={styles.uniSso}>
+							<label className={styles.universitySsoId} htmlFor="uniSso">
+								University SSO ID
+							</label>
+							<input
+								id="uniSso"
+								type="text"
+								className={styles.textInput}
+								placeholder="Enter the University SSO ID"
+								value={universitySsoId}
+								onChange={(e) => setUniversitySsoId(e.target.value)}
+							/>
+						</div>
+
+						{/* Issuer Name */}
 						<div className={styles.issuerName}>
 							<label className={styles.universitySsoId} htmlFor="issuerName">
 								Issuer Name
@@ -221,19 +256,7 @@ const SignUp = () => {
 							/>
 						</div>
 
-						<div className={styles.uniSso}>
-							<label className={styles.universitySsoId} htmlFor="uniSso">
-								University SSO ID
-							</label>
-							<input
-								id="uniSso"
-								type="text"
-								className={styles.textInput}
-								placeholder="Enter the University SSO ID"
-								value={universitySsoId}
-								onChange={(e) => setUniversitySsoId(e.target.value)}
-							/>
-						</div>
+						{/* Email */}
 						<div className={styles.email}>
 							<label className={styles.universitySsoId} htmlFor="uniEmail">
 								Email
@@ -247,6 +270,8 @@ const SignUp = () => {
 								onChange={(e) => setEmail(e.target.value)}
 							/>
 						</div>
+
+						{/* Domain */}
 						<div className={styles.domain}>
 							<label className={styles.universitySsoId} htmlFor="uniDomain">
 								Domain Name
@@ -260,6 +285,8 @@ const SignUp = () => {
 								onChange={(e) => setDomain(e.target.value)}
 							/>
 						</div>
+
+						{/* Password */}
 						<div className={styles.password}>
 							<label className={styles.universitySsoId} htmlFor="uniPassword">
 								Set Password
@@ -273,6 +300,8 @@ const SignUp = () => {
 								onChange={(e) => setPassword(e.target.value)}
 							/>
 						</div>
+
+						{/* Confirm Password */}
 						<div className={styles.confirmPass}>
 							<label
 								className={styles.universitySsoId}
@@ -290,6 +319,7 @@ const SignUp = () => {
 							/>
 						</div>
 
+						{/* Submit Button */}
 						<div
 							className={styles.submitButton}
 							onClick={handleSubmit} // Updated submit handler
