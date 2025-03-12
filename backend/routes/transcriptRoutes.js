@@ -5,6 +5,7 @@ const User = require("../models/User");
 const authMiddleware = require("../middleware/authMiddleware");
 const empAuthMiddleware = require("../middleware/empAuthMiddleware");
 const uniAuthMiddleware = require("../middleware/uniAuthMiddleware");
+const studAuthMiddleware = require("../middleware/studAuthMiddleware");
 
 // Save transcript metadata
 router.post("/", authMiddleware, async (req, res) => {
@@ -30,16 +31,33 @@ router.post("/", authMiddleware, async (req, res) => {
 			return res.status(400).json({ message: "Invalid transcript file URL" });
 		}
 
-		// Check if the university exists (using universitySsoId)
-		const university = await User.findOne({
-			universitySsoId: universityId,
-			role: "University",
-		});
+		
 		if (!university) {
 			return res.status(404).json({ message: "University not found" });
 		}
 
         console.log("🏫 University SsoId:", university.universitySsoId);
+
+		// ✅ FIX: Search for student in Student collection, not User
+		const student = await Student.findOne({ studentId: studentID });
+		console.log("🔍 Searching for student:", studentID);
+console.log("📂 Student found:", student);
+		if (!student) {
+			console.log("⚠️ Student not found in Student collection:", studentID);
+			return res.status(404).json({ message: "Student not found" });
+		}
+		console.log("✅ Student found:", student);
+
+		if (!student) {
+			console.log("⚠️ Student not found in database:", studentID);
+			return res.status(404).json({ message: "Student not found" });
+		}
+
+		// ✅ Fix: Add university validation (optional)
+		const university = await User.findOne({ universitySsoId: universityId, role: "University" });
+		if (!university) {
+			return res.status(404).json({ message: "University not found" });
+		}
 
 		// Check if a transcript for this student already exists
 		const existingTranscript = await Transcript.findOne({ studentID });
@@ -113,7 +131,7 @@ router.get("/university/:universityId", async (req, res) => {
 });
 
 // Fetch all transcripts issued by the logged-in university
-router.get("/university", authMiddleware, async (req, res) => {
+router.get("/university", uniAuthMiddleware, async (req, res) => {
     try {
       console.log("📩 Received request to fetch transcripts for university:", req.user.userId);
   
@@ -144,7 +162,7 @@ router.get("/university", authMiddleware, async (req, res) => {
 
 // ✅ Fetch all transcripts (No university filtering)
 // Fetch all transcripts (without filtering by universityId)
-router.get("/all", authMiddleware, async (req, res) => {
+router.get("/all", uniAuthMiddleware, async (req, res) => {
     try {
       console.log("📩 Received request to fetch all transcripts");
   
@@ -172,7 +190,7 @@ router.get("/all", authMiddleware, async (req, res) => {
 });
 
 // Fetch transcripts by studentID
-router.get("/student/:studentId", authMiddleware, async (req, res) => {
+router.get("/student/:studentId", studAuthMiddleware, async (req, res) => {
     try {
       const { studentId } = req.params;
   

@@ -59,9 +59,11 @@ router.post("/login", async (req, res) => {
       // ✅ Send token in response
       return res.status(200).json({
         message: "Login successful!",
-        token, // Include token in the response
+        token,  
         role: student.role,
+        studentId: student.studentId,  // ✅ Add this line
       });
+      
     }
 
     // For Other Roles (University, Employer): Use the User model

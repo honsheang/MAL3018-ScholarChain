@@ -13,50 +13,78 @@ const DashboardStudent = () => {
 	const navigate = useNavigate();
 	const [selectedOption, setSelectedOption] = useState("Click here");
 	const dropdownRef = useRef(null);
-  const [transcripts, setTranscripts] = useState([]);
+	const [transcripts, setTranscripts] = useState([]);
+	const [options, setOptions] = useState([]);
 
-  useEffect(() => {
-    const fetchTranscripts = async () => {
-		try {
-		  const token = localStorage.getItem("token");
-		  console.log("🔑 Token from localStorage:", token); // Log the token
+	useEffect(() => {
+		const fetchTranscripts = async () => {
+		  try {
+			const token = localStorage.getItem("token");
+			const studentId = localStorage.getItem("studentId");
 	  
-		  const studentId = "BSCS2309111"; // Replace with the logged-in student's ID
-	  
-		  const response = await fetch(
-			`http://localhost:5000/api/transcripts/student/${studentId}`,
-			{
-			  method: "GET",
-			  headers: {
-				"Content-Type": "application/json",
-				Authorization: `Bearer ${token}`,
-			  },
+			if (!studentId) {
+			  console.error("🚨 Student ID is missing!");
+			  alert("Student ID is missing. Please log in again.");
+			  return;
 			}
-		  );
 	  
-		  if (!response.ok) {
-			const errorData = await response.json(); // Log the error response
-			console.error("Error response:", errorData);
-			throw new Error("Failed to fetch transcripts");
+			console.log("🎓 Fetching transcripts for Student ID:", studentId);
+	  
+			const response = await fetch(
+			  `http://localhost:5000/api/transcripts/${studentId}`,
+			  {
+				method: "GET",
+				headers: {
+				  "Content-Type": "application/json",
+				  Authorization: `Bearer ${token}`,
+				},
+			  }
+			);
+	  
+			if (!response.ok) {
+			  console.error("❌ API Error:", response.status);
+			  setTranscripts([]); // Ensure an empty array to prevent crashes
+			  setOptions([]); // Reset dropdown options
+			  return;
+			}
+	  
+			const data = await response.json();
+			console.log("✅ Transcripts fetched:", data, Array.isArray(data));
+	  
+			const formattedData = Array.isArray(data) ? data : [data];
+			console.log("📜 Formatted Transcripts:", formattedData);
+	  
+			setTranscripts(formattedData); // Update transcripts state
+	  
+			// Update options after state update
+			const formattedOptions = formattedData.map((t) => t.transactionID || t._id);
+			setOptions(formattedOptions);
+			console.log("🎯 Updated Dropdown Options:", formattedOptions);
+			
+			// Debugging: Ensure state updates
+			setTimeout(() => {
+			  console.log("🔄 Updated transcripts state:", formattedData);
+			  console.log("🔄 Updated dropdown options state:", formattedOptions);
+			}, 1000);
+		  } catch (error) {
+			console.error("❌ Error fetching transcripts:", error);
+			alert("Failed to fetch transcripts. Please try again.");
 		  }
+		};
 	  
-		  const data = await response.json();
-		  console.log("Transcripts fetched:", data); // Log the fetched data
-		  setTranscripts(data); // Update the transcripts state
-		} catch (error) {
-		  console.error("Error fetching transcripts:", error);
-		  alert("Failed to fetch transcripts. Please try again.");
-		}
-	  };
-  
-    fetchTranscripts();
-  }, []);
+		fetchTranscripts();
+	  }, []);
+	  
 
 	const onLogoutContainerClick = useCallback(() => {
 		navigate("/");
 	}, [navigate]);
 
-	const options = transcripts.map((transcript) => transcript.transactionID);
+	console.log("📄 Current Transcripts State:", transcripts);
+
+
+console.log("🎯 Dropdown Options:", options);
+
 
 	const handleToggleDropdown = () => {
 		setIsDropdownOpen((prev) => !prev);
@@ -64,12 +92,14 @@ const DashboardStudent = () => {
 
 	const [selectedTranscript, setSelectedTranscript] = useState(null);
 
-const handleOptionSelect = (option) => {
-  const selected = transcripts.find((transcript) => transcript.transactionID === option);
-  setSelectedTranscript(selected);
-  setSelectedOption(option);
-  setIsDropdownOpen(false);
-};
+	const handleOptionSelect = (option) => {
+		const selected = transcripts.find(
+			(transcript) => transcript.transactionID === option,
+		);
+		setSelectedTranscript(selected);
+		setSelectedOption(option);
+		setIsDropdownOpen(false);
+	};
 
 	useEffect(() => {
 		const handleClickOutside = (event) => {
@@ -138,74 +168,87 @@ const handleOptionSelect = (option) => {
 		switch (selectedFeature) {
 			case "Transcript-Viewer":
 				return (
-          <div className={styles.display}>
-            <div className={styles.selecttranscript}>
-              <b className={styles.selectYourTranscript}>Select your Transcript</b>
-      
-              <div className={styles.dropdown} ref={dropdownRef}>
-                <div
-                  className={styles.dropdownChild}
-                  onClick={handleToggleDropdown}
-                />
-                <div
-                  className={styles.clickHere}
-                  onClick={handleToggleDropdown}
-                >
-                  {selectedOption}
-                  <span className={styles.arrow}>
-                    {isDropdownOpen ? "▲" : "▼"}
-                  </span>
-                </div>
-                {isDropdownOpen && (
-                  <div className={styles.dropdownMenu}>
-                    {options.map((option, index) => (
-                      <div
-                        key={index}
-                        className={styles.dropdownItem}
-                        onClick={() => handleOptionSelect(option)}
-                      >
-                        {option}
-                      </div>
-                    ))}
-                  </div>
-                )}
-              </div>
-            </div>
-      
-            <div className={styles.transcriptGrey} />
-      
-            {selectedTranscript && (
-              <>
-                <div className={styles.course}>
-                  <b className={styles.issueDate}>Course</b>
-                  <div className={styles.courseChild} />
-                  <div className={styles.sampleText}>{selectedTranscript.course}</div>
-                </div>
-      
-                <div className={styles.grade}>
-                  <b className={styles.issueDate}>Grade</b>
-                  <div className={styles.courseChild} />
-                  <div className={styles.sampleText}>{selectedTranscript.grade}</div>
-                </div>
-      
-                <div className={styles.issuedate}>
-                  <b className={styles.issueDate}>Issue Date</b>
-                  <div className={styles.courseChild} />
-                  <div className={styles.sampleText}>
-                    {new Date(selectedTranscript.issueDate).toLocaleDateString()}
-                  </div>
-                </div>
-      
-                <div className={styles.file}>
-                  <div className={styles.fileChild} />
-                  <b className={styles.filenamepdf}>
-                    {selectedTranscript.transcriptFile.split("/").pop()}
-                  </b>
-                </div>
-              </>
-            )}
-          </div>
-        );
+					<div className={styles.display}>
+						<div className={styles.selecttranscript}>
+							<b className={styles.selectYourTranscript}>
+								Select your Transcript
+							</b>
+
+							<div className={styles.dropdown} ref={dropdownRef}>
+								<div
+									className={styles.dropdownChild}
+									onClick={handleToggleDropdown}
+								/>
+								<div
+									className={styles.clickHere}
+									onClick={handleToggleDropdown}
+								>
+									{selectedOption}
+									<span className={styles.arrow}>
+										{isDropdownOpen ? "▲" : "▼"}
+									</span>
+								</div>
+								{isDropdownOpen && (
+  <div className={styles.dropdownMenu}>
+    {options.length > 0 ? (
+      options.map((option, index) => (
+        <div 
+          key={index} 
+          className={styles.dropdownItem} 
+          onClick={() => handleOptionSelect(option)}
+        >
+          {option}
+        </div>
+      ))
+    ) : (
+      <div className={styles.dropdownItem}>No transcripts available</div>
+    )}
+  </div>
+)}
+
+							</div>
+						</div>
+
+						<div className={styles.transcriptGrey} />
+
+						{selectedTranscript && (
+							<>
+								<div className={styles.course}>
+									<b className={styles.issueDate}>Course</b>
+									<div className={styles.courseChild} />
+									<div className={styles.sampleText}>
+										{selectedTranscript.course}
+									</div>
+								</div>
+
+								<div className={styles.grade}>
+									<b className={styles.issueDate}>Grade</b>
+									<div className={styles.courseChild} />
+									<div className={styles.sampleText}>
+										{selectedTranscript.grade}
+									</div>
+								</div>
+
+								<div className={styles.issuedate}>
+									<b className={styles.issueDate}>Issue Date</b>
+									<div className={styles.courseChild} />
+									<div className={styles.sampleText}>
+										{new Date(
+											selectedTranscript.issueDate,
+										).toLocaleDateString()}
+									</div>
+								</div>
+
+								<div className={styles.file}>
+									<div className={styles.fileChild} />
+									<b className={styles.filenamepdf}>
+										{selectedTranscript.transcriptFile.split("/").pop()}
+									</b>
+								</div>
+							</>
+						)}
+					</div>
+				);
 
 			case "Share Options":
 				const shareURL =

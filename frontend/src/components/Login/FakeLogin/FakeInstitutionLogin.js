@@ -58,6 +58,12 @@ const FakeInstitution = () => {
       if (response.ok) {
         alert("Login successful!");
         localStorage.setItem("token", data.token); // Store the token in localStorage
+        if (data.studentId) {
+          localStorage.setItem("studentId", data.studentId);
+          console.log("✅ Student ID stored:", data.studentId);
+        } else {
+          console.warn("⚠️ studentId missing in response!");
+        }
         navigate("/stuDashboard"); // Redirect to student dashboard
       } else {
         alert(`Login failed: ${data.message}`);
