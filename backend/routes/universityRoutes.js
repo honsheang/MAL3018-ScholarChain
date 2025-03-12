@@ -1,12 +1,12 @@
 const express = require("express");
-const authMiddleware = require("../middleware/authMiddleware"); // Ensure middleware is imported
+const uniAuthMiddleware = require("../middleware/uniAuthMiddleware"); // Ensure middleware is imported
 const User = require("../models/User");
 
 const router = express.Router();
 
 console.log("✅ universityRoutes.js loaded");
 
-router.get("/", authMiddleware, async (req, res) => {
+router.get("/", uniAuthMiddleware, async (req, res) => {
     try {
         console.log("📩 Received request on /api/university"); // Debugging
 

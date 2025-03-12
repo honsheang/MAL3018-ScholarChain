@@ -78,7 +78,7 @@ const DashboardUniversity = () => {
 				console.log("🔑 Token:", token); // Log the token
 
 				const response = await fetch(
-					"http://localhost:5000/api/transcripts/all",
+					"http://localhost:5000/api/transcripts",
 					{
 						method: "GET",
 						headers: {

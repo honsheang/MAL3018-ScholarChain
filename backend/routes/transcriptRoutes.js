@@ -3,6 +3,8 @@ const router = express.Router();
 const Transcript = require("../models/Transcript");
 const User = require("../models/User");
 const authMiddleware = require("../middleware/authMiddleware");
+const empAuthMiddleware = require("../middleware/empAuthMiddleware");
+const uniAuthMiddleware = require("../middleware/uniAuthMiddleware");
 
 // Save transcript metadata
 router.post("/", authMiddleware, async (req, res) => {
@@ -171,24 +173,21 @@ router.get("/all", authMiddleware, async (req, res) => {
 
 // Fetch transcripts by studentID
 router.get("/student/:studentId", authMiddleware, async (req, res) => {
-	try {
-	  const { studentId } = req.params;
-	  console.log("📩 Received request to fetch transcripts for student:", studentId);
+    try {
+      const { studentId } = req.params;
   
-	  // Fetch all transcripts for this student
-	  const transcripts = await Transcript.find({ studentID: studentId }).select("-__v");
+      // Fetch all transcripts for this student
+      const transcripts = await Transcript.find({ studentID: studentId }).select("-__v");
   
-	  console.log("📜 Transcripts found:", transcripts.length);
+      if (transcripts.length === 0) {
+        return res.status(404).json({ message: "No transcripts found for this student" });
+      }
   
-	  if (transcripts.length === 0) {
-		return res.status(404).json({ message: "No transcripts found for this student" });
-	  }
-  
-	  res.status(200).json(transcripts);
-	} catch (error) {
-	  console.error("❌ Error fetching transcripts:", error);
-	  res.status(500).json({ message: "Server error" });
-	}
-  });
+      res.status(200).json(transcripts);
+    } catch (error) {
+      console.error("Error fetching transcripts:", error);
+      res.status(500).json({ message: "Server error" });
+    }
+});
 
 module.exports = router;

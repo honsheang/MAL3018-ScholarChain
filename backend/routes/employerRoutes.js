@@ -1,12 +1,12 @@
 const express = require("express");
 const router = express.Router();
-const authMiddleware = require("../middleware/authMiddleware");
+const empAuthMiddleware = require("../middleware/empAuthMiddleware");
 const User = require("../models/User"); // Import User model
 
 
 console.log("✅ employerRoutes.js loaded");
 
-router.get("/employer", authMiddleware, async (req, res) => {
+router.get("/employer", empAuthMiddleware, async (req, res) => {
     try {
         // Find the employer in the users collection
         const employer = await User.findById(req.user.userId).select("enterpriseName role");
