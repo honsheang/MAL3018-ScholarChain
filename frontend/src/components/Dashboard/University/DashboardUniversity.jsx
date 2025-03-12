@@ -1,39 +1,40 @@
-import { useState, useCallback,useEffect } from "react";
+import { useState, useCallback, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import PortalPopup from "./PortalPopup";
 import AddSemester from "./AddSemester";
 import AddBadgePopup from "./AddBadgePopup"; // Import the new component
 import styles from "./DashboardUniversity.module.css";
+import RegisterStudentPopup from "./RegisterStudentPopup";
 import logoImage from "/ScholarChain/frontend/src/components/Image/ScholarChain.png";
 import btmImage from "/ScholarChain/frontend/src/components/Image/blackscholarchain.png";
 import jsPDF from "jspdf";
 import autoTable from "jspdf-autotable"; // Correct import for autoTable
-import { Document, Page } from "react-pdf";
 
 import "react-pdf/dist/esm/Page/AnnotationLayer.css";
 
 const DashboardUniversity = () => {
 	const [badges, setBadges] = useState([]); // Store all badges
-	
+
 	const [issuedBadges, setIssuedBadges] = useState([]); // Store issued badges
 	const [isAddBadgeOpen, setIsAddBadgeOpen] = useState(false); // Control the popup
 	const [isAddSemesterOpen, setAddSemesterOpen] = useState(false);
 	const [isReceiptOpen, setReceiptOpen] = useState(false);
 	const navigate = useNavigate();
 	const [semesterCGPAs, setSemesterCGPAs] = useState({}); // Track CGPA for each semester
-
+	const [isRegisterStudentOpen, setIsRegisterStudentOpen] = useState(false);
 	const [logoPreview, setLogoPreview] = useState(null);
 	const [fileName, setFileName] = useState("No file selected");
 	const [isEditing, setIsEditing] = useState(false);
 
 	const [universityName, setUniversityName] = useState("Loading...");
 
+	const [universityId, setUniversityId] = useState(null);
+
 	useEffect(() => {
 		const fetchUniversity = async () => {
 			const token = localStorage.getItem("token");
-
 			if (!token) {
-				console.error("No token found. Redirecting to login...");
+				console.error("❌ No token found. Redirecting to login...");
 				navigate("/login");
 				return;
 			}
@@ -43,23 +44,22 @@ const DashboardUniversity = () => {
 					method: "GET",
 					headers: {
 						"Content-Type": "application/json",
-						"Authorization": `Bearer ${token}`,
+						Authorization: `Bearer ${token}`, // Attach the token for authentication
 					},
 				});
 
 				const data = await response.json();
-				console.log("API Response Data:", data); // Debugging
-
 				if (!response.ok) {
-					throw new Error("Failed to fetch university data");
+					throw new Error(data.message || "Failed to fetch university data");
 				}
 
+				// Set university details
+				setUniversityId(data.universitySsoId);
 				setUniversityName(data.universityName || "Unknown University");
 				setSignatoryName(data.issuerName || "Unknown Signatory");
 				setEmail(data.email || "Unknown Email");
-
 			} catch (error) {
-				console.error("Error fetching university data:", error);
+				console.error("❌ Error fetching university data:", error);
 				setUniversityName("Unknown University");
 				setSignatoryName("Unknown Signatory");
 				setEmail("Unknown Email");
@@ -68,6 +68,71 @@ const DashboardUniversity = () => {
 
 		fetchUniversity();
 	}, [navigate]);
+
+	useEffect(() => {
+		if (!universityId) return; // Skip if universityId is not set
+
+		const fetchTranscripts = async () => {
+			try {
+				const token = localStorage.getItem("token");
+				console.log("🔑 Token:", token); // Log the token
+
+				const response = await fetch(
+					"http://localhost:5000/api/transcripts/all",
+					{
+						method: "GET",
+						headers: {
+							"Content-Type": "application/json",
+							Authorization: `Bearer ${token}`,
+						},
+					},
+				);
+
+				if (!response.ok) {
+					const errorData = await response.json(); // Log the error response
+					console.error("Error response:", errorData);
+					throw new Error("Failed to fetch transcripts");
+				}
+
+				const data = await response.json();
+				console.log("📜 Transcripts fetched:", data); // Log the fetched data
+				setReportLog(data); // Update reportLog with fetched transcripts
+			} catch (error) {
+				console.error("Error fetching transcripts:", error);
+				alert("Failed to fetch transcripts. Please try again.");
+			}
+		};
+
+		fetchTranscripts();
+	}, [universityId]); // Run only when universityId changes
+
+	const handleRegisterStudent = async (studentData) => {
+		try {
+			// Send the student data to the backend
+			const response = await fetch(
+				"http://localhost:5000/api/register/student",
+				{
+					method: "POST",
+					headers: {
+						"Content-Type": "application/json",
+					},
+					body: JSON.stringify(studentData),
+				},
+			);
+
+			const data = await response.json();
+
+			if (response.ok) {
+				alert("Student registered successfully!");
+				setIsRegisterStudentOpen(false); // Close the popup
+			} else {
+				alert(`Registration failed: ${data.message}`);
+			}
+		} catch (error) {
+			console.error("Error:", error);
+			alert("An error occurred. Please try again.");
+		}
+	};
 
 	const [universityAddress, setUniversityAddress] = useState(
 		"No.1, Education Boulevard Batu Kawan Industrial Park, 14110 Batu Kawan, Pulau Pinang",
@@ -89,7 +154,6 @@ const DashboardUniversity = () => {
 	const [studentName, setStudentName] = useState("");
 	const [studentID, setStudentID] = useState("");
 	const [searchQuery, setSearchQuery] = useState("");
-	const [pdfUrl, setPdfUrl] = useState(null);
 
 	const programmes = [
 		"BA (HONS) ACCOUNTING & FINANCE (ACCOUNTING)",
@@ -115,19 +179,19 @@ const DashboardUniversity = () => {
 	};
 	const handleViewTranscript = (transcriptFile) => {
 		if (transcriptFile instanceof Blob) {
-			// Create a Blob URL for the PDF
-			const pdfBlobUrl = URL.createObjectURL(transcriptFile);
-
-			// Open the Blob URL in a new tab
-			window.open(pdfBlobUrl, "_blank");
-
-			// Revoke the Blob URL after opening the PDF
-			URL.revokeObjectURL(pdfBlobUrl);
+		  // Create a Blob URL for the PDF
+		  const pdfBlobUrl = URL.createObjectURL(transcriptFile);
+	  
+		  // Open the Blob URL in a new tab
+		  window.open(pdfBlobUrl, "_blank");
+	  
+		  // Revoke the Blob URL after opening the PDF
+		  URL.revokeObjectURL(pdfBlobUrl);
 		} else {
-			// If the transcriptFile is already a URL, open it directly
-			window.open(transcriptFile, "_blank");
+		  // If the transcriptFile is already a URL, open it directly
+		  window.open(transcriptFile, "_blank");
 		}
-	};
+	  };
 
 	const generateTranscriptPDF = () => {
 		const doc = new jsPDF();
@@ -242,6 +306,8 @@ const DashboardUniversity = () => {
 
 		// Save the PDF as a blob
 		const pdfBlob = doc.output("blob"); // Use "blob" if supported
+
+		console.log("Generated PDF Blob:", pdfBlob);
 		return pdfBlob;
 	};
 
@@ -260,31 +326,96 @@ const DashboardUniversity = () => {
 		setIsEditing(!isEditing); // Toggle edit mode
 	};
 
-	const handleUploadAndSubmit = () => {
+	const handleUploadAndSubmit = async () => {
 		if (!studentName || !studentID) {
 			alert("Please enter the student name and student ID.");
 			return;
 		}
 
+		if (!universityId) {
+			alert("University ID is missing. Please log in again.");
+			return;
+		}
+
 		// Generate the PDF
-		const pdfBlob = generateTranscriptPDF(); // Replace with actual file upload logic
-		const transactionID = `TXN-${Date.now()}`; // Generate a placeholder transcript ID
+		const pdfBlob = generateTranscriptPDF(); // Generate the PDF blob
+		const transactionID = `TXN-${Date.now()}`; // Generate a unique transaction ID
 		const issueDate = new Date().toLocaleDateString(); // Get the current date
 
-		// Save the transcript data to the report log
-		setReportLog((prev) => [
-			...prev,
-			{
-				studentName,
-				studentID,
-				transcriptFile: pdfBlob,
-				transactionID,
-				issueDate,
-			},
-		]);
+		// Create a FormData object to upload the PDF file
+		const formData = new FormData();
+		formData.append("transcriptFile", pdfBlob, `${studentID}_transcript.pdf`);
 
-		// Open the receipt popup
-		setReceiptOpen(true);
+		try {
+			console.log("Step 1: Uploading PDF file...");
+			const uploadResponse = await fetch("http://localhost:5000/api/upload", {
+				method: "POST",
+				body: formData, // No need to set Content-Type for FormData
+			});
+
+			if (!uploadResponse.ok) {
+				const errorText = await uploadResponse.text();
+				console.error("Upload Error:", errorText);
+				throw new Error("Failed to upload transcript file");
+			}
+
+			const uploadData = await uploadResponse.json();
+			console.log("PDF uploaded successfully:", uploadData);
+
+			const transcriptFileUrl = uploadData.fileUrl; // URL of the uploaded PDF file
+
+			// Step 2: Save the transcript metadata to the database
+			console.log("Step 2: Saving transcript metadata...");
+			const transcriptData = {
+				universityId, // Use the universitySsoId directly as universityId
+				studentID,
+				studentName,
+				transcriptFile: transcriptFileUrl, // URL of the uploaded PDF
+				transactionID,
+			};
+
+			const saveResponse = await fetch(
+				"http://localhost:5000/api/transcripts",
+				{
+					method: "POST",
+					headers: {
+						"Content-Type": "application/json",
+						Authorization: `Bearer ${localStorage.getItem("token")}`,
+					},
+					body: JSON.stringify(transcriptData),
+				},
+			);
+
+			if (!saveResponse.ok) {
+				const saveData = await saveResponse.json();
+				throw new Error(
+					saveData.message || "Failed to save transcript metadata",
+				);
+			}
+
+			const saveData = await saveResponse.json();
+			console.log("Transcript metadata saved successfully:", saveData);
+
+			// Step 3: Update the report log (optional, for frontend display)
+			console.log("Step 3: Updating report log...");
+			setReportLog((prev) => [
+				...prev,
+				{
+					studentName,
+					studentID,
+					transcriptFile: transcriptFileUrl,
+					transactionID,
+					issueDate,
+				},
+			]);
+
+			// Step 4: Open the receipt popup
+			console.log("Step 4: Opening receipt popup...");
+			setReceiptOpen(true);
+		} catch (error) {
+			console.error("Error occurred:", error);
+			alert(`An error occurred: ${error.message}`);
+		}
 	};
 
 	const handleAddBadge = (newBadge) => {
@@ -497,6 +628,13 @@ const DashboardUniversity = () => {
 					>
 						<div className={styles.report}>Report</div>
 					</div>
+				</div>
+
+				<div
+					className={styles.registerStudentButton}
+					onClick={() => setIsRegisterStudentOpen(true)}
+				>
+					<b className={styles.registerStudentText}>Register Student</b>
 				</div>
 
 				{/* Content */}
@@ -1000,88 +1138,60 @@ const DashboardUniversity = () => {
 						</div>
 					)}
 					{activeButton === "Report" && (
-						<div className={styles.reportLog}>
-							{/* Search Bar */}
-							<div className={styles.searchBar}>
-								<input
-									type="text"
-									placeholder="Search by Student Name, ID, or Transaction ID"
-									value={searchQuery}
-									onChange={(e) => setSearchQuery(e.target.value)}
-									className={styles.searchInput}
-								/>
-								<button className={styles.searchButton}>Search</button>
-							</div>
+  <div className={styles.reportLog}>
+    {/* Search Bar */}
+    <div className={styles.searchBar}>
+      <input
+        type="text"
+        placeholder="Search by Student Name, ID, or Transaction ID"
+        value={searchQuery}
+        onChange={(e) => setSearchQuery(e.target.value)}
+        className={styles.searchInput}
+      />
+      <button className={styles.searchButton}>Search</button>
+    </div>
 
-							{/* Table for Report Log */}
-							<table className={styles.reportTable}>
-								<thead>
-									<tr>
-										<th>Student ID</th>
-										<th>Name</th>
-										<th>Transcript</th>
-										<th>Transaction ID</th>
-										<th>Issue Date</th>
-									</tr>
-								</thead>
-								<tbody>
-									{reportLog
-										.filter(
-											(log) =>
-												log.studentName
-													.toLowerCase()
-													.includes(searchQuery.toLowerCase()) ||
-												log.studentID
-													.toLowerCase()
-													.includes(searchQuery.toLowerCase()) ||
-												log.transactionID
-													.toLowerCase()
-													.includes(searchQuery.toLowerCase()),
-										)
-										.map((log, index) => (
-											<tr key={index}>
-												<td>{log.studentID}</td>
-												<td>{log.studentName}</td>
-												<td>
-													<button
-														onClick={() =>
-															handleViewTranscript(log.transcriptFile)
-														}
-													>
-														View Transcript
-													</button>
-												</td>
-												<td>{log.transactionID}</td>
-												<td>{log.issueDate}</td>
-											</tr>
-										))}
-								</tbody>
-							</table>
-
-							{/* PDF Viewer Modal */}
-							{pdfUrl && (
-								<div className={styles.pdfModal}>
-									<button onClick={() => setPdfUrl(null)}>Close</button>
-									<Document
-										file={pdfUrl}
-										onLoadError={(error) =>
-											console.error("Error while loading PDF:", error)
-										}
-										onLoadSuccess={() => console.log("PDF loaded successfully")}
-									>
-										<Page pageNumber={1} />
-									</Document>
-								</div>
-							)}
-						</div>
-					)}
+    {/* Table for Report Log */}
+    <table className={styles.reportTable}>
+      <thead>
+        <tr>
+          <th>Student ID</th>
+          <th>Name</th>
+          <th>Transcript</th>
+          <th>Transaction ID</th>
+          <th>Issue Date</th>
+        </tr>
+      </thead>
+      <tbody>
+        {reportLog
+          .filter(
+            (log) =>
+              log.studentName.toLowerCase().includes(searchQuery.toLowerCase()) ||
+              log.studentID.toLowerCase().includes(searchQuery.toLowerCase()) ||
+              log.transactionID.toLowerCase().includes(searchQuery.toLowerCase())
+          )
+          .map((log, index) => (
+            <tr key={index}>
+              <td>{log.studentID}</td>
+              <td>{log.studentName}</td>
+              <td>
+                <button onClick={() => handleViewTranscript(log.transcriptFile)}>
+                  View Transcript
+                </button>
+              </td>
+              <td>{log.transactionID}</td>
+              <td>{new Date(log.issueDate).toLocaleDateString()}</td>
+            </tr>
+          ))}
+      </tbody>
+    </table>
+  </div>
+)}
 				</div>
 
 				<div className={styles.welcome}>
 					<b className={styles.welcome1}>Welcome,</b>
-					<b className={styles.peninsulaCollegeGeorgetown}>
-					{universityName}
-					</b>
+					<b className={styles.peninsulaCollegeGeorgetown}>{universityName}</b>
 				</div>
 
 				<div className={styles.logoutButton} onClick={onLogoutContainerClick}>
@@ -1126,6 +1236,19 @@ const DashboardUniversity = () => {
 						</div>
 						<button onClick={() => setReceiptOpen(false)}>Close</button>
 					</div>
+				</PortalPopup>
+			)}
+
+			{isRegisterStudentOpen && (
+				<PortalPopup
+					overlayColor="rgba(113, 113, 113, 0.3)"
+					placement="Centered"
+					onOutsideClick={() => setIsRegisterStudentOpen(false)}
+				>
+					<RegisterStudentPopup
+						onClose={() => setIsRegisterStudentOpen(false)}
+						onRegister={handleRegisterStudent}
+					/>
 				</PortalPopup>
 			)}
 		</>

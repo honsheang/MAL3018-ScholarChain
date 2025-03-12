@@ -2466,3 +2466,46 @@
 .pdfModal button {
     margin-bottom: 10px;
 }
+
+.registerStudentButton {
+    position: absolute;
+    top: 20px; /* Adjust the position as needed */
+    right: 20px; /* Adjust the position as needed */
+    background-color: #4caf50; /* Green background */
+    color: white; /* White text */
+    padding: 10px 20px; /* Padding for the button */
+    border: none; /* Remove border */
+    border-radius: 5px; /* Rounded corners */
+    cursor: pointer; /* Pointer cursor on hover */
+    font-size: 16px; /* Font size */
+    font-weight: bold; /* Bold text */
+    transition: background-color 0.3s ease; /* Smooth hover effect */
+}
+
+.registerStudentButton:hover {
+    background-color: #45a049; /* Darker green on hover */
+}
+
+.registerStudentText {
+    margin: 0; /* Remove default margin */
+}
+
+css
+Copy
+.previewContainer {
+    position: relative; /* For positioning the cancel button */
+    width: 80px; /* Small preview size */
+    height: 80px; /* Small preview size */
+    border: 2px solid #ccc; /* Light border */
+    border-radius: 8px; /* Rounded corners */
+    overflow: hidden; /* Ensure the image stays within the container */
+    margin-top: 10px; /* Spacing from the upload button */
+}
+
+.logoPreview {
+    width: 5%; /* Fill the container */
+    height: 5%; /* Fill the container */
+    object-fit: contain; 
+	
+	
+}

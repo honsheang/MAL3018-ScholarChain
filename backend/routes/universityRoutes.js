@@ -17,7 +17,10 @@ router.get("/", authMiddleware, async (req, res) => {
             return res.status(404).json({ message: "University not found." });
         }
 
+        // Return university data including universitySsoId
         res.status(200).json({
+            _id: university._id, // Include the university ID
+            universitySsoId: university.universitySsoId, // Include the universitySsoId
             universityName: university.universityName,
             issuerName: university.issuerName,
             email: university.email,
