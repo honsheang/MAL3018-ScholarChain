@@ -19,7 +19,7 @@ router.post("/", authMiddleware, async (req, res) => {
 
 	try {
 		// Validate required fields
-		if (!universityId || !studentID || !transcriptFile || !transactionID) {
+		if (!universityId || !transcriptFile || !transactionID) {
 			return res.status(400).json({ message: "All fields are required" });
 		}
 
@@ -30,34 +30,28 @@ router.post("/", authMiddleware, async (req, res) => {
 		) {
 			return res.status(400).json({ message: "Invalid transcript file URL" });
 		}
+		
 
 		
-		if (!university) {
-			return res.status(404).json({ message: "University not found" });
-		}
 
-        console.log("🏫 University SsoId:", university.universitySsoId);
-
-		// ✅ FIX: Search for student in Student collection, not User
-		const student = await Student.findOne({ studentId: studentID });
-		console.log("🔍 Searching for student:", studentID);
-console.log("📂 Student found:", student);
-		if (!student) {
-			console.log("⚠️ Student not found in Student collection:", studentID);
-			return res.status(404).json({ message: "Student not found" });
-		}
-		console.log("✅ Student found:", student);
-
-		if (!student) {
-			console.log("⚠️ Student not found in database:", studentID);
-			return res.status(404).json({ message: "Student not found" });
-		}
+		console.log("🏫 University SsoId:", university.universitySsoId);
 
 		// ✅ Fix: Add university validation (optional)
-		const university = await User.findOne({ universitySsoId: universityId, role: "University" });
+		const university = await User.findOne({
+			universitySsoId: universityId,
+			role: "University",
+		});
 		if (!university) {
 			return res.status(404).json({ message: "University not found" });
 		}
+
+		// ✅ Fix: Allow studentID to be optional
+        if (studentID) {
+            const student = await Student.findOne({ studentId: studentID });
+            if (!student) {
+                console.log("⚠️ Student not found, proceeding without validation...");
+            }
+        }
 
 		// Check if a transcript for this student already exists
 		const existingTranscript = await Transcript.findOne({ studentID });
@@ -70,7 +64,7 @@ console.log("📂 Student found:", student);
 		// Create and save the transcript metadata
 		const transcript = new Transcript({
 			universityId,
-			studentID,
+			studentID: studentID || "UNKNOWN",
 			studentName,
 			transcriptFile,
 			transactionID,
@@ -86,19 +80,20 @@ console.log("📂 Student found:", student);
 
 // Get transcript metadata by student ID
 // ✅ Get a specific transcript by student ID
-router.get('/:studentID', async (req, res) => {
-    try {
-      const transcript = await Transcript.findOne({ studentID: req.params.studentID });
-      if (!transcript) {
-        return res.status(404).json({ message: 'Transcript not found' });
-      }
-      res.json(transcript);
-    } catch (error) {
-      console.error("❌ Error fetching transcript:", error);
-      res.status(500).json({ message: `Server error: ${error.message}` });
-    }
-  });
-  
+router.get("/:studentID", async (req, res) => {
+	try {
+		const transcript = await Transcript.findOne({
+			studentID: req.params.studentID,
+		});
+		if (!transcript) {
+			return res.status(404).json({ message: "Transcript not found" });
+		}
+		res.json(transcript);
+	} catch (error) {
+		console.error("❌ Error fetching transcript:", error);
+		res.status(500).json({ message: `Server error: ${error.message}` });
+	}
+});
 
 // Get transcripts by university ID
 router.get("/university/:universityId", async (req, res) => {
@@ -132,80 +127,111 @@ router.get("/university/:universityId", async (req, res) => {
 
 // Fetch all transcripts issued by the logged-in university
 router.get("/university", uniAuthMiddleware, async (req, res) => {
-    try {
-      console.log("📩 Received request to fetch transcripts for university:", req.user.userId);
-  
-      // Find the university based on logged-in user ID
-      const university = await User.findById(req.user.userId);
-      if (!university) {
-        console.error("❌ University not found for user ID:", req.user.userId);
-        return res.status(404).json({ message: "University not found" });
-      }
-  
-      console.log("🏫 University found:", university.universitySsoId);
-  
-      // Fetch all transcripts issued by this university
-      const transcripts = await Transcript.find({ universityId: university.universitySsoId }).select("-__v");
-  
-      console.log("📜 Transcripts found:", transcripts.length);
-  
-      if (transcripts.length === 0) {
-        return res.status(404).json({ message: "Transcript not found" });
-      }
-  
-      res.status(200).json(transcripts);
-    } catch (error) {
-      console.error("❌ Error fetching transcripts:", error);
-      res.status(500).json({ message: "Server error" });
-    }
-  });
+	try {
+		console.log(
+			"📩 Received request to fetch transcripts for university:",
+			req.user.userId,
+		);
 
-// ✅ Fetch all transcripts (No university filtering)
+		// Find the university based on logged-in user ID
+		const university = await User.findById(req.user.userId);
+		if (!university) {
+			console.error("❌ University not found for user ID:", req.user.userId);
+			return res.status(404).json({ message: "University not found" });
+		}
+
+		console.log("🏫 University found:", university.universitySsoId);
+
+		// Fetch all transcripts issued by this university
+		const transcripts = await Transcript.find({
+			universityId: university.universitySsoId,
+		}).select("-__v");
+
+		console.log("📜 Transcripts found:", transcripts.length);
+
+		if (transcripts.length === 0) {
+			return res.status(404).json({ message: "Transcript not found" });
+		}
+
+		res.status(200).json(transcripts);
+	} catch (error) {
+		console.error("❌ Error fetching transcripts:", error);
+		res.status(500).json({ message: "Server error" });
+	}
+});
+
 // Fetch all transcripts (without filtering by universityId)
 router.get("/all", uniAuthMiddleware, async (req, res) => {
-    try {
-      console.log("📩 Received request to fetch all transcripts");
-  
-      // Fetch all transcripts from the database
-      const transcripts = await Transcript.find().select("-__v");
-  
-      console.log("📜 Total transcripts found:", transcripts.length);
-  
-      // Return the transcripts
-      res.status(200).json(transcripts);
-    } catch (error) {
-      console.error("❌ Error fetching all transcripts:", error);
-      res.status(500).json({ message: "Server error" });
-    }
-  });
+	try {
+		console.log("📩 Received request to fetch all transcripts");
 
-  router.get("/", async (req, res) => {
-    try {
-        const transcripts = await Transcript.find(); // Fetch all transcripts
-        res.status(200).json(transcripts);
-    } catch (error) {
-        console.error("❌ Error fetching transcripts:", error);
-        res.status(500).json({ message: "Server error." });
-    }
+		// Fetch all transcripts from the database
+		const transcripts = await Transcript.find().select("-__v");
+
+		console.log("📜 Total transcripts found:", transcripts.length);
+
+		// Return the transcripts
+		res.status(200).json(transcripts);
+	} catch (error) {
+		console.error("❌ Error fetching all transcripts:", error);
+		res.status(500).json({ message: "Server error" });
+	}
+});
+
+router.get("/", async (req, res) => {
+	try {
+		const transcripts = await Transcript.find(); // Fetch all transcripts
+		res.status(200).json(transcripts);
+	} catch (error) {
+		console.error("❌ Error fetching transcripts:", error);
+		res.status(500).json({ message: "Server error." });
+	}
 });
 
 // Fetch transcripts by studentID
 router.get("/student/:studentId", studAuthMiddleware, async (req, res) => {
+	try {
+		const { studentId } = req.params;
+
+		// Fetch all transcripts for this student
+		const transcripts = await Transcript.find({ studentID: studentId }).select(
+			"-__v",
+		);
+
+		if (transcripts.length === 0) {
+			return res
+				.status(404)
+				.json({ message: "No transcripts found for this student" });
+		}
+
+		res.status(200).json(transcripts);
+	} catch (error) {
+		console.error("Error fetching transcripts:", error);
+		res.status(500).json({ message: "Server error" });
+	}
+});
+
+router.post("/save", async (req, res) => {
     try {
-      const { studentId } = req.params;
-  
-      // Fetch all transcripts for this student
-      const transcripts = await Transcript.find({ studentID: studentId }).select("-__v");
-  
-      if (transcripts.length === 0) {
-        return res.status(404).json({ message: "No transcripts found for this student" });
-      }
-  
-      res.status(200).json(transcripts);
+        console.log("✅ Received request on /api/transcripts/save");
+		res.json({ message: "Route working!" });
+        
+        const { universityId, studentID, studentName, transcriptFile, transactionID } = req.body;
+        if (!universityId || !studentID || !transcriptFile || !transactionID) {
+            return res.status(400).json({ message: "All fields are required" });
+        }
+
+        // Skip student check and save the transcript
+        const transcript = new Transcript({ universityId, studentID, studentName, transcriptFile, transactionID });
+        await transcript.save();
+
+        console.log("✅ Transcript saved successfully");
+        res.status(201).json({ message: "Transcript saved successfully", transcript });
     } catch (error) {
-      console.error("Error fetching transcripts:", error);
-      res.status(500).json({ message: "Server error" });
+        console.error("❌ Error saving transcript:", error);
+        res.status(500).json({ message: "Server error" });
     }
 });
+
 
 module.exports = router;

@@ -77,16 +77,13 @@ const DashboardUniversity = () => {
 				const token = localStorage.getItem("token");
 				console.log("🔑 Token:", token); // Log the token
 
-				const response = await fetch(
-					"http://localhost:5000/api/transcripts",
-					{
-						method: "GET",
-						headers: {
-							"Content-Type": "application/json",
-							Authorization: `Bearer ${token}`,
-						},
+				const response = await fetch("http://localhost:5000/api/transcripts", {
+					method: "GET",
+					headers: {
+						"Content-Type": "application/json",
+						Authorization: `Bearer ${token}`,
 					},
-				);
+				});
 
 				if (!response.ok) {
 					const errorData = await response.json(); // Log the error response
@@ -179,19 +176,19 @@ const DashboardUniversity = () => {
 	};
 	const handleViewTranscript = (transcriptFile) => {
 		if (transcriptFile instanceof Blob) {
-		  // Create a Blob URL for the PDF
-		  const pdfBlobUrl = URL.createObjectURL(transcriptFile);
-	  
-		  // Open the Blob URL in a new tab
-		  window.open(pdfBlobUrl, "_blank");
-	  
-		  // Revoke the Blob URL after opening the PDF
-		  URL.revokeObjectURL(pdfBlobUrl);
+			// Create a Blob URL for the PDF
+			const pdfBlobUrl = URL.createObjectURL(transcriptFile);
+
+			// Open the Blob URL in a new tab
+			window.open(pdfBlobUrl, "_blank");
+
+			// Revoke the Blob URL after opening the PDF
+			URL.revokeObjectURL(pdfBlobUrl);
 		} else {
-		  // If the transcriptFile is already a URL, open it directly
-		  window.open(transcriptFile, "_blank");
+			// If the transcriptFile is already a URL, open it directly
+			window.open(transcriptFile, "_blank");
 		}
-	  };
+	};
 
 	const generateTranscriptPDF = () => {
 		const doc = new jsPDF();
@@ -327,8 +324,8 @@ const DashboardUniversity = () => {
 	};
 
 	const handleUploadAndSubmit = async () => {
-		if (!studentName || !studentID) {
-			alert("Please enter the student name and student ID.");
+		if (!studentName) {
+			alert("Please enter the student name.");
 			return;
 		}
 
@@ -368,23 +365,25 @@ const DashboardUniversity = () => {
 			console.log("Step 2: Saving transcript metadata...");
 			const transcriptData = {
 				universityId, // Use the universitySsoId directly as universityId
-				studentID,
+				studentID: studentID || "UNKNOWN",
 				studentName,
 				transcriptFile: transcriptFileUrl, // URL of the uploaded PDF
 				transactionID,
 			};
 
-			const saveResponse = await fetch(
-				"http://localhost:5000/api/transcripts",
-				{
-					method: "POST",
-					headers: {
-						"Content-Type": "application/json",
-						Authorization: `Bearer ${localStorage.getItem("token")}`,
-					},
-					body: JSON.stringify(transcriptData),
+			const saveResponse = await fetch("http://localhost:5000/api/transcripts/save", {
+				method: "POST",
+				headers: {
+					"Content-Type": "application/json",
+					Authorization: `Bearer ${localStorage.getItem("token")}`,
 				},
-			);
+				body: JSON.stringify(transcriptData),
+			});
+
+			console.log("📢 Sending request to:", "http://localhost:5000/api/transcripts/save");
+console.log("📦 Request body:", transcriptData);
+
+			
 
 			if (!saveResponse.ok) {
 				const saveData = await saveResponse.json();
@@ -1138,55 +1137,65 @@ const DashboardUniversity = () => {
 						</div>
 					)}
 					{activeButton === "Report" && (
-  <div className={styles.reportLog}>
-    {/* Search Bar */}
-    <div className={styles.searchBar}>
-      <input
-        type="text"
-        placeholder="Search by Student Name, ID, or Transaction ID"
-        value={searchQuery}
-        onChange={(e) => setSearchQuery(e.target.value)}
-        className={styles.searchInput}
-      />
-      <button className={styles.searchButton}>Search</button>
-    </div>
+						<div className={styles.reportLog}>
+							{/* Search Bar */}
+							<div className={styles.searchBar}>
+								<input
+									type="text"
+									placeholder="Search by Student Name, ID, or Transaction ID"
+									value={searchQuery}
+									onChange={(e) => setSearchQuery(e.target.value)}
+									className={styles.searchInput}
+								/>
+								<button className={styles.searchButton}>Search</button>
+							</div>
 
-    {/* Table for Report Log */}
-    <table className={styles.reportTable}>
-      <thead>
-        <tr>
-          <th>Student ID</th>
-          <th>Name</th>
-          <th>Transcript</th>
-          <th>Transaction ID</th>
-          <th>Issue Date</th>
-        </tr>
-      </thead>
-      <tbody>
-        {reportLog
-          .filter(
-            (log) =>
-              log.studentName.toLowerCase().includes(searchQuery.toLowerCase()) ||
-              log.studentID.toLowerCase().includes(searchQuery.toLowerCase()) ||
-              log.transactionID.toLowerCase().includes(searchQuery.toLowerCase())
-          )
-          .map((log, index) => (
-            <tr key={index}>
-              <td>{log.studentID}</td>
-              <td>{log.studentName}</td>
-              <td>
-                <button onClick={() => handleViewTranscript(log.transcriptFile)}>
-                  View Transcript
-                </button>
-              </td>
-              <td>{log.transactionID}</td>
-              <td>{new Date(log.issueDate).toLocaleDateString()}</td>
-            </tr>
-          ))}
-      </tbody>
-    </table>
-  </div>
-)}
+							{/* Table for Report Log */}
+							<table className={styles.reportTable}>
+								<thead>
+									<tr>
+										<th>Student ID</th>
+										<th>Name</th>
+										<th>Transcript</th>
+										<th>Transaction ID</th>
+										<th>Issue Date</th>
+									</tr>
+								</thead>
+								<tbody>
+									{reportLog
+										.filter(
+											(log) =>
+												log.studentName
+													.toLowerCase()
+													.includes(searchQuery.toLowerCase()) ||
+												log.studentID
+													.toLowerCase()
+													.includes(searchQuery.toLowerCase()) ||
+												log.transactionID
+													.toLowerCase()
+													.includes(searchQuery.toLowerCase()),
+										)
+										.map((log, index) => (
+											<tr key={index}>
+												<td>{log.studentID}</td>
+												<td>{log.studentName}</td>
+												<td>
+													<button
+														onClick={() =>
+															handleViewTranscript(log.transcriptFile)
+														}
+													>
+														View Transcript
+													</button>
+												</td>
+												<td>{log.transactionID}</td>
+												<td>{new Date(log.issueDate).toLocaleDateString()}</td>
+											</tr>
+										))}
+								</tbody>
+							</table>
+						</div>
+					)}
 				</div>
 
 				<div className={styles.welcome}>
