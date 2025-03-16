@@ -51,6 +51,7 @@ const universityRoutes = require("./routes/universityRoutes");
 const studentRoutes = require("./routes/studentRoutes");
 const transcriptRoutes = require("./routes/transcriptRoutes"); // Import transcript routes
 const uploadRoutes = require("./routes/uploadRoutes"); // Import upload routes
+const ocrRoutes = require('./routes/ocrRoutes');
 
 app.use("/api/signup", signUpRoutes);
 app.use("/api", loginRoutes);
@@ -59,6 +60,7 @@ app.use("/api/university", universityRoutes);
 app.use("/api/students", studentRoutes);
 app.use("/api/transcripts", transcriptRoutes); 
 app.use("/api/upload", uploadRoutes); 
+app.use('/api/ocr', ocrRoutes);
 
 // Global Error Handling Middleware
 app.use((err, req, res, next) => {

@@ -2,6 +2,7 @@ const express = require("express");
 const router = express.Router();
 const Transcript = require("../models/Transcript");
 const User = require("../models/User");
+const { issueTranscript, verifyTranscript, getTranscript } = require('../services/web3Service');
 const authMiddleware = require("../middleware/authMiddleware");
 const empAuthMiddleware = require("../middleware/empAuthMiddleware");
 const uniAuthMiddleware = require("../middleware/uniAuthMiddleware");
@@ -217,9 +218,15 @@ router.post("/save", async (req, res) => {
 		res.json({ message: "Route working!" });
         
         const { universityId, studentID, studentName, transcriptFile, transactionID } = req.body;
-        if (!universityId || !studentID || !transcriptFile || !transactionID) {
+        
+		if (!universityId || !studentID || !transcriptFile || !transactionID) {
             return res.status(400).json({ message: "All fields are required" });
         }
+
+		// Save the transcript metadata to the blockchain
+		const accounts = await web3.eth.getAccounts();
+		await issueTranscript(accounts[0], studentName, studentID, course, graduationYear);
+	
 
         // Skip student check and save the transcript
         const transcript = new Transcript({ universityId, studentID, studentName, transcriptFile, transactionID });

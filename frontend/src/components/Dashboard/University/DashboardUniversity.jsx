@@ -1,4 +1,5 @@
 import { useState, useCallback, useEffect } from "react";
+import DOMPurify from 'dompurify';
 import { useNavigate } from "react-router-dom";
 import PortalPopup from "./PortalPopup";
 import AddSemester from "./AddSemester";
@@ -9,6 +10,7 @@ import logoImage from "/ScholarChain/frontend/src/components/Image/ScholarChain.
 import btmImage from "/ScholarChain/frontend/src/components/Image/blackscholarchain.png";
 import jsPDF from "jspdf";
 import autoTable from "jspdf-autotable"; // Correct import for autoTable
+import { web3, getContractInstance } from '/ScholarChain/frontend/src/web3.js';
 
 import "react-pdf/dist/esm/Page/AnnotationLayer.css";
 
@@ -334,6 +336,10 @@ const DashboardUniversity = () => {
 			return;
 		}
 
+		// Sanitize inputs
+		const sanitizedStudentName = DOMPurify.sanitize(studentName);
+		const sanitizedStudentID = DOMPurify.sanitize(studentID);
+
 		// Generate the PDF
 		const pdfBlob = generateTranscriptPDF(); // Generate the PDF blob
 		const transactionID = `TXN-${Date.now()}`; // Generate a unique transaction ID
@@ -341,7 +347,7 @@ const DashboardUniversity = () => {
 
 		// Create a FormData object to upload the PDF file
 		const formData = new FormData();
-		formData.append("transcriptFile", pdfBlob, `${studentID}_transcript.pdf`);
+		formData.append("transcriptFile", pdfBlob, `${sanitizedStudentID}_transcript.pdf`);
 
 		try {
 			console.log("Step 1: Uploading PDF file...");
@@ -361,12 +367,21 @@ const DashboardUniversity = () => {
 
 			const transcriptFileUrl = uploadData.fileUrl; // URL of the uploaded PDF file
 
-			// Step 2: Save the transcript metadata to the database
-			console.log("Step 2: Saving transcript metadata...");
+			 // Step 2: Save the transcript metadata to the blockchain
+			 console.log("Step 2: Saving transcript metadata to the blockchain...");
+			 const accounts = await web3.eth.getAccounts();
+			 const contract = await getContractInstance();
+			 const course = selectedProgramme; // Assuming selectedProgramme is the course
+			 const graduationYear = new Date().getFullYear(); // Assuming current year as graduation year
+			 await contract.methods.issueTranscript(sanitizedStudentName, sanitizedStudentID, course, graduationYear).send({ from: accounts[0] });
+		 
+			
+			// Step 3: Save the transcript metadata to the database
+			console.log("Step 3: Saving transcript metadata...");
 			const transcriptData = {
 				universityId, // Use the universitySsoId directly as universityId
-				studentID: studentID || "UNKNOWN",
-				studentName,
+				studentID: sanitizedStudentID || "UNKNOWN",
+				studentName: sanitizedStudentName,
 				transcriptFile: transcriptFileUrl, // URL of the uploaded PDF
 				transactionID,
 			};
@@ -395,7 +410,7 @@ console.log("📦 Request body:", transcriptData);
 			const saveData = await saveResponse.json();
 			console.log("Transcript metadata saved successfully:", saveData);
 
-			// Step 3: Update the report log (optional, for frontend display)
+			// Step 4: Update the report log (optional, for frontend display)
 			console.log("Step 3: Updating report log...");
 			setReportLog((prev) => [
 				...prev,
@@ -408,8 +423,8 @@ console.log("📦 Request body:", transcriptData);
 				},
 			]);
 
-			// Step 4: Open the receipt popup
-			console.log("Step 4: Opening receipt popup...");
+			// Step 5: Open the receipt popup
+			console.log("Step 5: Opening receipt popup...");
 			setReceiptOpen(true);
 		} catch (error) {
 			console.error("Error occurred:", error);

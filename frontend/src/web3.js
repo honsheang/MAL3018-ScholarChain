@@ -12,7 +12,7 @@ const getContractInstance = async () => {
   }
   return new web3.eth.Contract(
     TranscriptContract.abi,
-    deployedNetwork.address
+    0x1B89Fc08f52216293EFD48d23fbea1273A20eeB9
   );
 };
 
