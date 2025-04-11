@@ -1,5 +1,5 @@
 import { useState, useCallback, useEffect } from "react";
-import DOMPurify from 'dompurify';
+import DOMPurify from "dompurify";
 import { useNavigate } from "react-router-dom";
 import PortalPopup from "./PortalPopup";
 import AddSemester from "./AddSemester";
@@ -10,7 +10,7 @@ import logoImage from "/ScholarChain/frontend/src/components/Image/ScholarChain.
 import btmImage from "/ScholarChain/frontend/src/components/Image/blackscholarchain.png";
 import jsPDF from "jspdf";
 import autoTable from "jspdf-autotable"; // Correct import for autoTable
-import { web3, getContractInstance } from '/ScholarChain/frontend/src/web3.js';
+import { web3, getContractInstance } from "/ScholarChain/frontend/src/web3.js";
 
 import "react-pdf/dist/esm/Page/AnnotationLayer.css";
 
@@ -347,7 +347,11 @@ const DashboardUniversity = () => {
 
 		// Create a FormData object to upload the PDF file
 		const formData = new FormData();
-		formData.append("transcriptFile", pdfBlob, `${sanitizedStudentID}_transcript.pdf`);
+		formData.append(
+			"transcriptFile",
+			pdfBlob,
+			`${sanitizedStudentID}_transcript.pdf`,
+		);
 
 		try {
 			console.log("Step 1: Uploading PDF file...");
@@ -367,15 +371,14 @@ const DashboardUniversity = () => {
 
 			const transcriptFileUrl = uploadData.fileUrl; // URL of the uploaded PDF file
 
-			 // Step 2: Save the transcript metadata to the blockchain
-			 console.log("Step 2: Saving transcript metadata to the blockchain...");
-			 const accounts = await web3.eth.getAccounts();
-			 const contract = await getContractInstance();
-			 const course = selectedProgramme; // Assuming selectedProgramme is the course
-			 const graduationYear = new Date().getFullYear(); // Assuming current year as graduation year
-			 await contract.methods.issueTranscript(sanitizedStudentName, sanitizedStudentID, course, graduationYear).send({ from: accounts[0] });
-		 
-			
+			// Step 2: Save the transcript metadata to the blockchain
+			// console.log("Step 2: Saving transcript metadata to the blockchain...");
+			// const accounts = await web3.eth.getAccounts();
+			//  contract = await getContractInstance();
+			// const course = selectedProgramme; // Assuming selectedProgramme is the course
+			// const graduationYear = new Date().getFullYear(); // Assuming current year as graduation year
+			// await contract.methods.issueTranscript(sanitizedStudentName, sanitizedStudentID, course, graduationYear).send({ from: accounts[0] });
+
 			// Step 3: Save the transcript metadata to the database
 			console.log("Step 3: Saving transcript metadata...");
 			const transcriptData = {
@@ -386,19 +389,23 @@ const DashboardUniversity = () => {
 				transactionID,
 			};
 
-			const saveResponse = await fetch("http://localhost:5000/api/transcripts/save", {
-				method: "POST",
-				headers: {
-					"Content-Type": "application/json",
-					Authorization: `Bearer ${localStorage.getItem("token")}`,
+			const saveResponse = await fetch(
+				"http://localhost:5000/api/transcripts/save",
+				{
+					method: "POST",
+					headers: {
+						"Content-Type": "application/json",
+						Authorization: `Bearer ${localStorage.getItem("token")}`,
+					},
+					body: JSON.stringify(transcriptData),
 				},
-				body: JSON.stringify(transcriptData),
-			});
+			);
 
-			console.log("📢 Sending request to:", "http://localhost:5000/api/transcripts/save");
-console.log("📦 Request body:", transcriptData);
-
-			
+			console.log(
+				"📢 Sending request to:",
+				"http://localhost:5000/api/transcripts/save",
+			);
+			console.log("📦 Request body:", transcriptData);
 
 			if (!saveResponse.ok) {
 				const saveData = await saveResponse.json();
@@ -1254,7 +1261,7 @@ console.log("📦 Request body:", transcriptData);
 								{reportLog[reportLog.length - 1]?.transactionID}
 							</p>
 							<p>
-								<strong>Issue Date:</strong>{" "}
+								<strong>Date:</strong>{" "}
 								{reportLog[reportLog.length - 1]?.issueDate}
 							</p>
 						</div>

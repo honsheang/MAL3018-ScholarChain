@@ -830,3 +830,29 @@
 	height: 49px;
 	cursor: pointer;
 }
+
+.viewButtonContainer {
+    margin-top: 20px;
+    text-align: center;
+    position: relative; /* Ensure proper positioning for z-index to work */
+    z-index: 10; /* Bring the button to the front */
+}
+
+.viewButton {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+    z-index: 20; /* Ensure the button itself is in front */
+    position: relative; /* Ensure z-index applies to the button */
+    top: 240px;
+    left:330px;
+}
+
+.viewButton:hover {
+    background-color: #0056b3;
+}

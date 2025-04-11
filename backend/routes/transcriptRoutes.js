@@ -224,8 +224,8 @@ router.post("/save", async (req, res) => {
         }
 
 		// Save the transcript metadata to the blockchain
-		const accounts = await web3.eth.getAccounts();
-		await issueTranscript(accounts[0], studentName, studentID, course, graduationYear);
+		// const accounts = await web3.eth.getAccounts();
+		// await issueTranscript(accounts[0], studentName, studentID, course, graduationYear);
 	
 
         // Skip student check and save the transcript

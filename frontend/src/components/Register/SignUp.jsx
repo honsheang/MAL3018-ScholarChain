@@ -80,7 +80,7 @@ const SignUp = () => {
 		delete formData.confirmPassword;
 
 		// Debugging: Check the final data before sending
-		console.log("📤 Form Data to Send:", formData);	
+		console.log("📤 Form Data to Send:", formData);
 
 		try {
 			const response = await fetch(

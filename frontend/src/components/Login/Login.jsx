@@ -27,46 +27,44 @@ const Login = () => {
 	}, [navigate]);
 
 	const handleSubmit = useCallback(async () => {
-        const email = document.getElementById("emailInput")?.value.trim();
-        const password = document.getElementById("passwordInput")?.value.trim();
-    
-        if (!email || !password) {
-            alert("Please fill in both email and password.");
-            return;
-        }
-    
-        setLoading(true);
-    
-        try {
-            const response = await fetch("http://localhost:5000/api/login", {
-                method: "POST",
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({ role: activeOption, email, password }),
-            });
-    
-            const data = await response.json();
-            console.log("Login Response Data:", data);
-    
-            if (response.ok && data.token) {
-                localStorage.setItem("token", data.token);  // ✅ Store token correctly
-                console.log("✅ Token stored:", localStorage.getItem("token")); // Debugging
-    
-                alert("Login successful!");
-                navigate(activeOption === "University" ? "/uniDashboard" : "/empDashboard");
-            } else {
-                alert(`Login failed: ${data.message}`);
-            }
-        } catch (error) {
-            console.error("❌ Error during login:", error);
-            alert("An error occurred. Please try again.");
-        } finally {
-            setLoading(false);
-        }
-    }, [activeOption, navigate]);
-    
-    
-    
-    
+		const email = document.getElementById("emailInput")?.value.trim();
+		const password = document.getElementById("passwordInput")?.value.trim();
+
+		if (!email || !password) {
+			alert("Please fill in both email and password.");
+			return;
+		}
+
+		setLoading(true);
+
+		try {
+			const response = await fetch("http://localhost:5000/api/login", {
+				method: "POST",
+				headers: { "Content-Type": "application/json" },
+				body: JSON.stringify({ role: activeOption, email, password }),
+			});
+
+			const data = await response.json();
+			console.log("Login Response Data:", data);
+
+			if (response.ok && data.token) {
+				localStorage.setItem("token", data.token); // ✅ Store token correctly
+				console.log("✅ Token stored:", localStorage.getItem("token")); // Debugging
+
+				alert("Login successful!");
+				navigate(
+					activeOption === "University" ? "/uniDashboard" : "/empDashboard",
+				);
+			} else {
+				alert(`Login failed: ${data.message}`);
+			}
+		} catch (error) {
+			console.error("❌ Error during login:", error);
+			alert("An error occurred. Please try again.");
+		} finally {
+			setLoading(false);
+		}
+	}, [activeOption, navigate]);
 
 	const onAccessContainerClick = useCallback(() => {
 		alert("Redirecting to institutional access...");

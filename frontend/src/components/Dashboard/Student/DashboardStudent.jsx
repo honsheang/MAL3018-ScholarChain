@@ -18,63 +18,64 @@ const DashboardStudent = () => {
 
 	useEffect(() => {
 		const fetchTranscripts = async () => {
-		  try {
-			const token = localStorage.getItem("token");
-			const studentId = localStorage.getItem("studentId");
-	  
-			if (!studentId) {
-			  console.error("🚨 Student ID is missing!");
-			  alert("Student ID is missing. Please log in again.");
-			  return;
+			try {
+				const token = localStorage.getItem("token");
+				const studentId = localStorage.getItem("studentId");
+
+				if (!studentId) {
+					console.error("🚨 Student ID is missing!");
+					alert("Student ID is missing. Please log in again.");
+					return;
+				}
+
+				console.log("🎓 Fetching transcripts for Student ID:", studentId);
+
+				const response = await fetch(
+					`http://localhost:5000/api/transcripts/${studentId}`,
+					{
+						method: "GET",
+						headers: {
+							"Content-Type": "application/json",
+							Authorization: `Bearer ${token}`,
+						},
+					},
+				);
+
+				if (!response.ok) {
+					console.error("❌ API Error:", response.status);
+					setTranscripts([]); // Ensure an empty array to prevent crashes
+					setOptions([]); // Reset dropdown options
+					return;
+				}
+
+				const data = await response.json();
+				console.log("✅ Transcripts fetched:", data, Array.isArray(data));
+
+				const formattedData = Array.isArray(data) ? data : [data];
+				console.log("📜 Formatted Transcripts:", formattedData);
+
+				setTranscripts(formattedData); // Update transcripts state
+
+				// Update options after state update
+				const formattedOptions = formattedData.map(
+					(t) => t.transactionID || t._id,
+				);
+				setOptions(formattedOptions);
+				console.log("🎯 Updated Dropdown Options:", formattedOptions);
+
+				// Debugging: Ensure state updates
+				setTimeout(() => {
+					console.log("🔄 Updated transcripts state:", formattedData);
+					console.log("🔄 Updated dropdown options state:", formattedOptions);
+				}, 1000);
+			} catch (error) {
+				console.error("❌ Error fetching transcripts:", error);
+				alert("Failed to fetch transcripts. Please try again.");
 			}
-	  
-			console.log("🎓 Fetching transcripts for Student ID:", studentId);
-	  
-			const response = await fetch(
-			  `http://localhost:5000/api/transcripts/${studentId}`,
-			  {
-				method: "GET",
-				headers: {
-				  "Content-Type": "application/json",
-				  Authorization: `Bearer ${token}`,
-				},
-			  }
-			);
-	  
-			if (!response.ok) {
-			  console.error("❌ API Error:", response.status);
-			  setTranscripts([]); // Ensure an empty array to prevent crashes
-			  setOptions([]); // Reset dropdown options
-			  return;
-			}
-	  
-			const data = await response.json();
-			console.log("✅ Transcripts fetched:", data, Array.isArray(data));
-	  
-			const formattedData = Array.isArray(data) ? data : [data];
-			console.log("📜 Formatted Transcripts:", formattedData);
-	  
-			setTranscripts(formattedData); // Update transcripts state
-	  
-			// Update options after state update
-			const formattedOptions = formattedData.map((t) => t.transactionID || t._id);
-			setOptions(formattedOptions);
-			console.log("🎯 Updated Dropdown Options:", formattedOptions);
-			
-			// Debugging: Ensure state updates
-			setTimeout(() => {
-			  console.log("🔄 Updated transcripts state:", formattedData);
-			  console.log("🔄 Updated dropdown options state:", formattedOptions);
-			}, 1000);
-		  } catch (error) {
-			console.error("❌ Error fetching transcripts:", error);
-			alert("Failed to fetch transcripts. Please try again.");
-		  }
 		};
-	  
+
 		fetchTranscripts();
-	  }, []);
-	  
+	}, []);
 
 	const onLogoutContainerClick = useCallback(() => {
 		navigate("/");
@@ -82,9 +83,7 @@ const DashboardStudent = () => {
 
 	console.log("📄 Current Transcripts State:", transcripts);
 
-
-console.log("🎯 Dropdown Options:", options);
-
+	console.log("🎯 Dropdown Options:", options);
 
 	const handleToggleDropdown = () => {
 		setIsDropdownOpen((prev) => !prev);
@@ -189,23 +188,24 @@ console.log("🎯 Dropdown Options:", options);
 									</span>
 								</div>
 								{isDropdownOpen && (
-  <div className={styles.dropdownMenu}>
-    {options.length > 0 ? (
-      options.map((option, index) => (
-        <div 
-          key={index} 
-          className={styles.dropdownItem} 
-          onClick={() => handleOptionSelect(option)}
-        >
-          {option}
-        </div>
-      ))
-    ) : (
-      <div className={styles.dropdownItem}>No transcripts available</div>
-    )}
-  </div>
-)}
-
+									<div className={styles.dropdownMenu}>
+										{options.length > 0 ? (
+											options.map((option, index) => (
+												<div
+													key={index}
+													className={styles.dropdownItem}
+													onClick={() => handleOptionSelect(option)}
+												>
+													{option}
+												</div>
+											))
+										) : (
+											<div className={styles.dropdownItem}>
+												No transcripts available
+											</div>
+										)}
+									</div>
+								)}
 							</div>
 						</div>
 
@@ -245,14 +245,42 @@ console.log("🎯 Dropdown Options:", options);
 										{selectedTranscript.transcriptFile.split("/").pop()}
 									</b>
 								</div>
+
+								{/* View Transcript Button */}
+								<div className={styles.viewButtonContainer}>
+									<button
+										className={styles.viewButton}
+										onClick={() =>
+											window.open(selectedTranscript.transcriptFile, "_blank")
+										}
+									>
+										View Transcript
+									</button>
+								</div>
 							</>
 						)}
 					</div>
 				);
 
 			case "Share Options":
-				const shareURL =
-					"https://www.figma.com/design/XTgxRfJDwNDnPrLjmoBgjN/ScholarChain?node-id=1-680&t=OSnv7oa7ime39YMY-0";
+				const shareURL = selectedTranscript
+					? `${window.location.origin}/transcripts/${selectedTranscript.transcriptFile}`
+					: "No transcript selected";
+
+				const handleCopyToClipboard = () => {
+					if (shareURL !== "No transcript selected") {
+						navigator.clipboard.writeText(shareURL)
+							.then(() => {
+								alert("URL copied to clipboard!");
+							})
+							.catch((err) => {
+								console.error("Failed to copy URL: ", err);
+								alert("Failed to copy URL. Please try again.");
+							});
+					} else {
+						alert("No transcript selected to copy.");
+					}
+				};
 
 				return (
 					<div className={styles.shareDisplay}>
@@ -261,7 +289,13 @@ console.log("🎯 Dropdown Options:", options);
 						<div className={styles.qrcode}>
 							<b className={styles.qrCode}>QR Code</b>
 							<div className={styles.squareBackground}>
-								<QRCodeCanvas value={shareURL} size={300} level="H" />
+								{selectedTranscript ? (
+									<QRCodeCanvas value={shareURL} size={300} level="H" />
+								) : (
+									<div className={styles.noTranscript}>
+										No transcript selected
+									</div>
+								)}
 							</div>
 							<div className={styles.pleaseDoNot}>
 								*please do not share to anonymous person
@@ -272,7 +306,12 @@ console.log("🎯 Dropdown Options:", options);
 							<div className={styles.whiteBack} />
 							<div className={styles.copyButton}>
 								<div className={styles.copyButtonChild} />
-								<div className={styles.copy}>Copy</div>
+								<div
+									className={styles.copy}
+									onClick={handleCopyToClipboard}
+								>
+									Copy
+								</div>
 							</div>
 							<div className={styles.link}>{shareURL}</div>
 						</div>
