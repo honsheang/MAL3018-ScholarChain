@@ -53,3 +53,10 @@ truffle migrate --network sepolia
 
 # Start the local server
 npm start
+
+---
+## 🧪 Usage
+
+- **University Admin Login**: Issue verified transcripts and store them on-chain.
+- **Student Login**: View, manage, and share academic credentials.
+- **Employer Verification**: Paste student ID / QR code to instantly verify authenticity.
