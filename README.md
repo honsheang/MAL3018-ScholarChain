@@ -27,13 +27,13 @@ ScholarChain enables:
 
 ## 🛠️ Tech Stack
 
-- **Frontend**: HTML, CSS, JavaScript, React.js (or your frontend framework)
-- **Backend**: Node.js / Express.js / Django (specify your backend)
+- **Frontend**: HTML, CSS, JavaScript, React.js 
+- **Backend**: Node.js / Express.js
 - **Blockchain**: Ethereum + Smart Contracts (Solidity)
-- **Storage**: IPFS / MongoDB / Firebase (based on your implementation)
-- **Authentication**: JWT / OAuth2 / MetaMask integration
+- **Storage**: IPFS / MongoDB
+- **Authentication**: JWT / MetaMask integration
 - **Testnet**: Ethereum Sepolia
-- **Others**: Web3.js / Ethers.js, Ganache, Truffle/Hardhat
+- **Others**: Web3.js, Truffle
 
 ---
 ## 🧪 Usage
