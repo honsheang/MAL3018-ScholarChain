@@ -20,7 +20,7 @@ ScholarChain enables:
 - 🏛️ University dashboard for issuing transcripts  
 - 🧾 Real-time verification tool for employers  
 - 🏅 Gamification with achievement badges (e.g., GPA milestones)  
-- 📜 Digital certificates with QR/barcode for quick verification  
+- 📜 Digital certificates with QR for quick verification  
 - 🌐 Integration with Ethereum Sepolia testnet  
 
 ---
