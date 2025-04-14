@@ -36,6 +36,13 @@ ScholarChain enables:
 - **Others**: Web3.js / Ethers.js, Ganache, Truffle/Hardhat
 
 ---
+## 🧪 Usage
+
+- **University Admin Login**: Issue verified transcripts and store them on-chain.
+- **Student Login**: View, manage, and share academic credentials.
+- **Employer Verification**: Paste student ID / QR code to instantly verify authenticity.
+
+---
 
 ## 🧑‍💻 Installation & Setup
 
@@ -55,8 +62,4 @@ truffle migrate --network sepolia
 npm start
 
 ---
-## 🧪 Usage
 
-- **University Admin Login**: Issue verified transcripts and store them on-chain.
-- **Student Login**: View, manage, and share academic credentials.
-- **Employer Verification**: Paste student ID / QR code to instantly verify authenticity.
