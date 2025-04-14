@@ -65,4 +65,4 @@ npm start
 ---
 ## 🌐 Live Demo
 
-- **Youtube Link**: https://youtu.be/AXvPitZ_NQQ
+- **Youtube Presentation**: https://youtu.be/AXvPitZ_NQQ
