@@ -52,7 +52,7 @@ git clone https://github.com/your-username/scholarchain.git
 cd scholarchain
 
 # Install dependencies
-npm install  # or yarn install
+npm install 
 
 # Compile and deploy smart contracts (if using Truffle)
 truffle compile
