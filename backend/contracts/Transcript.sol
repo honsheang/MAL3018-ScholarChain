@@ -8,12 +8,13 @@ contract Transcript {
         string course;
         string graduationYear;
         bool isVerified;
+        bytes32 transcriptHash; // Added field to store the unique hash
     }
 
     address public owner;
     mapping(string => Student) private students;
 
-    event TranscriptIssued(string studentId, string name, string course, string graduationYear);
+    event TranscriptIssued(string studentId, string name, string course, string graduationYear, bytes32 transcriptHash);
     event TranscriptVerified(string studentId, bool isVerified);
 
     constructor() {
@@ -34,8 +35,11 @@ contract Transcript {
         require(bytes(_studentId).length > 0, "Student ID cannot be empty.");
         require(!students[_studentId].isVerified, "Transcript already issued for this student.");
 
-        students[_studentId] = Student(_name, _studentId, _course, _graduationYear, false);
-        emit TranscriptIssued(_studentId, _name, _course, _graduationYear);
+        // Generate a unique hash for the transcript
+        bytes32 transcriptHash = keccak256(abi.encodePacked(_name, _studentId, _course, _graduationYear, block.timestamp));
+
+        students[_studentId] = Student(_name, _studentId, _course, _graduationYear, false, transcriptHash);
+        emit TranscriptIssued(_studentId, _name, _course, _graduationYear, transcriptHash);
     }
 
     function verifyTranscript(string memory _studentId) public onlyOwner {
@@ -45,10 +49,10 @@ contract Transcript {
         emit TranscriptVerified(_studentId, true);
     }
 
-    function getTranscript(string memory _studentId) public view returns (string memory, string memory, string memory, string memory, bool) {
+    function getTranscript(string memory _studentId) public view returns (string memory, string memory, string memory, string memory, bool, bytes32) {
         require(bytes(students[_studentId].studentId).length > 0, "Transcript not found.");
         
         Student memory s = students[_studentId];
-        return (s.name, s.studentId, s.course, s.graduationYear, s.isVerified);
+        return (s.name, s.studentId, s.course, s.graduationYear, s.isVerified, s.transcriptHash);
     }
 }
